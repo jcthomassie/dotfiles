@@ -1,0 +1,29 @@
+#!/bin/bash
+
+case $OSTYPE in
+    darwin*)
+        echo "Setting up OSX"
+        # install homebrew if it's missing
+        if ! command -v brew >/dev/null 2>&1; then
+            echo "Installing homebrew"
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
+        brew analytics off
+        brew bundle --global
+        ;;
+
+    linux*)
+        echo "Setting up Linux"
+        sudo apt install zsh
+        ;;
+
+    *)
+        echo "Setup not configured for $OSTYPE"
+        ;;
+esac
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+source $HOME/.zshrc
+
+$HOME/bin/update

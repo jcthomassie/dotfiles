@@ -1,0 +1,27 @@
+tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+brew "curl"
+brew "git"
+brew "grep"
+brew "libffi"
+brew "libyaml"
+brew "python@3.9"
+brew "rbenv"
+brew "ruby"
+brew "rustup-init"
+brew "scala"
+brew "scala@2.11"
+brew "yadm"
+brew "amazon/amazon/ninja-dev-sync"
+cask "amazon-acronyms"
+cask "font-caskaydia-cove-nerd-font"
+cask "font-hack-nerd-font"
+
+# # NEED TO REINSTALL
+# slack
+# firefox
+# firefox extensions
+# vscode

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+yadm pull --rebase origin master
+source "$HOME/.zshrc"
+
+case $OSTYPE in
+    darwin*)
+        echo "Updating OSX via yadm"
+        brew update
+        brew upgrade
+        brew cleanup
+        ;;
+
+    linux*)
+        echo "Updating Linux via yadm"
+        sudo apt-get update
+        sudo apt-get upgrade
+        sudo apt update
+        sudo apt upgrade
+        ;;
+
+    *)
+        echo "Update not configured for OS: $OSTYPE"
+        ;;
+esac
