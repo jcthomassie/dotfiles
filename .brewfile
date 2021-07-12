@@ -3,6 +3,9 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+
+cask_args appdir: "~/Applications", require_sha: true
+
 brew "curl"
 brew "git"
 brew "grep"
@@ -20,8 +23,9 @@ cask "amazon-acronyms"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
 
-# # NEED TO REINSTALL
+# TODO: reinstall these with brew
 # slack
+# intellij
 # firefox
 # firefox extensions
 # vscode
