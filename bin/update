@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 yadm pull --rebase origin master
-source "$HOME/.zshrc"
 
 case $OSTYPE in
     darwin*)

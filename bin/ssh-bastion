@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Bastion public DNS/IP
 IP_BASTION=$1

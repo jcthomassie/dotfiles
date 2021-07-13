@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 LOCAL_DIR=$1
 CLOUD_DIR="$CLOUD_WORKSPACE/$1"
