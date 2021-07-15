@@ -3,4 +3,4 @@
 LOCAL_DIR=$1
 CLOUD_DIR="$CLOUD_WORKSPACE/$1"
 
-ninja-dev-sync --add "$LOCAL_DIR" --add-host "$CLOUD_DESK" --add-remote "$CLOUD_DIR" -setup
+ninja-dev-sync --add "$LOCAL_DIR" --add-host "$CLOUD_DESK_DNS" --add-remote "$CLOUD_DIR" -setup
