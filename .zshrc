@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export PATH="$HOME/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export HOMEBREW_BREWFILE="$HOME/.brewfile"
@@ -9,17 +16,14 @@ ZSH_HIGHLIGHT_STYLES[globbing]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[path]=fg=white,underline,bold
 ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=white,underline
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 HYPHEN_INSENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     brew
     colorize
     git
     osx
-    pip
-    python
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -44,10 +48,17 @@ if [ $USER = "thomajl" ]; then
     alias brc="brazil-recursive-cmd"
     alias bre="brazil-runtime-exec"
     alias bws="brazil ws"
+    alias bws-sync="bws sync --md"
+    alias bws-pull="bball git pull --rebase"
+    alias bws-update="bws-sync && bws-pull"
+    alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
     alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
-    alias nds="ninja-dev-sync"
     alias nds-add="ninja-dev-sync-add"
+    alias nds="ninja-dev-sync"
 fi
 
 alias cls="clear"
 alias zshconfig="code -n -w ~/.zshrc && source ~/.zshrc"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
