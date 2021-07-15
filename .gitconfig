@@ -1,11 +1,9 @@
 [core]
-        editor = vim
+	editor = vim
 [include]
-        path = .gitconfig.local
+	path = .gitconfig.local
 [color]
 	ui = auto
-[core]
-	pager = less -FMRiX
 [push]
 	default = simple
 [alias]

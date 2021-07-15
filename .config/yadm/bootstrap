@@ -12,11 +12,6 @@ case $OSTYPE in
         brew bundle --global
         ;;
 
-    linux*)
-        echo "Setting up Linux"
-        sudo apt install zsh
-        ;;
-
     *)
         echo "Setup not configured for $OSTYPE"
         ;;
