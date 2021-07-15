@@ -5,17 +5,17 @@ yadm pull --rebase origin master
 case $OSTYPE in
     darwin*)
         echo "Updating OSX via yadm"
-        brew update
-        brew upgrade
+        brew update && brew upgrade
         brew cleanup
         ;;
 
     linux*)
         echo "Updating Linux via yadm"
-        sudo apt-get update
-        sudo apt-get upgrade
-        sudo apt update
-        sudo apt upgrade
+        for PM in apt-get apt yum; do
+            if command -v $PM &> /dev/null; then
+                sudo $PM update && sudo $PM upgrade
+            fi
+        done
         ;;
 
     *)
