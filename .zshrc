@@ -25,6 +25,7 @@ plugins=(
     git
     osx
     zsh-autosuggestions
+    zsh-completions
     zsh-syntax-highlighting
 )
 
