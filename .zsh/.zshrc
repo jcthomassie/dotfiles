@@ -18,11 +18,8 @@ if [ $USER = "thomajl" ]; then
     export CLOUD_WORKSPACE="/home/thomajl/workplace"
 fi
 
-autoload -U colors && colors
-autoload -Uz compaudit compinit && compinit -i -C -d
-
 # Plugin customization
-HYPHEN_INSENSITIVE="true"
+ZSH_CACHE_DIR="$HOME/.cache"
 
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan
@@ -45,3 +42,6 @@ source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
 # Load customizations
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
+autoload -U colors && colors
+autoload -Uz compaudit && compaudit
+autoload -Uz compinit && compinit -i -C -d
