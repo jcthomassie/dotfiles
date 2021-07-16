@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+autoload colors && colors
+
+export MIDWAY_COOKIE=${MIDWAY_COOKIE:-"$HOME/.midway/cookie"}
+midway_status=$(curl --location-trusted -c $MIDWAY_COOKIE -b $MIDWAY_COOKIE "https://midway-auth.amazon.com/api/session-status" 2>/dev/null)
+midway_authenticated=$(echo "$midway_status" | ggrep -oP '(?<="authenticated":)[a-z]*(?=,)')
+
+if [[ "$midway_authenticated" != "true" ]];
+then
+    echo $fg[red]"Midway cookie is expired"$fg[white]
+    mwinit -o
+else
+    echo $fg[green]"Midway cookie is valid"$fg[white]
+fi
