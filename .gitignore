@@ -24,3 +24,7 @@ __pycache__/
 # Scala
 .metals/
 .bloop/
+
+# Shell
+.zcompdump
+.zsh_history

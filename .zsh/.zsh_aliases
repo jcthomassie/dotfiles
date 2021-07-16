@@ -1,4 +1,9 @@
-alias ls="ls -G"
+if [[ $OSTYPE == darwin* ]]; then
+    alias ls="ls -G"
+else
+    alias ls="ls --color=auto"
+fi
+
 alias la="ls -lAFh"
 alias cls="clear"
 alias glog="git log --oneline --decorate --graph"
