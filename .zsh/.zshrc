@@ -19,7 +19,7 @@ if [ $USER = "thomajl" ]; then
 fi
 
 autoload -U colors && colors
-autoload -Uz compinit && compinit -i
+autoload -Uz compaudit compinit && compinit -i -C -d
 
 # Plugin customization
 HYPHEN_INSENSITIVE="true"
@@ -34,11 +34,14 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Initialize plugins
+# Load plugins
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $ZDOTDIR/.p10k.zsh
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
-source $ZDOTDIR/.zsh_aliases
+
+# Load customizations
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/completion.zsh
