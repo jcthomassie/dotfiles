@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
+INIT_DIR=$(pwd)
 
+cd $HOME
+echo "Updating yadm and submodules"
 yadm pull --rebase --autostash origin master
+yadm submodule update --remote
+cd $INIT_DIR
 
 case $OSTYPE in
     darwin*)

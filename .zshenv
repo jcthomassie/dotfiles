@@ -1,1 +1,2 @@
-source "$HOME/.cargo/env"
+export EDITOR=vim
+export ZDOTDIR="$HOME/.zsh"
