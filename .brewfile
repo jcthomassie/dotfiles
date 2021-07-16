@@ -11,6 +11,7 @@ brew "git"
 brew "grep"
 brew "libffi"
 brew "libyaml"
+brew "ninja-dev-sync"
 brew "python@3.9"
 brew "rbenv"
 brew "ruby"
@@ -18,14 +19,17 @@ brew "rustup-init"
 brew "scala"
 brew "scala@2.11"
 brew "yadm"
+brew "zsh"
 brew "amazon/amazon/ninja-dev-sync"
 cask "amazon-acronyms"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
 
 # TODO: reinstall these with brew
-# slack
-# intellij
-# firefox
-# firefox extensions
-# vscode
+# cask "iterm2"
+# cask "slack"
+# cask "intellij-idea"
+# cask "firefox"
+# cask "google-chrome"
+# cask "visual-studio-code"
+# cask "font-meslo-nerd-font"
