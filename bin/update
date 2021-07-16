@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-yadm pull --rebase origin master
+yadm pull --rebase --autostash origin master
 
 case $OSTYPE in
     darwin*)
