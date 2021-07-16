@@ -12,6 +12,12 @@ case $OSTYPE in
         brew bundle --global
         ;;
 
+    linux*)
+        echo "Setting up Linux"
+        sudo apt-get update -y
+        sudo apt-get install -y zsh git yadm
+        ;;
+
     *)
         echo "Setup not configured for $OSTYPE"
         ;;
@@ -19,7 +25,7 @@ esac
 
 # Install oh-my-zsh
 if ! [ "$(ls -A $ZSH)" ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     git clone --depth=1 https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-completions
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
