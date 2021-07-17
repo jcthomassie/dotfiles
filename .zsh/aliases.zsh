@@ -4,7 +4,9 @@ else
     alias ls="ls --color=auto"
 fi
 
-alias la="ls -lAFh"
+alias la="ls -lFh"
+alias ld="ls -d -- */ .*/"
+alias ll="ls -lAFh"
 alias cls="clear"
 alias glog="git log --oneline --decorate --graph"
 alias zshrc="code -n -w $ZDOTDIR/.zshrc"
