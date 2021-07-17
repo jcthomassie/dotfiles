@@ -1,7 +1,3 @@
-# Amazon build outputs
-coral-config/
-build/
-
 # Editors
 *.iml
 .idea/
@@ -12,6 +8,7 @@ build/
 .DS_Store
 .DS_Store?
 .Spotlight-V100
+.Trash
 .Trashes
 Thumbs.db
 
@@ -21,10 +18,6 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
-# Scala
+# Scala LSP
 .metals/
 .bloop/
-
-# Shell
-.zcompdump
-.zsh_history
