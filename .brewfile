@@ -6,7 +6,9 @@ tap "homebrew/core"
 
 cask_args appdir: "~/Applications", require_sha: true
 
+brew "bat"
 brew "curl"
+brew "git-delta"
 brew "git"
 brew "grep"
 brew "libffi"
