@@ -1,25 +1,2 @@
-# Dotfiles (opt-out)
-!.*
-.*_history*
-.hushlogin
-.profile
-.viminfo
+.zsh_history
 .zcompdump
-
-# Directories (opt-in)
-*/
-!.config/yadm/
-!.iterm2_profile/
-!.zsh/
-!bin/
-
-# yadm symlinks
-.gitconfig.local
-
-# MacOS extras
-.Brewfile.lock.json
-.CFUserTextEncoding
-.DS_Store
-.anyconnect
-.iterm2_shell_integration.zsh
-workplace
