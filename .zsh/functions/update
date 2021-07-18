@@ -1,3 +1,14 @@
+DF_LINUX_DISTRO=""
+
+_get_linux_distro () {
+    for p in /etc/{os,lsb,redhat}-release; do
+        if [ -f $p ]; then
+            . $p
+            DF_LINUX_DISTRO=$NAME
+            return
+        fi
+    done
+}
 
 update_dotfiles () {
     start=$(pwd)
@@ -34,8 +45,15 @@ update () {
             ;;
 
         linux*)
-            update_ubuntu
-            update_al2
+            _get_linux_distro
+            case $DF_LINUX_DISTRO in
+                "Amazon Linux"*)
+                    update_al2
+                    ;;
+                "Ubuntu")
+                    update_ubuntu
+                    ;;
+            esac
             ;;
 
         *)

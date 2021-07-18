@@ -5,12 +5,23 @@ DF_REPO_ROOT=${DF_REPO_ROOT:-"$HOME/dotfiles"}
 DF_REPO_URL="https://github.com/jcthomassie/dotfiles.git"
 DF_OS=$(uname -s)
 DF_USER=$USER
+DF_LINUX_DISTRO=""
 DF_LOCAL_SEP="##"
 DF_LOCAL_SUFFIXES=(
     "user.$DF_USER"
     "os.$DF_OS"
     "default"
 )
+
+_get_linux_distro () {
+    for p in /etc/{os,lsb,redhat}-release; do
+        if [ -f $p ]; then
+            . $p
+            DF_LINUX_DISTRO=$NAME
+            return
+        fi
+    done
+}
 
 _install_macos () {
     echo "Setting up OSX..."
@@ -38,7 +49,7 @@ _install_ubuntu () {
 _install_al2 () {
     echo "Setting up AL2..."
     sudo yum update -y
-    sudo yum install -y zsh git bat
+    sudo yum install -y zsh git
 }
 
 _fetch_dotfiles () {
@@ -104,8 +115,15 @@ install () {
             _install_macos
             ;;
         linux*)
-            _install_ubuntu
-            _install_al2
+            _get_linux_distro
+            case $DF_LINUX_DISTRO in
+                "Amazon Linux"*)
+                    _install_al2
+                    ;;
+                "Ubuntu")
+                    _install_ubuntu
+                    ;;
+            esac
             ;;
     esac
 
