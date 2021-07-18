@@ -1,6 +1,11 @@
-#!/usr/bin/env zsh
+# Takes one argument:
+#   - Workspace directory name (i.e. mvms/)
 
-LOCAL_DIR=$1
-CLOUD_DIR="$CLOUD_WORKSPACE/$1"
+nds_add () {
+    local LOCAL_DIR=$1
+    local CLOUD_DIR="$CLOUD_WORKSPACE/$1"
 
-ninja-dev-sync --add "$LOCAL_DIR" --add-host "$CLOUD_DESK_DNS" --add-remote "$CLOUD_DIR" -setup
+    ninja-dev-sync --add "$LOCAL_DIR" --add-host "$CLOUD_DESK_DNS" --add-remote "$CLOUD_DIR" -setup
+}
+
+nds_add "$@"
