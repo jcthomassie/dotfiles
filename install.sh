@@ -20,7 +20,7 @@ _install_macos () {
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
     brew analytics off
-    brew bundle --file $DF_REPO_ROOT/.brewfile
+    brew bundle --file "$DF_REPO_ROOT/.brewfile"
 }
 
 _install_ubuntu () {
@@ -44,7 +44,7 @@ _fetch_dotfiles () {
     fi
     # Init submodules
     cd $DF_REPO_ROOT
-    echo "Initializing submodules"
+    echo "Initializing submodules..."
     git submodule update --init --recursive
     cd $RUN_LOCATION
 }

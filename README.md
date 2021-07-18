@@ -1,8 +1,15 @@
 # dotfiles
 
-My personal dotfiles and configs for OSX, AL2, and WSL managed with [yadm](https://yadm.io/).
+My personal dotfiles and configs for MacOS, AL2, and WSL.
 
 Bootstrap by running:
+
 ```shell
-curl -L bootstrap.yadm.io | bash -s -- https://github.com/jcthomassie/dotfiles.git
+sh -c "$(curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/master/install.sh)"
 ```
+
+After installation on MacOS, set the iTerm2 profile location:
+
+- Navigate to **General > Preferences**
+- Enable **Load preferences from a custom folder or URL**
+- Enter `~/dotfiles/.iterm2_profile`
