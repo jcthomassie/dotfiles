@@ -12,6 +12,16 @@ DF_LOCAL_SUFFIXES=(
     "default"
 )
 
+_linux_distro () {
+    for p in /etc/{os,lsb,redhat}-release; do
+        if [ -f $p ]; then
+            . $p
+            return "$NAME"
+        fi
+    done
+    return ""
+}
+
 _install_macos () {
     echo "Setting up OSX..."
     # install homebrew if it's missing
@@ -104,8 +114,14 @@ install () {
             _install_macos
             ;;
         linux*)
-            _install_ubuntu
-            _install_al2
+            case _linux_distro in
+                "Amazon Linux"*)
+                    _install_al2
+                    ;;
+                "Ubuntu")
+                    _install_ubuntu
+                    ;;
+            esac
             ;;
     esac
 
