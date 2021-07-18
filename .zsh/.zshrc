@@ -24,16 +24,18 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Load plugins
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source $ZDOTDIR/.p10k.zsh
-source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
+source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
 
 # Load customizations
-fpath=( $ZDOTDIR/functions "${fpath[@]}" )
+source $ZDOTDIR/.p10k.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
+
+# Load functions
+fpath=( $ZDOTDIR/functions "${fpath[@]}" )
 autoload -U colors && colors
 autoload -Uz compaudit && compaudit
 autoload -Uz compinit && compinit -i -C -d
