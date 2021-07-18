@@ -1,2 +1,5 @@
 .zsh_history
 .zcompdump
+
+# Local symlinks
+.gitconfig.local
