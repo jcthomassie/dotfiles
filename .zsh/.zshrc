@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export HOMEBREW_BREWFILE="$HOME/.brewfile"
+export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 

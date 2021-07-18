@@ -1,2 +1,3 @@
+export DF_REPO_ROOT=$HOME/dotfiles
 export EDITOR=vim
-export ZDOTDIR=$HOME/dotfiles/.zsh
+export ZDOTDIR=$DF_REPO_ROOT/.zsh
