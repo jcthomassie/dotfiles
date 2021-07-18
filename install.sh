@@ -7,20 +7,26 @@ DF_OS=$(uname -s)
 DF_USER=$USER
 DF_LOCAL_SEP="##"
 DF_LOCAL_SUFFIXES=(
-    user.$DF_USER
-    os.$DF_OS
-    default
+    "user.$DF_USER"
+    "os.$DF_OS"
+    "default"
 )
 
 _install_macos () {
     echo "Setting up OSX..."
     # install homebrew if it's missing
     if ! command -v brew >/dev/null 2>&1; then
-        echo "Installing homebrew"
+        echo "Installing homebrew..."
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
+    # download brewfile if needed
+    if [[ -f "$DF_REPO_ROOT/.brewfile" ]]; then
+        brew bundle --file "$DF_REPO_ROOT/.brewfile"
+    else
+        echo "Downloading brewfile..."
+        curl -fsLS "https://raw.githubusercontent.com/jcthomassie/dotfiles/master/.brewfile" | brew bundle --file=/dev/stdin
+    fi
     brew analytics off
-    brew bundle --file "$DF_REPO_ROOT/.brewfile"
 }
 
 _install_ubuntu () {
