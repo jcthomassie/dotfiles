@@ -49,7 +49,7 @@ _install_ubuntu () {
 _install_al2 () {
     echo "Setting up AL2..."
     sudo yum update -y
-    sudo yum install -y zsh git bat
+    sudo yum install -y zsh git
 }
 
 _fetch_dotfiles () {
