@@ -4,7 +4,7 @@ else
     alias ls="ls --color=auto"
 fi
 
-alias la="ls -lFh"
+alias la="ls -AFh"
 alias ld="ls -d -- */ .*/"
 alias ll="ls -lAFh"
 alias cls="clear"
@@ -29,6 +29,5 @@ if [ $USER = "thomajl" ]; then
     alias bws-update="bws-sync && bws-pull"
     alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
     alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
-    alias nds-add="ninja-dev-sync-add"
     alias nds="ninja-dev-sync"
 fi
