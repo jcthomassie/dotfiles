@@ -1,0 +1,47 @@
+
+update_dotfiles () {
+    start=$(pwd)
+    cd $DF_REPO_ROOT
+    echo "Updating dotfiles..."
+    git pull --rebase --autostash origin master
+    git submodule update --remote
+    cd $start
+}
+
+update_macos () {
+    echo "Updating OSX..."
+    brew update && brew upgrade
+    brew cleanup
+}
+
+update_ubuntu () {
+    echo "Updating Ubuntu..."
+    sudo apt-get update && sudo apt-get upgrade
+    sudo apt upgrade && sudo apt upgrade
+}
+
+update_al2 () {
+    echo "Updating AL2..."
+    sudo yum update && sudo yum upgrade
+}
+
+update () {
+    update_dotfiles
+
+    case $OSTYPE in
+        darwin*)
+            update_macos
+            ;;
+
+        linux*)
+            update_ubuntu
+            update_al2
+            ;;
+
+        *)
+            echo "Update not configured for OS: $OSTYPE"
+            ;;
+    esac
+}
+
+update "$@"

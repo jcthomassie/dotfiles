@@ -5,18 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/bin:$PATH"
-export HOMEBREW_BREWFILE="$HOME/.brewfile"
+export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-
-# Amazon specific config
-if [ $USER = "thomajl" ]; then
-    export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
-    export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
-    export LOCAL_WORKSPACE="/Users/thomajl/workplace"
-    export CLOUD_WORKSPACE="/home/thomajl/workplace"
-fi
 
 # Plugin customization
 ZSH_CACHE_DIR="$HOME/.cache"
@@ -40,8 +31,22 @@ source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
 
 # Load customizations
+fpath=( $ZDOTDIR/functions "${fpath[@]}" )
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
 autoload -U colors && colors
 autoload -Uz compaudit && compaudit
 autoload -Uz compinit && compinit -i -C -d
+autoload update
+
+# Amazon specific config
+if [ $USER = "thomajl" ]; then
+    export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
+    export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
+    export LOCAL_WORKSPACE="/Users/thomajl/workplace"
+    export CLOUD_WORKSPACE="/home/thomajl/workplace"
+    autoload midway
+    autoload ssh_bastion
+    autoload nds_add
+fi
+

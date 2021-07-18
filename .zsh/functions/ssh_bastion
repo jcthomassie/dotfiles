@@ -1,0 +1,14 @@
+# Takes two arguments:
+#   - Bastion public DNS/IP
+#   - EC2 private DNS/IP
+
+ssh_bastion () {
+    local IP_BASTION=$1
+    local IP_INSTANCE=$2
+
+    mwinit -o && eval `ssh-agent` && ssh-add
+    ssh -A $IP_BASTION
+    ssh -A $IP_INSTANCE
+}
+
+ssh_bastion "$@"
