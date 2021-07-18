@@ -8,6 +8,13 @@ fi
 export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
+# Amazon specific config
+if [ $USER = "thomajl" ]; then
+    export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
+    export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
+    export LOCAL_WORKSPACE="/Users/thomajl/workplace"
+    export CLOUD_WORKSPACE="/home/thomajl/workplace"
+fi
 
 # Plugin customization
 ZSH_CACHE_DIR="$HOME/.cache"
@@ -40,15 +47,9 @@ autoload -U colors && colors
 autoload -Uz compaudit && compaudit
 autoload -Uz compinit && compinit -i -C -d
 autoload update
-
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
-    export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
-    export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
-    export LOCAL_WORKSPACE="/Users/thomajl/workplace"
-    export CLOUD_WORKSPACE="/home/thomajl/workplace"
     autoload midway
     autoload ssh_bastion
     autoload nds_add
 fi
-
