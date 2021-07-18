@@ -1,14 +1,14 @@
 
 update_dotfiles () {
     start=$(pwd)
-    cd $ZDOTDIR
+    cd $DF_REPO_ROOT
     echo "Updating dotfiles..."
     git pull --rebase --autostash origin master
     git submodule update --remote
     cd $start
 }
 
-update_darwin () {
+update_macos () {
     echo "Updating OSX..."
     brew update && brew upgrade
     brew cleanup
@@ -30,11 +30,12 @@ update () {
 
     case $OSTYPE in
         darwin*)
-            _update_os = "update_darwin"
+            update_macos
             ;;
 
         linux*)
-            _update_os = "update_ubuntu"
+            update_ubuntu
+            update_al2
             ;;
 
         *)
