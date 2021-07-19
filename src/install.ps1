@@ -19,6 +19,8 @@ choco install -y wsl2
 choco install -y wsl-ubuntu-2004
 choco install -y oh-my-posh
 choco install -y poshgit
+choco install -y bat
+choco install -y delta
 choco install -y miniconda3 --params="'/AddToPath:1'"
 
 choco install -y google-backup-and-sync
