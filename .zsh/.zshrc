@@ -48,6 +48,7 @@ autoload -U colors && colors
 autoload -Uz compaudit && compaudit
 autoload -Uz compinit && compinit -i -C -d
 autoload update
+autoload grep_json
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
     autoload midway
