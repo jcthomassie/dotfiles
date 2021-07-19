@@ -3,6 +3,10 @@ if [[ $OSTYPE == darwin* ]]; then
 else
     alias ls="ls --color=auto"
 fi
+# Handle Ubuntu batcat -> bat
+if type "batcat" > /dev/null; then
+    alias bat="batcat"
+fi
 
 alias la="ls -AFh"
 alias ld="ls -d -- */ .*/"

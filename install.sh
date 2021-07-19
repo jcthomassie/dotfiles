@@ -43,7 +43,8 @@ _install_macos () {
 _install_ubuntu () {
     echo "Setting up Ubuntu..."
     sudo apt-get update -y
-    sudo apt-get install -y zsh git bat
+    sudo apt-get install -y zsh git bat cargo
+    cargo install git-delta
 }
 
 _install_al2 () {
