@@ -3,6 +3,8 @@
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
+[include]
+	path = ~/.gitconfig.local
 [alias]
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	publish = "!git push -u origin $(git branch-name)"
@@ -10,5 +12,14 @@
 	default = simple
 [pull]
 	rebase = true
-[include]
-	path = ~/.gitconfig.local
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[delta]
+	features = line-numbers
+    syntax-theme = OneHalfDark
+    navigate = true
+[interactive]
+    diffFilter = delta --color-only
