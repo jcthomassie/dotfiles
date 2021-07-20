@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.brewfile": "ruby",
+        "**/.zsh/functions/*": "shellscript",
+        "**/.zsh/completions/*": "shellscript",
+        "**/.gitconfig.*": "properties"
+    },
+}
