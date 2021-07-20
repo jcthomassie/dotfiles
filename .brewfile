@@ -25,6 +25,8 @@ brew "amazon/amazon/ninja-dev-sync"
 cask "amazon-acronyms"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
+cask "1password"
+cask "1password-cli"
 
 # TODO: reinstall these with brew
 # cask "iterm2"
