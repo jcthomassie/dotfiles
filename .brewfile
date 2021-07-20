@@ -8,6 +8,7 @@ cask_args appdir: "~/Applications", require_sha: true
 
 brew "bat"
 brew "curl"
+brew "gh"
 brew "git-delta"
 brew "git"
 brew "grep"
@@ -21,12 +22,11 @@ brew "rustup-init"
 brew "scala"
 brew "scala@2.11"
 brew "zsh"
-brew "amazon/amazon/ninja-dev-sync"
+cask "1password-cli"
+cask "1password"
 cask "amazon-acronyms"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
-cask "1password"
-cask "1password-cli"
 
 # TODO: reinstall these with brew
 # cask "iterm2"
