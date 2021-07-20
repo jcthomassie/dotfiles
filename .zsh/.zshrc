@@ -9,6 +9,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export DF_COMPLETIONS="$ZDOTDIR/completions"
+export DF_FUNCTIONS="$ZDOTDIR/functions"
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
     export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
@@ -43,10 +45,10 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
 
 # Load functions
-fpath=( $ZDOTDIR/functions "${fpath[@]}" )
+fpath=( "${fpath[@]}" "$DF_COMPLETIONS" "$DF_FUNCTIONS" )
 autoload -U colors && colors
-autoload -Uz compaudit && compaudit
-autoload -Uz compinit && compinit -i -C -d
+autoload -U compaudit && compaudit
+autoload -U compinit && compinit -i
 autoload update
 autoload grep_json
 # Amazon specific config
