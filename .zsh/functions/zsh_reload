@@ -1,0 +1,12 @@
+zsh_reload() {
+	autoload -U compinit zrecompile
+	compinit -i -d "$ZSH_CACHE_DIR/zcomp-$HOST"
+
+	for f in "$ZDOTDIR/.zshrc" "$ZSH_CACHE_DIR/zcomp-$HOST"; do
+		zrecompile -p $f && command rm -f $f.zwc.old
+	done
+
+	exec $SHELL
+}
+
+zsh_reload

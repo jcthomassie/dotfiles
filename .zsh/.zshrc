@@ -51,6 +51,7 @@ autoload -U compaudit && compaudit
 autoload -U compinit && compinit -i
 autoload update
 autoload grep_json
+autoload zsh_reload
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
     autoload midway
