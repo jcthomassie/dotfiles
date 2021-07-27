@@ -33,7 +33,7 @@ zstyle ':completion:*:warnings' format '%F{red}[no matches found]%f'
 zstyle ':completion:*:aliases' list-colors '=*=36'
 zstyle ':completion:*:commands' list-colors '=*=32'
 zstyle ':completion:*:builtins' list-colors '=*=1;32'
-zstyle ':completion:*:options' list-colors '=(#b)([^ ]#)(*)=38;5;220;1=38;5;216'
+zstyle ':completion:*:options' list-colors '=(#b)([^ ]#)(*)=8=36'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Fuzzy match mistyped completions.
