@@ -10,6 +10,7 @@ export DF_COMPLETIONS="$ZDOTDIR/completions"
 export DF_FUNCTIONS="$ZDOTDIR/functions"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+export ZSH_HISTORY="$HOME/.zsh_history"
 export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -33,6 +34,23 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+HISTFILE="$ZSH_HISTORY"
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
+setopt HIST_BEEP              # Beep when accessing nonexistent history.
 
 # Specify plugins
 plugins=(
