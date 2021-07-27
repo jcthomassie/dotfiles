@@ -3,5 +3,8 @@
 .zsh_sessions
 .zcompdump
 
+# Completions (opt-in)
+.zsh/completions/_*
+
 # Local symlinks
 .gitconfig.local
