@@ -2,6 +2,7 @@
 .zsh_history
 .zsh_sessions
 .zcompdump
+/target
 
 # Completions (opt-in)
 .zsh/completions/_*
