@@ -1614,6 +1614,10 @@
 	<string>com.apple.Photos.iPhoneFrontCameraAlbum</string>
 	<key>ILMediaBrowserSelectedGroupIndex1</key>
 	<integer>5</integer>
+	<key>NeverWarnAboutShortLivedSessions_03BCD973-DF38-46D7-9CE6-8C68D4E10118</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_03BCD973-DF38-46D7-9CE6-8C68D4E10118_selection</key>
+	<integer>0</integer>
 	<key>NeverWarnAboutShortLivedSessions_CA4FDE3F-FBD4-446A-AD62-FE0F9B8C05B6</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_CA4FDE3F-FBD4-446A-AD62-FE0F9B8C05B6_selection</key>
