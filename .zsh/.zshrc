@@ -20,6 +20,7 @@ if [ $USER = "thomajl" ]; then
   export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
   export LOCAL_WORKSPACE="/Users/thomajl/workplace"
   export CLOUD_WORKSPACE="/home/thomajl/workplace"
+  export AWS_DEFAULT_REGION="us-east-1"
 fi
 
 # Customize plugins
