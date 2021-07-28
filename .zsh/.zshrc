@@ -74,7 +74,7 @@ source $ZDOTDIR/completion.zsh
 
 # Load functions and completions
 fpath=( $DF_COMPLETIONS $DF_FUNCTIONS $fpath )
-autoload -U $fpath[1]/*(.:t)
-autoload -U $fpath[2]/*(.:t)
+autoload -U $DF_COMPLETIONS/*(.:t)
+autoload -U $DF_FUNCTIONS/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
