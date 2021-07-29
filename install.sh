@@ -93,7 +93,7 @@ _install_dotfiles () {
     _create_link $DF_REPO_ROOT/.gitconfig $HOME/.gitconfig
     _create_link $DF_REPO_ROOT/.gitconfig.local $HOME/.gitconfig.local
     _create_link $DF_REPO_ROOT/.gitignore_global $HOME/.gitignore_global
-
+    _create_link $DF_REPO_ROOT/.vimrc $HOME/.vimrc
     # Create internal system specific links
     for base in "$( find $DF_REPO_ROOT -name "*${DF_LOCAL_SEP}*" | sed "s/${DF_LOCAL_SEP}.*//" | uniq )"; do
         for suffix in "${DF_LOCAL_SUFFIXES[@]}"; do
