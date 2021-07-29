@@ -23,6 +23,7 @@ choco install -y bat
 choco install -y delta
 choco install -y miniconda3 --params="'/AddToPath:1'"
 
+choco install -y 1password
 choco install -y google-backup-and-sync
 choco install -y googlechrome
 choco install -y reaper
