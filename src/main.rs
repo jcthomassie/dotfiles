@@ -3,8 +3,25 @@ mod link;
 mod yaml;
 
 use clap::{crate_authors, crate_version, App, AppSettings, Arg};
-use error::DotsResult;
+use error::{DotsError, DotsResult};
+use git2::Repository;
+use std::path::PathBuf;
 use yaml::BuildCase;
+
+fn open_dotfiles(local: &PathBuf) -> DotsResult<Repository> {
+    let repo = Repository::open(local);
+    match repo {
+        Err(e) => Err(DotsError::Upstream(Box::new(e))),
+        Ok(r) => Ok(r),
+    }
+}
+
+fn clone_dotfiles(local: &PathBuf, remote: &str) -> DotsResult<()> {
+    match Repository::clone_recurse(remote, local) {
+        Err(e) => Err(DotsError::Upstream(Box::new(e))),
+        Ok(_) => Ok(()),
+    }
+}
 
 fn install(case: &BuildCase) -> DotsResult<()> {
     case.link
