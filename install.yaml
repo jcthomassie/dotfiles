@@ -1,13 +1,14 @@
 ---
-link:
-  tail: $DF_REPO_ROOT/.zsh/.zshenv
-  head: $HOME/.zshenv
-link:
-  tail: $DF_REPO_ROOT/.gitconfig
-  head: $HOME/.gitconfig
-link:
-  tail: $DF_REPO_ROOT/.gitconfig.local
-  head: $HOME/.gitconfig.local
-link:
-  tail: $DF_REPO_ROOT/.gitignore_global
-  head: $HOME/.gitignore_global
+build:
+  - link:
+    tail: $DF_REPO_ROOT/.zsh/.zshenv
+    head: $HOME/.zshenv
+  - link:
+    tail: $DF_REPO_ROOT/.gitconfig
+    head: $HOME/.gitconfig
+  - link:
+    tail: $DF_REPO_ROOT/.gitconfig.local
+    head: $HOME/.gitconfig.local
+  - link:
+    tail: $DF_REPO_ROOT/.gitignore_global
+    head: $HOME/.gitignore_global
