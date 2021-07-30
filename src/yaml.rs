@@ -50,43 +50,51 @@ pub enum BuildUnit {
 }
 
 impl BuildUnit {
-    // Recursively remove all invalid build cases
-    // Returns True when the build ends up empty
-    pub fn prune(&mut self) -> bool {
+    // Recursively resolve all case units; collect into single vec
+    pub fn resolve(&self) -> Vec<Link> {
         match self {
             Self::Case(cv) => {
-                // TODO: create static locale
+                // TODO: make locale static
                 let locale = Locale::auto();
                 let mut default = true;
-                cv.drain_filter(|scope| match scope {
-                    Case::Local { spec, build } if spec.is_subset(&locale) => {
-                        default = false;
-                        build.drain_filter(|u| u.prune());
-                        build.is_empty()
-                    }
-                    Case::Default { build } if default => {
-                        build.drain_filter(|u| u.prune());
-                        build.is_empty()
-                    }
-                    _ => true,
-                });
-                cv.is_empty()
+                // Build flat vec of links
+                let mut ln: Vec<Link> = Vec::new();
+                for case in cv.into_iter() {
+                    match case {
+                        Case::Local { spec, build } if spec.is_subset(&locale) => {
+                            default = false;
+                            for unit in build.into_iter() {
+                                ln.extend(unit.resolve())
+                            }
+                        }
+                        Case::Default { build } if default => {
+                            for unit in build.into_iter() {
+                                ln.extend(unit.resolve())
+                            }
+                        }
+                        _ => (),
+                    };
+                }
+                ln
             }
-            Self::Link(_) => false,
+            Self::Link(ln) => ln.clone(),
         }
     }
 }
 
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct Build {
-    repo: Repo,
-    build: Vec<BuildUnit>,
+    pub repo: Repo,
+    pub build: Vec<BuildUnit>,
 }
 
 impl Build {
-    pub fn prune(&mut self) -> bool {
-        self.build.drain_filter(|u| u.prune());
-        self.build.is_empty()
+    pub fn resolve(&self) -> Vec<Link> {
+        let mut ln: Vec<Link> = Vec::new();
+        for unit in self.build.iter() {
+            ln.extend(unit.resolve());
+        }
+        ln
     }
 
     // pub fn apply<T>(&self, f: fn(&BuildCase) -> T) -> Vec<T> {
