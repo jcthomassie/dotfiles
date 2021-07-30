@@ -4,20 +4,25 @@ repo:
   remote: https://github.com/jcthomassie/dotfiles.git
 
 build:
-  - all:
-      link:
-      - tail: $DF_REPO_ROOT/.zsh/.zshenv
-        head: $HOME/.zshenv
-      - tail: $DF_REPO_ROOT/.gitconfig
-        head: $HOME/.gitconfig
-      - tail: $DF_REPO_ROOT/.gitignore_global
-        head: $HOME/.gitignore_global
+  - link:
+    - tail: $DF_REPO_ROOT/.zsh/.zshenv
+      head: $HOME/.zshenv
+    - tail: $DF_REPO_ROOT/.gitconfig
+      head: $HOME/.gitconfig
+    - tail: $DF_REPO_ROOT/.gitignore_global
+      head: $HOME/.gitignore_global
+
   - case:
-      user: thomajl
-      link:
-      - tail: $DF_REPO_ROOT/.gitconfig.local##user.thomajl
-        head: $HOME/.gitconfig.local
-  - default:
-      link:
-      - tail: $DF_REPO_ROOT/.gitconfig.local##default
-        head: $HOME/.gitconfig.local
+    - local:
+        spec:
+          user: thomajl
+        build:
+          - link:
+            - tail: $DF_REPO_ROOT/.gitconfig.local##user.thomajl
+              head: $HOME/.gitconfig.local
+
+    - default:
+        build:
+          - link:
+            - tail: $DF_REPO_ROOT/.gitconfig.local##default
+              head: $HOME/.gitconfig.local
