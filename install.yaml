@@ -11,6 +11,8 @@ build:
       head: $HOME/.gitconfig
     - tail: $DF_REPO_ROOT/.gitignore_global
       head: $HOME/.gitignore_global
+    - tail: $DF_REPO_ROOT/.vimrc
+      head: $HOME/.vimrc
 
   - case:
     - local:
