@@ -6,6 +6,3 @@
 
 # Completions (opt-in)
 .zsh/completions/_*
-
-# Local symlinks
-.gitconfig.local
