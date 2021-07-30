@@ -1,6 +1,16 @@
 use super::error::DotsResult;
 use std::process::{Command, Stdio};
 
+#[cfg(target_os = "linux")]
+const PM: PackageManager = PackageManager::Brew;
+#[cfg(target_os = "windows")]
+const PM: PackageManager = PackageManager::Choco;
+#[cfg(target_os = "macos")]
+const PM: PackageManager = PackageManager::Brew;
+
+// TODO: read environment variable
+static SH: Shell = Shell::Zsh;
+
 enum PackageManager {
     Brew,
     Cargo,
@@ -11,18 +21,48 @@ enum PackageManager {
 }
 
 impl PackageManager {
-    fn command(&self) -> Command {
-        Command::new(match self {
+    fn name(&self) -> &str {
+        match self {
             Self::Brew => "brew",
             Self::Cargo => "cargo",
             Self::Choco => "choco",
             Self::Yum => "yum",
             Self::Apt => "apt",
             Self::AptGet => "apt-get",
-        })
+        }
     }
 
-    pub fn install(&self) -> DotsResult<()> {
+    #[inline(always)]
+    fn command(&self) -> Command {
+        Command::new(self.name())
+    }
+
+    fn _install(&self, package: &str) -> DotsResult<()> {
+        self.command().arg("install").arg(package).output()?;
+        Ok(())
+    }
+
+    fn _sudo_install(&self, package: &str) -> DotsResult<()> {
+        Command::new("sudo")
+            .arg(self.name())
+            .arg("install")
+            .arg(package)
+            .output()?;
+        Ok(())
+    }
+
+    // Install a package
+    pub fn install(&self, package: &str) -> DotsResult<()> {
+        match self {
+            Self::Yum => self._sudo_install(package),
+            Self::Apt => self._sudo_install(package),
+            Self::AptGet => self._sudo_install(package),
+            _ => self._install(package),
+        }
+    }
+
+    // Install the package manager and perform setup
+    pub fn bootstrap(&self) -> DotsResult<()> {
         match self {
             Self::Brew => Ok(()),
             Self::Cargo => Ok(()),
@@ -81,13 +121,13 @@ impl Shell {
     }
 }
 
-fn install_essential() {
-    // TODO:
-    // cargo
-    // zsh
-    // brew
-    // git
-    // git-delta
-    // bat
-    // choco
+// TODO
+pub fn install_essential() -> DotsResult<()> {
+    PM.bootstrap()?;
+    PM.install("zsh").unwrap();
+    PM.install("cargo").unwrap();
+    PM.install("git").unwrap();
+    PM.install("git-delta").unwrap();
+    PM.install("bat").unwrap();
+    Ok(())
 }
