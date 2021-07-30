@@ -111,6 +111,7 @@ dependencies = [
  "shellexpand",
  "symlink",
  "tempfile",
+ "url",
  "whoami",
 ]
 
@@ -602,6 +603,7 @@ dependencies = [
  "idna",
  "matches",
  "percent-encoding",
+ "serde",
 ]
 
 [[package]]

@@ -5,13 +5,13 @@ repo:
 
 build:
   - link:
-    - tail: $DF_REPO_ROOT/.zsh/.zshenv
+    - tail: $DOTS_REPO_LOCAL/.zsh/.zshenv
       head: $HOME/.zshenv
-    - tail: $DF_REPO_ROOT/.gitconfig
+    - tail: $DOTS_REPO_LOCAL/.gitconfig
       head: $HOME/.gitconfig
-    - tail: $DF_REPO_ROOT/.gitignore_global
+    - tail: $DOTS_REPO_LOCAL/.gitignore_global
       head: $HOME/.gitignore_global
-    - tail: $DF_REPO_ROOT/.vimrc
+    - tail: $DOTS_REPO_LOCAL/.vimrc
       head: $HOME/.vimrc
 
   - case:
@@ -20,11 +20,11 @@ build:
           user: thomajl
         build:
           - link:
-            - tail: $DF_REPO_ROOT/.gitconfig.local##user.thomajl
+            - tail: $DOTS_REPO_LOCAL/.gitconfig.local##user.thomajl
               head: $HOME/.gitconfig.local
 
     - default:
         build:
           - link:
-            - tail: $DF_REPO_ROOT/.gitconfig.local##default
+            - tail: $DOTS_REPO_LOCAL/.gitconfig.local##default
               head: $HOME/.gitconfig.local
