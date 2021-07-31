@@ -14,6 +14,7 @@ build:
     - tail: $DOTS_REPO_LOCAL/.vimrc
       head: $HOME/.vimrc
 
+  # Link local gitconfig
   - case:
     - local:
         spec:
@@ -28,3 +29,42 @@ build:
           - link:
             - tail: $DOTS_REPO_LOCAL/.gitconfig.local##default
               head: $HOME/.gitconfig.local
+
+  # Install local packages
+  - case:
+    - local:
+        spec:
+          distro: ubuntu
+        build:
+          - install:
+            - name: build-essentials
+              managers:
+              - apt
+
+  # Bootstrap rustup
+  # Bootstrap brew
+
+  # Install essential packages
+  - install:
+    - name: zsh
+      managers:
+      - brew
+      - apt-get
+    - name: git
+      managers:
+      - brew
+      - apt
+      - choco
+    - name: git-delta
+      managers:
+      - brew
+      - cargo
+    - name: delta
+      managers:
+      - choco
+    - name: bat
+      managers:
+      - brew
+      - choco
+      - cargo
+      - apt
