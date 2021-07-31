@@ -11,7 +11,6 @@ export DF_FUNCTIONS="$ZDOTDIR/functions"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
-export HOMEBREW_BREWFILE="$DOTS_REPO_ROOT/.brewfile"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="no=00:fi=00:di=01;36:ln=00;35:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;31"
