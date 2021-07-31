@@ -58,11 +58,10 @@ build:
       - apt
       - choco
     - name: git-delta
+      alias: delta
       managers:
       - brew
       - cargo
-    - name: delta
-      managers:
       - choco
     - name: bat
       managers:
