@@ -3,6 +3,11 @@ repo:
   local: $HOME/dotfiles
   remote: https://github.com/jcthomassie/dotfiles.git
 
+source:
+  - $DOTS_REPO_LOCAL/.zsh/.zshenv
+  - $DOTS_REPO_LOCAL/.zsh/.zshrc
+  - $DOTS_REPO_LOCAL/.zsh/.zprofile
+
 build:
   - link:
     - tail: $DOTS_REPO_LOCAL/.zsh/.zshenv

@@ -25,6 +25,28 @@ lazy_static! {
     };
 }
 
+#[derive(Debug, PartialEq, Deserialize)]
+pub struct Source(Vec<String>);
+
+impl Source {
+    // Resolve source file paths
+    pub fn resolve(&self) -> DotsResult<Self> {
+        let mut vec: Vec<String> = Vec::with_capacity(self.0.len());
+        for path in &self.0 {
+            vec.push(shellexpand::full(path)?.to_string())
+        }
+        Ok(Source(vec))
+    }
+
+    // Reload all of the source files
+    pub fn reload(&self) -> DotsResult<()> {
+        for path in &self.0 {
+            "source".call(&[path])?;
+        }
+        Ok(())
+    }
+}
+
 trait Cmd {
     fn name(&self) -> &str;
 
