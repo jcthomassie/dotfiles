@@ -41,8 +41,10 @@ build:
               managers:
               - apt
 
-  # Bootstrap rustup
-  # Bootstrap brew
+  # Bootstrap package managers
+  - bootstrap:
+    - cargo
+    - brew
 
   # Install essential packages
   - install:
