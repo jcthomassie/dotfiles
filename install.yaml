@@ -30,7 +30,7 @@ build:
             - tail: $DOTS_REPO_LOCAL/.gitconfig.local##default
               head: $HOME/.gitconfig.local
 
-  # Install local packages
+  # Install ubuntu build requirements
   - case:
     - local:
         spec:
@@ -42,9 +42,20 @@ build:
               - apt
 
   # Bootstrap package managers
+  - case:
+    - local:
+        spec:
+          platform: windows
+        build:
+          - bootstrap:
+            - choco
+    - default:
+        build:
+          - bootstrap:
+            - brew
+
   - bootstrap:
     - cargo
-    - brew
 
   # Install essential packages
   - install:
