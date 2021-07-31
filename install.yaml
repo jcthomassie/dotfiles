@@ -70,3 +70,7 @@ build:
       - choco
       - cargo
       - apt
+    - name: vim
+      managers:
+      - brew
+      - choco
