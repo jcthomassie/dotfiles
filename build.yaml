@@ -1,0 +1,92 @@
+---
+repo:
+  local: $HOME/dotfiles
+  remote: https://github.com/jcthomassie/dotfiles.git
+
+build:
+  # Install ubuntu build requirements
+  - case:
+    - local:
+        spec:
+          distro: ubuntu
+        build:
+          - install:
+            - name: build-essentials
+              managers:
+              - apt
+
+  # Bootstrap package managers
+  - case:
+    - local:
+        spec:
+          platform: windows
+        build:
+          - bootstrap:
+            - choco
+    - default:
+        build:
+          - bootstrap:
+            - brew
+
+  - bootstrap:
+    - cargo
+
+  # Install essential packages
+  - install:
+    - name: zsh
+      managers:
+      - brew
+      - apt-get
+    - name: git
+      managers:
+      - brew
+      - apt
+      - choco
+    - name: git-delta
+      alias: delta
+      managers:
+      - brew
+      - cargo
+      - choco
+    - name: bat
+      managers:
+      - brew
+      - choco
+      - cargo
+      - apt
+    - name: vim
+      managers:
+      - brew
+      - choco
+    - name: exa
+      managers:
+      - brew
+      - apt
+      - cargo
+
+  # Apply symlinks
+  - link:
+    - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
+      head: $HOME/.zshenv
+    - tail: $YURT_REPO_LOCAL/.gitconfig
+      head: $HOME/.gitconfig
+    - tail: $YURT_REPO_LOCAL/.gitignore_global
+      head: $HOME/.gitignore_global
+    - tail: $YURT_REPO_LOCAL/.vimrc
+      head: $HOME/.vimrc
+
+  # Local gitconfig
+  - case:
+    - local:
+        spec:
+          user: thomajl
+        build:
+          - link:
+            - tail: $YURT_REPO_LOCAL/.gitconfig.local##user.thomajl
+              head: $HOME/.gitconfig.local
+
+    - default:
+        build:
+          - link:
+            - tail: $YURT_REPO_LOCAL/.gitconfig.local##default
+              head: $HOME/.gitconfig.local
