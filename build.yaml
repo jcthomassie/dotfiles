@@ -63,6 +63,10 @@ build:
       - brew
       - apt
       - cargo
+    - name: gh
+      managers:
+      - brew
+      - choco
 
   # Apply symlinks
   - link:
