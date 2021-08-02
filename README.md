@@ -5,7 +5,7 @@ My personal dotfiles and configs for MacOS, AL2, and WSL.
 Bootstrap by running:
 
 ```shell
-sh -c "$(curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/master/install.sh)"
+curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/install.sh | sh
 ```
 
 After installation on MacOS, set the iTerm2 profile location:
