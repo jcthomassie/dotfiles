@@ -8,6 +8,7 @@ fi
 export PATH="$PATH:$HOME/.cargo/bin"
 export DF_COMPLETIONS="$ZDOTDIR/completions"
 export DF_FUNCTIONS="$ZDOTDIR/functions"
+export YURT_BUILD_FILE="$DF_REPO_ROOT/build.yaml"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"

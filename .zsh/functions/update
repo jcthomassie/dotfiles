@@ -12,7 +12,7 @@ _get_linux_distro () {
 
 update_dotfiles () {
     start=$(pwd)
-    cd $YURT_REPO_ROOT
+    cd $DF_REPO_ROOT
     echo "Updating dotfiles..."
     git pull --rebase --autostash origin master
     git submodule update --remote
