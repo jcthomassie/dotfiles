@@ -16,6 +16,9 @@ build:
               - apt
 
   # Bootstrap package managers
+  - bootstrap:
+    - cargo
+
   - case:
     - local:
         spec:
@@ -27,9 +30,13 @@ build:
         build:
           - bootstrap:
             - brew
-
-  - bootstrap:
-    - cargo
+          # Non-windows packages
+          - install:
+            - name: exa
+              managers:
+              - brew
+              - apt
+              - cargo
 
   # Install essential packages
   - install:
@@ -58,11 +65,6 @@ build:
       managers:
       - brew
       - choco
-    - name: exa
-      managers:
-      - brew
-      - apt
-      - cargo
     - name: gh
       managers:
       - brew
