@@ -17,11 +17,12 @@ if ! command -v yurt >/dev/null 2>&1; then
     cargo install --git $YURT_REPO_URL
 fi
 
+# TODO: prompt to automatically --clean
 # Run yurt install
 if [[ -f $YURT_BUILD_FILE ]]; then
     # Prefer local file
-    yurt install --yaml $YURT_BUILD_FILE
+    yurt --yaml $YURT_BUILD_FILE --log "debug" install
 else
     # Use remote otherwise
-    yurt install --yaml-url $YURT_BUILD_URL
+    yurt --yaml-url $YURT_BUILD_URL --log "debug" install
 fi
