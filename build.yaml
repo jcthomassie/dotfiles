@@ -1,6 +1,6 @@
 ---
 repo:
-  local: $HOME/dotfiles
+  local: ~/dotfiles
   remote: https://github.com/jcthomassie/dotfiles.git
 
 build:
@@ -71,13 +71,13 @@ build:
   # Apply symlinks
   - link:
     - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
-      head: $HOME/.zshenv
+      head: ~/.zshenv
     - tail: $YURT_REPO_LOCAL/.gitconfig
-      head: $HOME/.gitconfig
+      head: ~/.gitconfig
     - tail: $YURT_REPO_LOCAL/.gitignore_global
-      head: $HOME/.gitignore_global
+      head: ~/.gitignore_global
     - tail: $YURT_REPO_LOCAL/.vimrc
-      head: $HOME/.vimrc
+      head: ~/.vimrc
 
   # Local gitconfig
   - case:
@@ -87,10 +87,10 @@ build:
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/.gitconfig.local##user.thomajl
-              head: $HOME/.gitconfig.local
+              head: ~/.gitconfig.local
 
     - default:
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/.gitconfig.local##default
-              head: $HOME/.gitconfig.local
+              head: ~/.gitconfig.local
