@@ -4,8 +4,8 @@ My personal dotfiles and configs for MacOS, AL2, Ubuntu, and Windows.
 
 Bootstrap POSIX systems using:
 
-```sh
-sh -c "$(curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/master/install.sh)"
+```shell
+curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/install.sh | sh
 ```
 
 **Note:** Some distros may require using `bash` instead of `sh`

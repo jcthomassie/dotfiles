@@ -8,17 +8,20 @@ fi
 export PATH="$PATH:$HOME/.cargo/bin"
 export DF_COMPLETIONS="$ZDOTDIR/completions"
 export DF_FUNCTIONS="$ZDOTDIR/functions"
+export YURT_BUILD_FILE="$DF_REPO_ROOT/build.yaml"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
-export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
+export ZSH_HISTORY="$HOME/.zsh_history"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="no=00:fi=00:di=01;36:ln=00;35:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;31"
 # Amazon specific variables
 if [ $USER = "thomajl" ]; then
   export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
   export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
   export LOCAL_WORKSPACE="/Users/thomajl/workplace"
   export CLOUD_WORKSPACE="/home/thomajl/workplace"
+  export AWS_DEFAULT_REGION="us-east-1"
 fi
 
 # Customize plugins
@@ -31,6 +34,23 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+HISTFILE="$ZSH_HISTORY"
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY       # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
+setopt HIST_BEEP              # Beep when accessing nonexistent history.
 
 # Specify plugins
 plugins=(
@@ -54,7 +74,7 @@ source $ZDOTDIR/completion.zsh
 
 # Load functions and completions
 fpath=( $DF_COMPLETIONS $DF_FUNCTIONS $fpath )
-autoload -U $fpath[1]/*(.:t)
-autoload -U $fpath[2]/*(.:t)
+autoload -U $DF_COMPLETIONS/*(.:t)
+autoload -U $DF_FUNCTIONS/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
