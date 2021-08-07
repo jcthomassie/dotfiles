@@ -1,8 +1,9 @@
 {
     "files.associations": {
         "*.brewfile": "ruby",
+        ".flake8": "properties",
+        ".gitconfig.*": "properties",
         "**/zsh/functions/*": "shellscript",
         "**/zsh/completions/_*": "shellscript",
-        "**/.gitconfig.*": "properties"
     },
 }

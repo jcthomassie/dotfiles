@@ -58,6 +58,10 @@ build:
       head: ~/.gitignore_global
     - tail: $YURT_REPO_LOCAL/.vimrc
       head: ~/.vimrc
+    - tail: $YURT_REPO_LOCAL/python/.flake8
+      head: ~/.flake8
+    - tail: $YURT_REPO_LOCAL/python/.mypy.ini
+      head: ~/.mypy.ini
 
   # Amazon specifics
   - case:
