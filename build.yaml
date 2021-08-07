@@ -15,24 +15,31 @@ build:
               managers: [ apt ]
 
   # Bootstrap package managers
+  - bootstrap: [ cargo ]
   - case:
+    # Windows only
     - positive:
-        spec:
-          platform: windows
+        spec: { platform: windows }
         build:
           - bootstrap: [ choco ]
-    - default:
+    # Posix only
+    - negative:
+        spec: { platform: windows }
         build:
           - bootstrap: [ brew ]
-
-  - bootstrap: [ cargo ]
+          - install:
+            - name: zsh
+              managers: [ brew, apt-get ]
+            - name: exa
+              managers: [ brew, apt, cargo ]
+          - link:
+            - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
+              head: $HOME/.zshenv
 
   # Install essential packages
   - install:
-    - name: zsh
-      managers: [ brew, apt-get ]
     - name: git
-      managers: [ brew, apt, choco ]
+      managers: [ brew, choco ]
     - name: delta
       alias: git-delta
       managers: [ brew, cargo, choco ]
@@ -40,15 +47,11 @@ build:
       managers: [ brew, choco, cargo, apt ]
     - name: vim
       managers: [ brew, choco ]
-    - name: exa
-      managers: [ brew, apt, cargo ]
     - name: gh
       managers: [ brew, choco ]
 
   # Apply symlinks
   - link:
-    - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
-      head: $HOME/.zshenv
     - tail: $YURT_REPO_LOCAL/.gitconfig
       head: $HOME/.gitconfig
     - tail: $YURT_REPO_LOCAL/.gitignore_global
@@ -56,16 +59,14 @@ build:
     - tail: $YURT_REPO_LOCAL/.vimrc
       head: $HOME/.vimrc
 
-  # Local gitconfig
+  # Amazon specifics
   - case:
     - local:
-        spec:
-          user: thomajl
+        spec: { user: thomajl }
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/.gitconfig.local##user.thomajl
               head: $HOME/.gitconfig.local
-
     - default:
         build:
           - link:
