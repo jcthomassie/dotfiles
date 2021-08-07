@@ -61,7 +61,7 @@ build:
 
   # Amazon specifics
   - case:
-    - local:
+    - positive:
         spec: { user: thomajl }
         build:
           - link:
