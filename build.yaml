@@ -6,74 +6,52 @@ repo:
 build:
   # Install ubuntu build requirements
   - case:
-    - local:
+    - positive:
         spec:
           distro: ubuntu
         build:
           - install:
             - name: build-essentials
-              managers:
-              - apt
+              managers: [ apt ]
 
   # Bootstrap package managers
-  - bootstrap:
-    - cargo
-
+  - bootstrap: [ cargo ]
   - case:
-    - local:
-        spec:
-          platform: windows
+    # Windows only
+    - positive:
+        spec: { platform: windows }
         build:
-          - bootstrap:
-            - choco
-    - default:
+          - bootstrap: [ choco ]
+    # Posix only
+    - negative:
+        spec: { platform: windows }
         build:
-          - bootstrap:
-            - brew
-          # Non-windows packages
+          - bootstrap: [ brew ]
           - install:
+            - name: zsh
+              managers: [ brew, apt-get ]
             - name: exa
-              managers:
-              - brew
-              - apt
-              - cargo
+              managers: [ brew, apt, cargo ]
+          - link:
+            - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
+              head: ~/.zshenv
 
   # Install essential packages
   - install:
-    - name: zsh
-      managers:
-      - brew
-      - apt-get
     - name: git
-      managers:
-      - brew
-      - apt
-      - choco
-    - name: git-delta
-      alias: delta
-      managers:
-      - brew
-      - cargo
-      - choco
+      managers: [ brew, choco ]
+    - name: delta
+      alias: git-delta
+      managers: [ brew, cargo, choco ]
     - name: bat
-      managers:
-      - brew
-      - choco
-      - cargo
-      - apt
+      managers: [ brew, choco, cargo, apt ]
     - name: vim
-      managers:
-      - brew
-      - choco
+      managers: [ brew, choco ]
     - name: gh
-      managers:
-      - brew
-      - choco
+      managers: [ brew, choco ]
 
   # Apply symlinks
   - link:
-    - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
-      head: ~/.zshenv
     - tail: $YURT_REPO_LOCAL/.gitconfig
       head: ~/.gitconfig
     - tail: $YURT_REPO_LOCAL/.gitignore_global
@@ -81,16 +59,14 @@ build:
     - tail: $YURT_REPO_LOCAL/.vimrc
       head: ~/.vimrc
 
-  # Local gitconfig
+  # Amazon specifics
   - case:
-    - local:
-        spec:
-          user: thomajl
+    - positive:
+        spec: { user: thomajl }
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/.gitconfig.local##user.thomajl
               head: ~/.gitconfig.local
-
     - default:
         build:
           - link:
