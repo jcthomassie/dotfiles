@@ -1,6 +1,6 @@
 ---
 repo:
-  local: $HOME/dotfiles
+  local: ~/dotfiles
   remote: https://github.com/jcthomassie/dotfiles.git
 
 build:
@@ -34,7 +34,7 @@ build:
               managers: [ brew, apt, cargo ]
           - link:
             - tail: $YURT_REPO_LOCAL/zsh/.zshenv
-              head: $HOME/.zshenv
+              head: ~/.zshenv
 
   # Install essential packages
   - install:
@@ -53,11 +53,11 @@ build:
   # Apply symlinks
   - link:
     - tail: $YURT_REPO_LOCAL/git/.gitconfig
-      head: $HOME/.gitconfig
+      head: ~/.gitconfig
     - tail: $YURT_REPO_LOCAL/git/.gitignore_global
-      head: $HOME/.gitignore_global
+      head: ~/.gitignore_global
     - tail: $YURT_REPO_LOCAL/.vimrc
-      head: $HOME/.vimrc
+      head: ~/.vimrc
 
   # Amazon specifics
   - case:
@@ -66,9 +66,9 @@ build:
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##user.thomajl
-              head: $HOME/.gitconfig.local
+              head: ~/.gitconfig.local
     - default:
         build:
           - link:
             - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##default
-              head: $HOME/.gitconfig.local
+              head: ~/.gitconfig.local
