@@ -12,8 +12,7 @@ build:
         build:
           - install:
             - name: build-essentials
-              managers:
-              - apt
+              managers: [ apt ]
 
   # Bootstrap package managers
   - case:
@@ -21,52 +20,30 @@ build:
         spec:
           platform: windows
         build:
-          - bootstrap:
-            - choco
+          - bootstrap: [ choco ]
     - default:
         build:
-          - bootstrap:
-            - brew
+          - bootstrap: [ brew ]
 
-  - bootstrap:
-    - cargo
+  - bootstrap: [ cargo ]
 
   # Install essential packages
   - install:
     - name: zsh
-      managers:
-      - brew
-      - apt-get
+      managers: [ brew, apt-get ]
     - name: git
-      managers:
-      - brew
-      - apt
-      - choco
+      managers: [ brew, apt, choco ]
     - name: delta
       alias: git-delta
-      managers:
-      - brew
-      - cargo
-      - choco
+      managers: [ brew, cargo, choco ]
     - name: bat
-      managers:
-      - brew
-      - choco
-      - cargo
-      - apt
+      managers: [ brew, choco, cargo, apt ]
     - name: vim
-      managers:
-      - brew
-      - choco
+      managers: [ brew, choco ]
     - name: exa
-      managers:
-      - brew
-      - apt
-      - cargo
+      managers: [ brew, apt, cargo ]
     - name: gh
-      managers:
-      - brew
-      - choco
+      managers: [ brew, choco ]
 
   # Apply symlinks
   - link:
