@@ -6,7 +6,7 @@ repo:
 build:
   # Install ubuntu build requirements
   - case:
-    - local:
+    - positive:
         spec:
           distro: ubuntu
         build:
@@ -17,7 +17,7 @@ build:
 
   # Bootstrap package managers
   - case:
-    - local:
+    - positive:
         spec:
           platform: windows
         build:
@@ -42,8 +42,8 @@ build:
       - brew
       - apt
       - choco
-    - name: git-delta
-      alias: delta
+    - name: delta
+      alias: git-delta
       managers:
       - brew
       - cargo
