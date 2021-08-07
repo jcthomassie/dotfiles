@@ -52,9 +52,9 @@ build:
 
   # Apply symlinks
   - link:
-    - tail: $YURT_REPO_LOCAL/.gitconfig
+    - tail: $YURT_REPO_LOCAL/git/.gitconfig
       head: $HOME/.gitconfig
-    - tail: $YURT_REPO_LOCAL/.gitignore_global
+    - tail: $YURT_REPO_LOCAL/git/.gitignore_global
       head: $HOME/.gitignore_global
     - tail: $YURT_REPO_LOCAL/.vimrc
       head: $HOME/.vimrc
@@ -65,10 +65,10 @@ build:
         spec: { user: thomajl }
         build:
           - link:
-            - tail: $YURT_REPO_LOCAL/.gitconfig.local##user.thomajl
+            - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##user.thomajl
               head: $HOME/.gitconfig.local
     - default:
         build:
           - link:
-            - tail: $YURT_REPO_LOCAL/.gitconfig.local##default
+            - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##default
               head: $HOME/.gitconfig.local
