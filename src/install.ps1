@@ -41,9 +41,3 @@ if ( Test-Path -Path $DF_REPO_ROOT\.git ) {
     git submodule update --init --recursive
     Set-Location $RUN_LOCATION
 }
-
-# Link files
-cmd /c mklink $HOME\.gitconfig $DF_REPO_ROOT\.gitconfig
-cmd /c mklink $HOME\.gitconfig.local $DF_REPO_ROOT\.gitconfig.local
-cmd /c mklink $HOME\.gitignore_global $DF_REPO_ROOT\.gitignore_global
-cmd /c mklink $DF_REPO_ROOT\.gitconfig.local "$DF_REPO_ROOT\.gitconfig.local##default"
