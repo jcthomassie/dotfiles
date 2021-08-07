@@ -4,5 +4,5 @@
 .zcompdump
 
 # Completions (opt-in)
-.zsh/completions/_*
+zsh/completions/_*
 

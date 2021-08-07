@@ -33,7 +33,7 @@ build:
             - name: exa
               managers: [ brew, apt, cargo ]
           - link:
-            - tail: $YURT_REPO_LOCAL/.zsh/.zshenv
+            - tail: $YURT_REPO_LOCAL/zsh/.zshenv
               head: $HOME/.zshenv
 
   # Install essential packages
