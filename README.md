@@ -25,5 +25,5 @@ Installation is managed with Windows PowerShell and [Chocolatey](https://docs.ch
 Run Windows PowerShell as administrator and run:
 
 ```powershell
-Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/jcthomassie/dotfiles/windows/src/install.ps1'))
+Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/src/install.ps1'))
 ```
