@@ -18,6 +18,8 @@ After installation on MacOS, set the iTerm2 profile location:
 - Enable **Load preferences from a custom folder or URL**
 - Enter `~/dotfiles/.iterm2_profile`
 
+Also install iterm2 shell integration in the home directory.
+
 ## Windows
 
 Installation is managed with Windows PowerShell and [Chocolatey](https://docs.chocolatey.org/en-us/).
