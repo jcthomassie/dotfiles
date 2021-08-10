@@ -7,10 +7,17 @@ fi
 if type "batcat" > /dev/null; then
     alias bat="batcat"
 fi
-
-alias la="ls -AFh"
-alias ld="ls -d -- */ .*/"
-alias ll="ls -lAFh"
+# Use exa if available
+if type "exa" > /dev/null; then
+    alias ls="exa"
+    alias la="exa -a"
+    alias ll="exa -la"
+    alias lt="exa -T --level 2"
+else
+    alias la="ls -AFh"
+    alias ld="ls -d -- */ .*/"
+    alias ll="ls -lAFh"
+fi
 alias cls="clear"
 alias glog="git log --oneline --decorate --graph"
 alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
