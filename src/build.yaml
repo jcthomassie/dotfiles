@@ -1,7 +1,11 @@
 ---
+version: 0.1.0
+
 repo:
   local: ~/dotfiles
   remote: https://github.com/jcthomassie/dotfiles.git
+
+shell: zsh
 
 build:
   # Install ubuntu build requirements
