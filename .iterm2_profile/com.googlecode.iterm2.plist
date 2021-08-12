@@ -2741,7 +2741,7 @@
 			<key>HotKey Window Animates</key>
 			<true/>
 			<key>HotKey Window AutoHides</key>
-			<true/>
+			<false/>
 			<key>HotKey Window Dock Click Action</key>
 			<integer>2</integer>
 			<key>HotKey Window Floats</key>
@@ -3928,6 +3928,8 @@
 	<false/>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
