@@ -5,7 +5,7 @@ My personal dotfiles and configs for MacOS, AL2, Ubuntu, and Windows.
 Bootstrap POSIX systems using:
 
 ```shell
-curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/src/install.sh | sh
+curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/zsh/install.sh | sh
 ```
 
 **Note:** Some distros may require using `bash` instead of `sh`
@@ -27,5 +27,5 @@ Installation is managed with Windows PowerShell and [Chocolatey](https://docs.ch
 Run Windows PowerShell as administrator and run:
 
 ```powershell
-Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/src/install.ps1'))
+Invoke-Expression((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/pwsh/install.ps1'))
 ```
