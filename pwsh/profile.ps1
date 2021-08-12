@@ -1,4 +1,4 @@
-[Environment]::SetEnvironmentVariable("YURT_BUILD_FILE", "$HOME\dotfiles\src\build.yaml")
+[Environment]::SetEnvironmentVariable("YURT_BUILD_FILE", "$HOME\dotfiles\build.yaml")
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward

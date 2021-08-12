@@ -1,7 +1,7 @@
 #!/bin/sh
 DF_REPO_ROOT="${DF_REPO_ROOT:-$HOME/dotfiles}"
-YURT_BUILD_FILE="${YURT_BUILD_FILE:-$DF_REPO_ROOT/src/build.yaml}"
-YURT_BUILD_URL="https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/src/build.yaml"
+YURT_BUILD_FILE="${YURT_BUILD_FILE:-$DF_REPO_ROOT/build.yaml}"
+YURT_BUILD_URL="https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/build.yaml"
 YURT_RELEASE_URL=""
 YURT_REPO_URL="https://github.com/jcthomassie/yurt.git"
 
