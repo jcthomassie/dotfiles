@@ -29,6 +29,8 @@ build:
           - link:
             - tail: $YURT_REPO_LOCAL/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+            - tail: $YURT_REPO_LOCAL/.wt.json
+              head: $LocalAppData/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
     # Posix only
     - negative:
         spec: { platform: windows }
