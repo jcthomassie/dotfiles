@@ -15,7 +15,7 @@ build:
           distro: ubuntu
         build:
           - install:
-            - name: build-essentials
+            - name: build-essential
               managers: [ apt ]
 
   # Bootstrap package managers
