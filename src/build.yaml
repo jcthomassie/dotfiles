@@ -26,6 +26,9 @@ build:
         spec: { platform: windows }
         build:
           - bootstrap: [ choco ]
+          - link:
+            - tail: $YURT_REPO_LOCAL/pwsh/profile.ps1
+              head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     # Posix only
     - negative:
         spec: { platform: windows }
