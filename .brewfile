@@ -1,38 +1,53 @@
-tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
-cask_args appdir: "~/Applications", require_sha: true
+def exists?(name)
+    system "which #{name} &> /dev/null"
+end
 
 brew "bat"
 brew "curl"
 brew "gh"
-brew "git-delta"
-brew "git"
+brew "git-delta" unless exists? "delta"
+brew "git" unless exists? "git"
 brew "grep"
-brew "libffi"
-brew "libyaml"
-brew "ninja-dev-sync"
 brew "python@3.9"
 brew "rbenv"
 brew "ruby"
-brew "rustup-init"
-brew "scala"
-brew "scala@2.11"
-brew "zsh"
-cask "1password-cli"
-cask "1password"
-cask "amazon-acronyms"
-cask "font-caskaydia-cove-nerd-font"
-cask "font-hack-nerd-font"
+brew "rustup-init" unless exists? "rustup"
+brew "zsh" unless exists? "zsh"
 
-# TODO: reinstall these with brew
-# cask "iterm2"
-# cask "slack"
-# cask "intellij-idea"
-# cask "firefox"
-# cask "google-chrome"
-# cask "visual-studio-code"
-# cask "font-meslo-nerd-font"
+if OS.mac?
+    tap "homebrew/cask"
+    cask_args appdir: "~/Applications", require_sha: true
+
+    def app_exists?(name)
+        File.exists?("/Applications/#{name}.app")
+    end
+
+    # Casks -----------------------------------------------------------
+    cask "1password-cli"
+    cask "1password" unless app_exists? "1Password 7"
+    cask "firefox" unless app_exists? "Firefox"
+    cask "google-chrome" unless app_exists? "Google Chrome"
+    cask "iterm2" unless app_exists? "iTerm"
+    cask "rectangle" unless app_exists? "Rectangle"
+    cask "visual-studio-code" unless app_exists? "Visual Studio Code"
+
+    # Fonts -----------------------------------------------------------
+    tap "homebrew/cask-fonts"
+
+    cask "font-caskaydia-cove-nerd-font"
+    cask "font-hack-nerd-font"
+    cask "font-meslo-lg-nerd-font"
+
+    # Amazon ---------------------------------------------------------
+    tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
+
+    brew "ninja-dev-sync"
+    brew "scala" unless exists? "scala"
+    brew "scala@2.11"
+    cask "amazon-acronyms"
+    cask "intellij-idea" unless app_exists? "IntelliJ IDEA"
+    cask "postman" unless app_exists? "Postman"
+end
