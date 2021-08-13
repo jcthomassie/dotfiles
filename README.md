@@ -5,10 +5,8 @@ My personal dotfiles and configs for MacOS, AL2, Ubuntu, and Windows.
 Bootstrap POSIX systems using:
 
 ```shell
-curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/zsh/install.sh | sh
+curl -fsLS https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/zsh/install.sh | bash
 ```
-
-**Note:** Some distros may require using `bash` instead of `sh`
 
 ## MacOS
 
