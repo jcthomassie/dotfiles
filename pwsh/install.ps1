@@ -15,6 +15,8 @@ choco install -y gh
 choco install -y vim
 choco install -y vscode
 choco install -y microsoft-windows-terminal
+choco install -y visualstudio2019buildtools
+choco install -y visualstudio2019-workload-vctools
 choco install -y wsl2
 choco install -y wsl-ubuntu-2004
 choco install -y oh-my-posh
