@@ -1,8 +1,10 @@
 #Requires -RunAsAdministrator
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-$RUN_LOCATION = Get-Location
 $DF_REPO_ROOT = "$HOME\dotfiles"
+$YURT_BUILD_FILE = "$DF_REPO_ROOT\build.yaml"
+$YURT_BUILD_URL = "https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/build.yaml"
+$YURT_REPO_URL = "https://github.com/jcthomassie/yurt.git"
 
 # Install chocolatey
 if ( -Not (Get-Command choco.exe -ErrorAction SilentlyContinue)) {
@@ -24,22 +26,28 @@ choco install -y poshgit
 choco install -y bat
 choco install -y delta
 choco install -y miniconda3 --params="'/AddToPath:1'"
+choco install -y rustup.install
 
 choco install -y 1password
-choco install -y google-backup-and-sync
 choco install -y googlechrome
+choco install -y google-drive-file-stream
 choco install -y reaper
 choco install -y spotify
 choco install -y steam
 
-# Clone dotfiles repo
+# TODO: download pre-built release instead
+# Install yurt if needed
+if ( -Not (Get-Command yurt.exe -ErrorAction SilentlyContinue)) {
+    cargo install --git $YURT_REPO_URL
+}
+
+# TODO: prompt to automatically --clean
+# Run yurt install
 if ( Test-Path -Path $DF_REPO_ROOT\.git ) {
-    Write-Output "Using dotfile repo: $DF_REPO_ROOT"
-} else {
-    Write-Output "Cloning dotfile repo..."
-    git clone https://github.com/jcthomassie/dotfiles.git $DF_REPO_ROOT
-    Set-Location -Path $DF_REPO_ROOT
-    Write-Output "Initializing submodules..."
-    git submodule update --init --recursive
-    Set-Location $RUN_LOCATION
+    # Prefer local file
+    yurt --yaml $YURT_BUILD_FILE --log "debug" install
+}
+else {
+    # Use remote otherwise
+    yurt --yaml-url $YURT_BUILD_URL --log "debug" install
 }
