@@ -31,6 +31,8 @@ build:
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
             - tail: $YURT_REPO_LOCAL/.wt.json
               head: $LocalAppData/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+            - tail: $YURT_REPO_LOCAL/python/.flake8
+              head: ~/.flake8
     # Posix only
     - negative:
         spec: { platform: windows }
@@ -44,6 +46,8 @@ build:
           - link:
             - tail: $YURT_REPO_LOCAL/zsh/.zshenv
               head: ~/.zshenv
+            - tail: $YURT_REPO_LOCAL/python/.flake8
+              head: ~/.config/flake8
 
   # Install essential packages
   - install:
@@ -67,8 +71,6 @@ build:
       head: ~/.gitignore_global
     - tail: $YURT_REPO_LOCAL/.vimrc
       head: ~/.vimrc
-    - tail: $YURT_REPO_LOCAL/python/.flake8
-      head: ~/.flake8
     - tail: $YURT_REPO_LOCAL/python/.mypy.ini
       head: ~/.mypy.ini
     - tail: $YURT_REPO_LOCAL/python/.isort.cfg
