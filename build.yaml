@@ -71,6 +71,8 @@ build:
       head: ~/.flake8
     - tail: $YURT_REPO_LOCAL/python/.mypy.ini
       head: ~/.mypy.ini
+    - tail: $YURT_REPO_LOCAL/python/.isort.cfg
+      head: ~/.isort.cfg
 
   # Amazon specifics
   - case:
