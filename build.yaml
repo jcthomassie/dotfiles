@@ -8,19 +8,13 @@ repo:
 shell: zsh
 
 build:
-  # Install ubuntu build requirements
   - case:
     - positive:
-        spec:
-          distro: ubuntu
+        spec: { distro: ubuntu }
         build:
           - install:
             - name: build-essential
               managers: [ apt ]
-
-  # Bootstrap package managers
-  - bootstrap: [ cargo ]
-  - case:
     # Windows only
     - positive:
         spec: { platform: windows }
@@ -48,6 +42,9 @@ build:
               head: ~/.zshenv
             - tail: $YURT_REPO_LOCAL/python/.flake8
               head: ~/.config/flake8
+
+  # Bootstrap package managers
+  - bootstrap: [ cargo ]
 
   # Install essential packages
   - install:
