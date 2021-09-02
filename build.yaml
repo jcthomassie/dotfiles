@@ -59,6 +59,8 @@ build:
       managers: [ brew, choco ]
     - name: gh
       managers: [ brew, choco ]
+    - name: zoxide
+      managers: [ brew, choco ]
 
   # Apply symlinks
   - link:
