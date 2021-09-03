@@ -1,5 +1,5 @@
 ---
-version: 0.1.0
+version: 0.2.0
 
 repo:
   local: ~/dotfiles
@@ -11,14 +11,14 @@ build:
   - case:
     - positive:
         spec: { distro: ubuntu }
-        build:
+        include:
           - install:
             - name: build-essential
               managers: [ apt ]
     # Windows only
     - positive:
         spec: { platform: windows }
-        build:
+        include:
           - bootstrap: [ choco ]
           - link:
             - tail: $YURT_REPO_LOCAL/pwsh/profile.ps1
@@ -30,7 +30,7 @@ build:
     # Posix only
     - negative:
         spec: { platform: windows }
-        build:
+        include:
           - bootstrap: [ brew ]
           - install:
             - name: zsh
@@ -79,12 +79,12 @@ build:
   - case:
     - positive:
         spec: { user: thomajl }
-        build:
+        include:
           - link:
             - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##user.thomajl
               head: ~/.gitconfig.local
     - default:
-        build:
+        include:
           - link:
             - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##default
               head: ~/.gitconfig.local
