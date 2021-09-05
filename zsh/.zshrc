@@ -23,6 +23,10 @@ if [ $USER = "thomajl" ]; then
   export CLOUD_WORKSPACE="/home/thomajl/workplace"
   export AWS_DEFAULT_REGION="us-east-1"
 fi
+# Include scripts if installed
+if [[ -d "$HOME/scripts/bin" ]]; then
+  export PATH="$HOME/scripts/bin:$PATH"
+fi
 
 # Customize plugins
 typeset -gA ZSH_HIGHLIGHT_STYLES
