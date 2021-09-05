@@ -22,7 +22,7 @@ alias cls="clear"
 alias glog="git log --oneline --decorate --graph"
 alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 alias zshrel="zsh_reload"
-alias dots="code $DF_REPO_ROOT"
+alias dots="code $DOTS_REPO_ROOT"
 
 # Amazon specific config
 if [ $USER = "thomajl" ]; then

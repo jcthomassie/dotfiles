@@ -6,9 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH="$PATH:$HOME/.cargo/bin"
-export DF_COMPLETIONS="$ZDOTDIR/completions"
-export DF_FUNCTIONS="$ZDOTDIR/functions"
-export YURT_BUILD_FILE="$DF_REPO_ROOT/build.yaml"
+export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
+export DOTS_ZSH_COMP="$ZDOTDIR/completions"
+export DOTS_ZSH_FUNC="$ZDOTDIR/functions"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
@@ -75,8 +75,8 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
 
 # Load functions and completions
-fpath=( $DF_COMPLETIONS $DF_FUNCTIONS $fpath )
-autoload -U $DF_COMPLETIONS/*(.:t)
-autoload -U $DF_FUNCTIONS/*(.:t)
+fpath=( $DOTS_ZSH_COMP $DOTS_ZSH_FUNC $fpath )
+autoload -U $DOTS_ZSH_COMP/*(.:t)
+autoload -U $DOTS_ZSH_FUNC/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"

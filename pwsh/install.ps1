@@ -1,8 +1,8 @@
 #Requires -RunAsAdministrator
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-$DF_REPO_ROOT = "$HOME\dotfiles"
-$YURT_BUILD_FILE = "$DF_REPO_ROOT\build.yaml"
+$DOTS_REPO_ROOT = "$HOME\dotfiles"
+$YURT_BUILD_FILE = "$DOTS_REPO_ROOT\build.yaml"
 $YURT_BUILD_URL = "https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/build.yaml"
 $YURT_REPO_URL = "https://github.com/jcthomassie/yurt.git"
 
@@ -43,7 +43,7 @@ if ( -Not (Get-Command yurt.exe -ErrorAction SilentlyContinue)) {
 
 # TODO: prompt to automatically --clean
 # Run yurt install
-if ( Test-Path -Path $DF_REPO_ROOT\.git ) {
+if ( Test-Path -Path $YURT_BUILD_FILE ) {
     # Prefer local file
     yurt --yaml $YURT_BUILD_FILE --log "debug" install
 }

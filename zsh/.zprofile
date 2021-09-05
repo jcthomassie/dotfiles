@@ -1,4 +1,4 @@
-export HOMEBREW_BREWFILE="$DF_REPO_ROOT/.brewfile"
+export HOMEBREW_BREWFILE="$DOTS_REPO_ROOT/.brewfile"
 if [ -d "/home/linuxbrew" ]; then
     export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
     export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
