@@ -32,6 +32,7 @@ build:
         spec: { platform: windows }
         include:
           - bootstrap: [ brew ]
+          - run: brew bundle --file ${{ repo.local }}/.brewfile
           - install:
             - name: zsh
               managers: [ brew, apt-get ]

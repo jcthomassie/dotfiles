@@ -5,15 +5,14 @@ def exists?(name)
     system "which #{name} &> /dev/null"
 end
 
-brew "bat"
-brew "curl"
-brew "gh"
+brew "bat" unless exists? "bat"
+brew "curl" unless exists? "curl"
+brew "gh" unless exists? "gh"
 brew "git-delta" unless exists? "delta"
 brew "git" unless exists? "git"
 brew "grep"
 brew "python@3.9"
-brew "rbenv"
-brew "ruby"
+brew "rbenv" unless exists? "rbenv"
 brew "rustup-init" unless exists? "rustup"
 brew "zsh" unless exists? "zsh"
 

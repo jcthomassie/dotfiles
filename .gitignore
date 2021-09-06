@@ -1,4 +1,4 @@
-.brewfile.lock.json
+*.brewfile.lock.json
 .zsh_history
 .zsh_sessions
 .zcompdump
