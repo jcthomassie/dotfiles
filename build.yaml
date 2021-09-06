@@ -24,7 +24,7 @@ build:
             - tail: ${{ repo.local }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
             - tail: ${{ repo.local }}/.wt.json
-              head: $LocalAppData/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+              head: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
             - tail: ${{ repo.local }}/python/.flake8
               head: ~/.flake8
     # Posix only
