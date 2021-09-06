@@ -21,11 +21,11 @@ build:
         include:
           - bootstrap: [ choco ]
           - link:
-            - tail: $YURT_REPO_LOCAL/pwsh/profile.ps1
+            - tail: ${{ repo.local }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-            - tail: $YURT_REPO_LOCAL/.wt.json
+            - tail: ${{ repo.local }}/.wt.json
               head: $LocalAppData/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-            - tail: $YURT_REPO_LOCAL/python/.flake8
+            - tail: ${{ repo.local }}/python/.flake8
               head: ~/.flake8
     # Posix only
     - negative:
@@ -38,9 +38,9 @@ build:
             - name: exa
               managers: [ brew, apt, cargo ]
           - link:
-            - tail: $YURT_REPO_LOCAL/zsh/.zshenv
+            - tail: ${{ repo.local }}/zsh/.zshenv
               head: ~/.zshenv
-            - tail: $YURT_REPO_LOCAL/python/.flake8
+            - tail: ${{ repo.local }}/python/.flake8
               head: ~/.config/flake8
 
   # Bootstrap package managers
@@ -64,15 +64,15 @@ build:
 
   # Apply symlinks
   - link:
-    - tail: $YURT_REPO_LOCAL/git/.gitconfig
+    - tail: ${{ repo.local }}/git/.gitconfig
       head: ~/.gitconfig
-    - tail: $YURT_REPO_LOCAL/git/.gitignore_global
+    - tail: ${{ repo.local }}/git/.gitignore_global
       head: ~/.gitignore_global
-    - tail: $YURT_REPO_LOCAL/.vimrc
+    - tail: ${{ repo.local }}/.vimrc
       head: ~/.vimrc
-    - tail: $YURT_REPO_LOCAL/python/.mypy.ini
+    - tail: ${{ repo.local }}/python/.mypy.ini
       head: ~/.mypy.ini
-    - tail: $YURT_REPO_LOCAL/python/.isort.cfg
+    - tail: ${{ repo.local }}/python/.isort.cfg
       head: ~/.isort.cfg
 
   # Amazon specifics
@@ -81,10 +81,10 @@ build:
         spec: { user: thomajl }
         include:
           - link:
-            - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##user.thomajl
+            - tail: ${{ repo.local }}/git/.gitconfig.local##user.thomajl
               head: ~/.gitconfig.local
     - default:
         include:
           - link:
-            - tail: $YURT_REPO_LOCAL/git/.gitconfig.local##default
+            - tail: ${{ repo.local }}/git/.gitconfig.local##default
               head: ~/.gitconfig.local
