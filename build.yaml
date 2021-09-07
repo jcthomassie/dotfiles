@@ -15,6 +15,10 @@ build:
           - install:
             - name: build-essential
               managers: [ apt ]
+            - name: libssl-dev
+              managers: [ apt ]
+            - name: pkg-config
+              managers: [ apt ]
     # Windows only
     - positive:
         spec: { platform: windows }
