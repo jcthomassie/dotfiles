@@ -41,8 +41,8 @@ fi
 # Run yurt install
 if [[ -f $YURT_BUILD_FILE ]]; then
     # Prefer local file
-    yurt --yaml $YURT_BUILD_FILE --log "debug" install
+    RUST_LOG=yurt yurt --yaml $YURT_BUILD_FILE install
 else
     # Use remote otherwise
-    yurt --yaml-url $YURT_BUILD_URL --log "debug" install
+    RUST_LOG=yurt yurt --yaml-url $YURT_BUILD_URL install
 fi
