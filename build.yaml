@@ -12,18 +12,19 @@ build:
     - positive:
         spec: { distro: ubuntu }
         include:
-          - install:
-            - name: build-essential
-              managers: [ apt ]
-            - name: libssl-dev
-              managers: [ apt ]
-            - name: pkg-config
-              managers: [ apt ]
+          - require: [ apt, apt-get ]
+          - matrix:
+              values:
+                package: [ build-essential, libssl-dev, pkg-config ]
+              include:
+                - install:
+                  - name: ${{ matrix.package }}
+                    managers: [ apt ]
     # Windows only
     - positive:
         spec: { platform: windows }
         include:
-          - bootstrap: [ choco ]
+          - require: [ choco ]
           - link:
             - tail: ${{ repo.local }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
@@ -35,7 +36,7 @@ build:
     - negative:
         spec: { platform: windows }
         include:
-          - bootstrap: [ brew ]
+          - require: [ brew ]
           - run: brew bundle --file ${{ repo.local }}/.brewfile
           - install:
             - name: zsh
@@ -49,7 +50,7 @@ build:
               head: ~/.config/flake8
 
   # Bootstrap package managers
-  - bootstrap: [ cargo ]
+  - require: [ cargo ]
 
   # Install essential packages
   - install:
@@ -57,7 +58,7 @@ build:
       managers: [ brew, choco ]
     - name: delta
       alias: git-delta
-      managers: [ brew, cargo, choco ]
+      managers: [ brew, choco, cargo ]
     - name: bat
       managers: [ brew, choco, cargo, apt ]
     - name: vim
@@ -65,20 +66,27 @@ build:
     - name: gh
       managers: [ brew, choco ]
     - name: zoxide
-      managers: [ brew, choco ]
+      managers: [ brew, choco, cargo ]
 
   # Apply symlinks
-  - link:
-    - tail: ${{ repo.local }}/git/.gitconfig
-      head: ~/.gitconfig
-    - tail: ${{ repo.local }}/git/.gitignore_global
-      head: ~/.gitignore_global
-    - tail: ${{ repo.local }}/.vimrc
-      head: ~/.vimrc
-    - tail: ${{ repo.local }}/python/.mypy.ini
-      head: ~/.mypy.ini
-    - tail: ${{ repo.local }}/python/.isort.cfg
-      head: ~/.isort.cfg
+  - matrix:
+      values:
+        tail:
+          - .vimrc
+          - git/.gitconfig
+          - git/.gitignore_global
+          - python/.mypy.ini
+          - python/.isort.cfg
+        head:
+          - ~/.vimrc
+          - ~/.gitconfig
+          - ~/.gitignore_global
+          - ~/.mypy.ini
+          - ~/.isort.cfg
+      include:
+        - link:
+          - tail: ${{ repo.local }}/${{ matrix.tail }}
+            head: ${{ matrix.head }}
 
   # Amazon specifics
   - case:
