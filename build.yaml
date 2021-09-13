@@ -1,13 +1,13 @@
 ---
 version: 0.2.0
 
-repo:
-  local: ~/dotfiles
-  remote: https://github.com/jcthomassie/dotfiles.git
-
 shell: zsh
 
 build:
+  - repo:
+      name: dotfiles
+      local: ~/dotfiles
+      remote: https://github.com/jcthomassie/dotfiles.git
   - case:
     - positive:
         spec: { distro: ubuntu }
@@ -26,27 +26,27 @@ build:
         include:
           - require: [ choco ]
           - link:
-            - tail: ${{ repo.local }}/pwsh/profile.ps1
+            - tail: ${{ dotfiles.local }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-            - tail: ${{ repo.local }}/.wt.json
+            - tail: ${{ dotfiles.local }}/.wt.json
               head: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-            - tail: ${{ repo.local }}/python/.flake8
+            - tail: ${{ dotfiles.local }}/python/.flake8
               head: ~/.flake8
     # Posix only
     - negative:
         spec: { platform: windows }
         include:
           - require: [ brew ]
-          - run: brew bundle --file ${{ repo.local }}/.brewfile
+          - run: brew bundle --file ${{ dotfiles.local }}/.brewfile
           - install:
             - name: zsh
               managers: [ brew, apt-get ]
             - name: exa
               managers: [ brew, apt, cargo ]
           - link:
-            - tail: ${{ repo.local }}/zsh/.zshenv
+            - tail: ${{ dotfiles.local }}/zsh/.zshenv
               head: ~/.zshenv
-            - tail: ${{ repo.local }}/python/.flake8
+            - tail: ${{ dotfiles.local }}/python/.flake8
               head: ~/.config/flake8
 
   # Bootstrap package managers
@@ -85,7 +85,7 @@ build:
           - ~/.isort.cfg
       include:
         - link:
-          - tail: ${{ repo.local }}/${{ matrix.tail }}
+          - tail: ${{ dotfiles.local }}/${{ matrix.tail }}
             head: ${{ matrix.head }}
 
   # Amazon specifics
@@ -94,10 +94,10 @@ build:
         spec: { user: thomajl }
         include:
           - link:
-            - tail: ${{ repo.local }}/git/.gitconfig.local##user.thomajl
+            - tail: ${{ dotfiles.local }}/git/.gitconfig.local##user.thomajl
               head: ~/.gitconfig.local
     - default:
         include:
           - link:
-            - tail: ${{ repo.local }}/git/.gitconfig.local##default
+            - tail: ${{ dotfiles.local }}/git/.gitconfig.local##default
               head: ~/.gitconfig.local
