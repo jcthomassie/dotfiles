@@ -40,9 +40,7 @@ build:
           - run: brew bundle --file ${{ dotfiles.local }}/.brewfile
           - install:
             - name: zsh
-              managers: [ brew, apt-get ]
             - name: exa
-              managers: [ brew, apt, cargo ]
           - link:
             - tail: ${{ dotfiles.local }}/zsh/.zshenv
               head: ~/.zshenv
@@ -55,18 +53,12 @@ build:
   # Install essential packages
   - install:
     - name: git
-      managers: [ brew, choco ]
     - name: delta
-      managers: [ brew, choco, cargo ]
       aliases: { brew: git-delta, cargo: git-delta }
     - name: bat
-      managers: [ brew, choco, cargo, apt ]
     - name: vim
-      managers: [ brew, choco ]
     - name: gh
-      managers: [ brew, choco ]
     - name: zoxide
-      managers: [ brew, choco, cargo ]
 
   # Apply symlinks
   - matrix:
