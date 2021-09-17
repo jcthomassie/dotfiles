@@ -1,25 +1,23 @@
 ---
 version: 0.2.0
-
 shell: zsh
-
 build:
   - repo:
       name: dotfiles
       local: ~/dotfiles
       remote: https://github.com/jcthomassie/dotfiles.git
+
+  # OS specifics
   - case:
+    # Ubuntu only
     - positive:
         spec: { distro: ubuntu }
         include:
           - require: [ apt, apt-get ]
-          - matrix:
-              values:
-                package: [ build-essential, libssl-dev, pkg-config ]
-              include:
-                - install:
-                  - name: ${{ matrix.package }}
-                    managers: [ apt ]
+          - install:
+            - name: build-essential
+            - name: libssl-dev
+            - name: pkg-config
     # Windows only
     - positive:
         spec: { platform: windows }
@@ -53,12 +51,12 @@ build:
   # Install essential packages
   - install:
     - name: git
-    - name: delta
-      aliases: { brew: git-delta, cargo: git-delta }
     - name: bat
     - name: vim
     - name: gh
     - name: zoxide
+    - name: delta
+      aliases: { brew: git-delta, cargo: git-delta }
 
   # Apply symlinks
   - matrix:
@@ -86,10 +84,10 @@ build:
         spec: { user: thomajl }
         include:
           - link:
-            - tail: ${{ dotfiles.local }}/git/.gitconfig.local##user.thomajl
+            - tail: ${{ dotfiles.local }}/git/.gitconfig.amazon
               head: ~/.gitconfig.local
     - default:
         include:
           - link:
-            - tail: ${{ dotfiles.local }}/git/.gitconfig.local##default
+            - tail: ${{ dotfiles.local }}/git/.gitconfig.default
               head: ~/.gitconfig.local
