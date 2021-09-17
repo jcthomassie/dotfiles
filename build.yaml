@@ -3,11 +3,11 @@ version: 0.2.0
 shell: zsh
 build:
   - repo:
-      local: ~/dotfiles
-      remote: https://github.com/jcthomassie/dotfiles.git
+      path: ~/dotfiles
+      url: https://github.com/jcthomassie/dotfiles.git
   - repo:
-      local: ~/yurt
-      remote: https://github.com/jcthomassie/yurt.git
+      path: ~/yurt
+      url: https://github.com/jcthomassie/yurt.git
 
   # OS specifics
   - case:
@@ -26,25 +26,25 @@ build:
         include:
           - require: [ choco ]
           - link:
-            - tail: ${{ dotfiles.local }}/pwsh/profile.ps1
+            - tail: ${{ dotfiles.path }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-            - tail: ${{ dotfiles.local }}/.wt.json
+            - tail: ${{ dotfiles.path }}/.wt.json
               head: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-            - tail: ${{ dotfiles.local }}/python/.flake8
+            - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.flake8
     # Posix only
     - negative:
         spec: { platform: windows }
         include:
           - require: [ brew ]
-          - run: brew bundle --file ${{ dotfiles.local }}/.brewfile
+          - run: brew bundle --file ${{ dotfiles.path }}/.brewfile
           - install:
             - name: zsh
             - name: exa
           - link:
-            - tail: ${{ dotfiles.local }}/zsh/.zshenv
+            - tail: ${{ dotfiles.path }}/zsh/.zshenv
               head: ~/.zshenv
-            - tail: ${{ dotfiles.local }}/python/.flake8
+            - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.config/flake8
 
   # Bootstrap package managers
@@ -77,7 +77,7 @@ build:
           - ~/.isort.cfg
       include:
         - link:
-          - tail: ${{ dotfiles.local }}/${{ matrix.tail }}
+          - tail: ${{ dotfiles.path }}/${{ matrix.tail }}
             head: ${{ matrix.head }}
 
   # Amazon specifics
@@ -86,10 +86,10 @@ build:
         spec: { user: thomajl }
         include:
           - link:
-            - tail: ${{ dotfiles.local }}/git/.gitconfig.amazon
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.amazon
               head: ~/.gitconfig.local
     - default:
         include:
           - link:
-            - tail: ${{ dotfiles.local }}/git/.gitconfig.default
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.default
               head: ~/.gitconfig.local
