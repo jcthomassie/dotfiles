@@ -3,9 +3,11 @@ version: 0.2.0
 shell: zsh
 build:
   - repo:
-      name: dotfiles
       local: ~/dotfiles
       remote: https://github.com/jcthomassie/dotfiles.git
+  - repo:
+      local: ~/yurt
+      remote: https://github.com/jcthomassie/yurt.git
 
   # OS specifics
   - case:
