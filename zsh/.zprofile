@@ -7,3 +7,5 @@ if [ -d "/home/linuxbrew" ]; then
     export MANPATH="/home/linuxbrew/.linuxbrew/share/man:${MANPATH}:";
     export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}";
 fi
+
+type "pyenv" > /dev/null && eval "$(pyenv init --path)"

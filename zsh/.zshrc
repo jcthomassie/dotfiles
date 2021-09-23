@@ -64,6 +64,7 @@ plugins=(
 )
 
 # Load plugins
+type "pyenv" > /dev/null && eval "$(pyenv init -)"
 type "rbenv" > /dev/null && eval "$(rbenv init -)"
 type "zoxide" > /dev/null && eval "$(zoxide init zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
