@@ -47,8 +47,11 @@ build:
             - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.config/flake8
 
-  # Bootstrap package managers
+  # Install rust toolchain
   - require: [ cargo ]
+  - install:
+    - name: cargo-edit
+      managers: [ cargo ]
 
   # Install essential packages
   - install:
