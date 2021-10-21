@@ -34,7 +34,7 @@ alias dots="code $DOTS_REPO_ROOT"
 
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
-    alias auth="kinit && mwinit -o"
+    alias auth="mwinit -o -s"
     alias ada-token="ada cred print | grep_json SessionToken"
     alias bb="brazil-build"
     alias bba="brazil-build apollo-pkg"
