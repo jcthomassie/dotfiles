@@ -1,7 +1,15 @@
+#!/bin/zsh
+alias cls="clear"
+alias dots="code $DOTS_REPO_ROOT"
+alias glog="git log --oneline --decorate --graph"
+alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
+alias zshrel="zsh_reload"
+
 # Handle Ubuntu batcat -> bat
 if type "batcat" > /dev/null; then
     alias bat="batcat"
 fi
+
 # Use exa if available
 if type "exa" > /dev/null; then
     alias ls="exa"
