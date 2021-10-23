@@ -1,0 +1,8 @@
+Host github.com
+    User git
+
+Host truenas
+    HostName truenas
+    ForwardAgent yes
+    User julian
+    IdentityFile ~/.ssh/id_truenas

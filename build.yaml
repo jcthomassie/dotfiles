@@ -96,3 +96,5 @@ build:
           - link:
             - tail: ${{ dotfiles.path }}/git/.gitconfig.default
               head: ~/.gitconfig.local
+            - tail: ${{ dotfiles.path }}/.ssh_config
+              head: ~/.ssh/config
