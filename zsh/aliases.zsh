@@ -1,7 +1,6 @@
 #!/bin/zsh
 alias cls="clear"
 alias dots="code $DOTS_REPO_ROOT"
-alias glog="git log --oneline --decorate --graph"
 alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 alias zshrel="zsh_reload"
 
@@ -50,11 +49,6 @@ else
     alias ld="ls -d -- */ .*/"
     alias ll="ls -lAFh"
 fi
-alias cls="clear"
-alias glog="git log --oneline --decorate --graph"
-alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
-alias zshrel="zsh_reload"
-alias dots="code $DOTS_REPO_ROOT"
 
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
@@ -75,4 +69,5 @@ if [ $USER = "thomajl" ]; then
     alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
     alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
     alias nds="ninja-dev-sync"
+    alias sbt='sbt -java-home $(brazil-path tooldirect.jdk)'
 fi
