@@ -30,6 +30,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "launchMode": "default",
     "profiles":
     {
@@ -48,6 +49,14 @@
         "list":
         [
             {
+                "commandline": "ssh julian@truenas",
+                "guid": "{adb9a342-c98b-40c1-85b8-0f9eaf58424a}",
+                "hidden": false,
+                "name": "TrueNAS",
+                "icon" : "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "closeOnExit" : true
+            },
+            {
                 "commandline": "wsl.exe ~ -d Ubuntu",
                 "guid": "{8799ce4d-90bb-44cd-8650-244602f1c63a}",
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
@@ -57,6 +66,7 @@
             {
                 "commandline": "wsl.exe ~ -d Ubuntu-20.04",
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "hidden": false,
                 "name": "Ubuntu-20.04",
                 "padding": "0",
                 "source": "Windows.Terminal.Wsl"
