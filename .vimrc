@@ -15,6 +15,8 @@ set softtabstop=4
 set shiftwidth=4
 set wrap
 
+set backspace=indent,eol,start  " more powerful backspacing
+
 " Line swapping functions
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
