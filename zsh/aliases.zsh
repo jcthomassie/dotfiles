@@ -69,5 +69,6 @@ if [ $USER = "thomajl" ]; then
     alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
     alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
     alias nds="ninja-dev-sync"
+    alias sam="brazil-build-tool-exec sam"
     alias sbt='sbt -java-home $(brazil-path tooldirect.jdk)'
 fi
