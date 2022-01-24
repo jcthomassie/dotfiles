@@ -63,6 +63,13 @@
                 "name": "plex"
             },
             {
+                "closeOnExit": "graceful",
+                "commandline": "ssh fireboy",
+                "guid": "{cf9b0b08-38f2-4749-b040-4672b696fefe}",
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "name": "fireboy"
+            },
+            {
                 "commandline": "wsl.exe ~ -d Ubuntu",
                 "guid": "{8799ce4d-90bb-44cd-8650-244602f1c63a}",
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
