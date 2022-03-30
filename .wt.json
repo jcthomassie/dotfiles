@@ -1,9 +1,17 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": "unbound",
+            "keys": "ctrl+shift+up"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+down"
+        },
+        {
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -19,7 +27,7 @@
             "keys": "ctrl+v"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -32,21 +40,21 @@
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "launchMode": "default",
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "acrylicOpacity": 1.0,
             "colorScheme": "One Half Dark",
             "cursorHeight": 20,
             "cursorShape": "vintage",
-            "font":
+            "font": 
             {
                 "face": "CaskaydiaCove NF"
             },
             "useAcrylic": true
         },
-        "list":
+        "list": 
         [
             {
                 "closeOnExit": "graceful",
@@ -77,14 +85,6 @@
                 "padding": "0"
             },
             {
-                "commandline": "wsl.exe ~ -d Ubuntu-20.04",
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-                "hidden": true,
-                "name": "Ubuntu-20.04",
-                "padding": "0",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell"
@@ -108,7 +108,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
