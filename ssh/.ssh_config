@@ -1,3 +1,5 @@
+Include ~/ssh/config.os
+
 Host github.com
     User git
 
@@ -5,16 +7,13 @@ Host truenas
     HostName truenas
     ForwardAgent yes
     User julian
-    IdentityFile ~/.ssh/id_truenas
 
 Host plex
     HostName 192.168.1.123
     ForwardAgent yes
     User root
-    IdentityFile ~/.ssh/id_truenas
 
 Host fireboy
     HostName 192.168.1.69
     ForwardAgent yes
     User root
-    IdentityFile ~/.ssh/id_truenas

@@ -100,5 +100,5 @@ build:
           - link:
             - tail: ${{ dotfiles.path }}/git/.gitconfig.user.default
               head: ~/.gitconfig.user
-            - tail: ${{ dotfiles.path }}/.ssh_config
+            - tail: ${{ dotfiles.path }}/ssh/.ssh_config
               head: ~/.ssh/config
