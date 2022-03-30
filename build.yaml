@@ -32,6 +32,8 @@ build:
               head: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
             - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.flake8
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.os.win
+              head: ~/.gitconfig.os
     # Posix only
     - negative:
         spec: { platform: windows }
@@ -46,6 +48,8 @@ build:
               head: ~/.zshenv
             - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.config/flake8
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.os.posix
+              head: ~/.gitconfig.os
 
   # Install rust toolchain
   - require: [ cargo ]
@@ -83,18 +87,18 @@ build:
           - tail: ${{ dotfiles.path }}/${{ matrix.tail }}
             head: ${{ matrix.head }}
 
-  # Amazon specifics
+  # User specific configs
   - case:
     - positive:
         spec: { user: thomajl }
         include:
           - link:
-            - tail: ${{ dotfiles.path }}/git/.gitconfig.amazon
-              head: ~/.gitconfig.local
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.user.amazon
+              head: ~/.gitconfig.user
     - default:
         include:
           - link:
-            - tail: ${{ dotfiles.path }}/git/.gitconfig.default
-              head: ~/.gitconfig.local
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.user.default
+              head: ~/.gitconfig.user
             - tail: ${{ dotfiles.path }}/.ssh_config
               head: ~/.ssh/config

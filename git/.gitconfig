@@ -4,7 +4,8 @@
 [color]
 	ui = auto
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.gitconfig.user
+	path = ~/.gitconfig.os
 [alias]
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	publish = "!git push -u origin $(git branch-name)"
