@@ -1,17 +1,18 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": "unbound",
+            "command": null,
             "keys": "ctrl+shift+up"
         },
         {
-            "command": "unbound",
+            "command": null,
             "keys": "ctrl+shift+down"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -27,7 +28,7 @@
             "keys": "ctrl+v"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -40,21 +41,19 @@
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "launchMode": "default",
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
-            "acrylicOpacity": 1.0,
             "colorScheme": "One Half Dark",
             "cursorHeight": 20,
             "cursorShape": "vintage",
-            "font": 
+            "font":
             {
                 "face": "CaskaydiaCove NF"
-            },
-            "useAcrylic": true
+            }
         },
-        "list": 
+        "list":
         [
             {
                 "closeOnExit": "graceful",
@@ -65,10 +64,10 @@
             },
             {
                 "closeOnExit": "graceful",
-                "commandline": "ssh plex",
+                "commandline": "ssh dev",
                 "guid": "{cf9b0b08-38f2-4749-b040-4672b696fefe}",
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-                "name": "plex"
+                "name": "dev"
             },
             {
                 "closeOnExit": "graceful",
@@ -85,12 +84,10 @@
                 "padding": "0"
             },
             {
-                "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell"
             },
             {
-                "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "name": "Command Prompt"
             },
@@ -108,7 +105,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
