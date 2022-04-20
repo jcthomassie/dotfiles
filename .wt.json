@@ -70,13 +70,6 @@
                 "name": "dev"
             },
             {
-                "closeOnExit": "graceful",
-                "commandline": "ssh fireboy",
-                "guid": "{7c64862f-14c2-4996-818e-c79c40c87129}",
-                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-                "name": "fireboy"
-            },
-            {
                 "commandline": "wsl.exe ~ -d Ubuntu",
                 "guid": "{8799ce4d-90bb-44cd-8650-244602f1c63a}",
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
