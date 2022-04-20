@@ -7,8 +7,6 @@ fi
 
 export PATH="$PATH:$HOME/.cargo/bin"
 export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
-export DOTS_ZSH_COMP="$ZDOTDIR/completions"
-export DOTS_ZSH_FUNC="$ZDOTDIR/functions"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
@@ -80,8 +78,10 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
 
 # Load functions and completions
-fpath=( $DOTS_ZSH_COMP $DOTS_ZSH_FUNC $fpath )
-autoload -U $DOTS_ZSH_COMP/*(.:t)
-autoload -U $DOTS_ZSH_FUNC/*(.:t)
+COMPDIR="$ZDOTDIR/completions"
+FUNCDIR="$ZDOTDIR/functions"
+fpath=( $COMPDIR $FUNCDIR $fpath )
+autoload -U $COMPDIR/*(.:t)
+autoload -U $FUNCDIR/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
