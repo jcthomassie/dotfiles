@@ -71,15 +71,15 @@ build:
   - matrix:
       values:
         tail:
-          - .vimrc
           - git/.gitconfig
           - git/.gitignore_global
+          - nvim
           - python/.mypy.ini
           - python/.isort.cfg
         head:
-          - ~/.vimrc
           - ~/.gitconfig
           - ~/.gitignore_global
+          - ~/.config/nvim
           - ~/.mypy.ini
           - ~/.isort.cfg
       include:

@@ -1,22 +1,3 @@
-" Colors
-syntax on
-set background=dark
-
-" Line numbers
-set number
-set ruler
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" Whitespace
-set autoindent
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set wrap
-
-set backspace=indent,eol,start  " more powerful backspacing
-
 " Line swapping functions
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
@@ -48,4 +29,3 @@ endfunction
 " Key mappings
 noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
-
