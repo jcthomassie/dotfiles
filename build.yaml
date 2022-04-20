@@ -60,9 +60,10 @@ build:
   - install:
     - name: git
     - name: bat
-    - name: vim
+    - name: nvim
     - name: gh
     - name: zoxide
+    - name: ripgrep
     - name: delta
       aliases: { brew: git-delta, cargo: git-delta }
 

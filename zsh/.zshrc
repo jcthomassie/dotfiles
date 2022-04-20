@@ -6,10 +6,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/.poetry/bin:$HOME/.pyenv/bin:$HOME/scripts/bin:$PATH"
-export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
+export EDITOR=nvim
+export VISUAL=nvim
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
+export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="no=00:fi=00:di=01;36:ln=00;35:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;31"
