@@ -8,12 +8,7 @@ Host truenas
     ForwardAgent yes
     User julian
 
-Host plex
-    HostName 192.168.1.123
+Host dev
+    HostName 192.168.1.124
     ForwardAgent yes
-    User root
-
-Host fireboy
-    HostName 192.168.1.69
-    ForwardAgent yes
-    User root
+    User julian
