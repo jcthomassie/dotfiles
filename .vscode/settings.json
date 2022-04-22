@@ -4,7 +4,6 @@
         ".flake8": "properties",
         ".gitconfig.*": "properties",
         ".ssh_config*": "ssh_config",
-        "**/zsh/functions/*": "shellscript",
         "**/zsh/completions/_*": "shellscript",
     },
 }

@@ -53,7 +53,6 @@ fi
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
     alias auth="mwinit -o -s"
-    alias ada-token="ada cred print | grep_json SessionToken"
     alias bb="brazil-build"
     alias bba="brazil-build apollo-pkg"
     alias bball="brc --allPackages"
@@ -68,6 +67,7 @@ if [ $USER = "thomajl" ]; then
     alias bws-update="bws-sync && bws-pull"
     alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
     alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
+    alias cdsk-tunnel="midway && ssh -L 8157:localhost:8157 ${CLOUD_DESK_DNS} -N"
     alias nds="ninja-dev-sync"
     alias sam="brazil-build-tool-exec sam"
     alias sbt='sbt -java-home $(brazil-path tooldirect.jdk)'

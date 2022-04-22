@@ -77,11 +77,9 @@ source $ZDOTDIR/.p10k.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
 
-# Load functions and completions
+# Load completions
 COMPDIR="$ZDOTDIR/completions"
-FUNCDIR="$ZDOTDIR/functions"
-fpath=( $COMPDIR $FUNCDIR $fpath )
+fpath=( $COMPDIR $fpath )
 autoload -U $COMPDIR/*(.:t)
-autoload -U $FUNCDIR/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
