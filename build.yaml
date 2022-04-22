@@ -15,6 +15,9 @@ build:
         - !locale { distro: debian }
       include:
         - !require [ apt, apt-get ]
+    - condition: !locale { platform: bsd }
+      include:
+          - !require [ pkg ]
     - condition: !locale { platform: windows }
       include:
         - !require [ choco ]
