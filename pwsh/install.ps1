@@ -21,12 +21,11 @@ choco install -y visualstudio2019buildtools
 choco install -y visualstudio2019-workload-vctools
 choco install -y wsl2
 choco install -y wsl-ubuntu-2004
-choco install -y oh-my-posh
-choco install -y poshgit
 choco install -y bat
 choco install -y delta
 choco install -y miniconda3 --params="'/AddToPath:1'"
 choco install -y rustup.install
+choco install -y starship
 
 choco install -y 1password
 choco install -y googlechrome

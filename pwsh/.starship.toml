@@ -1,0 +1,54 @@
+format = """
+$username$hostname\
+[](fg:black bg:bright-blue)\
+$directory\
+[](fg:bright-blue bg:green)\
+$git_branch\
+$git_status\
+[](fg:green)\
+$line_break\
+$jobs\
+$status\
+$shell\
+$character\
+"""
+
+add_newline = false
+
+[username]
+show_always = true
+style_user = "fg:yellow bg:black"
+style_root = "fg:red bg:black"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format =  "[@$hostname](fg:yellow bg:black)"
+
+[directory]
+format = "[ $path ](fg:white bg:bright-blue)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:black bg:green"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "fg:black bg:green"
+ahead = "⇡($count) "
+behind = "⇣($count) "
+diverged = "[$ahead$behind](fg:red)"
+stashed = "*($count) "
+conflicted = "~($count) "
+untracked = "?($count) "
+modified = "!($count) "
+staged = "+($count) "
+format = "[($all_status$ahead_behind)]($style)"
