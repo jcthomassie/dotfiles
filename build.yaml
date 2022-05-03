@@ -1,5 +1,5 @@
 ---
-version: 0.3.0
+version: 0.4.0
 build:
   - repo:
       path: ~/dotfiles
@@ -12,16 +12,17 @@ build:
   - case:
     # Ubuntu only
     - positive:
-        spec: { distro: ubuntu }
+        condition: { distro: ubuntu }
         include:
           - require: [ apt, apt-get ]
           - install:
             - name: build-essential
             - name: libssl-dev
             - name: pkg-config
+  - case:
     # Windows only
     - positive:
-        spec: { platform: windows }
+        condition: { platform: windows }
         include:
           - require: [ choco ]
           - link:
@@ -34,8 +35,7 @@ build:
             - tail: ${{ dotfiles.path }}/git/.gitconfig.os.win
               head: ~/.gitconfig.os
     # Posix only
-    - negative:
-        spec: { platform: windows }
+    - default:
         include:
           - require: [ brew ]
           - run: brew bundle --file ${{ dotfiles.path }}/.brewfile
@@ -89,7 +89,7 @@ build:
   # User specific configs
   - case:
     - positive:
-        spec: { user: thomajl }
+        condition: { user: thomajl }
         include:
           - link:
             - tail: ${{ dotfiles.path }}/git/.gitconfig.user.amazon
