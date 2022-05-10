@@ -52,7 +52,7 @@ fi
 
 # Amazon specific config
 if [ $USER = "thomajl" ]; then
-    alias auth="mwinit -o -s"
+    alias auth="(klist -s || kinit) && midway"
     alias bb="brazil-build"
     alias bba="brazil-build apollo-pkg"
     alias bball="brc --allPackages"
