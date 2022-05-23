@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.cargo/bin:$HOME/.poetry/bin:$HOME/scripts/bin:$PATH"
 export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
@@ -20,10 +20,6 @@ if [ $USER = "thomajl" ]; then
   export LOCAL_WORKSPACE="/Users/thomajl/workplace"
   export CLOUD_WORKSPACE="/home/thomajl/workplace"
   export AWS_DEFAULT_REGION="us-east-1"
-fi
-# Include scripts if installed
-if [[ -d "$HOME/scripts/bin" ]]; then
-  export PATH="$HOME/scripts/bin:$PATH"
 fi
 
 # Customize plugins
