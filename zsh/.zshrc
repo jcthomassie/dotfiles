@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.cargo/bin:$HOME/.poetry/bin:$HOME/scripts/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.poetry/bin:$HOME/.pyenv/bin:$HOME/scripts/bin:$PATH"
 export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
