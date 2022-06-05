@@ -12,4 +12,3 @@ if [ -d "/usr/local/go/bin" ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
-type "pyenv" > /dev/null && eval "$(pyenv init --path)"
