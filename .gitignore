@@ -1,7 +1,7 @@
 *.brewfile.lock.json
-.zsh_history
-.zsh_sessions
-.zcompdump
+zsh/.zsh_history
+zsh/.zsh_sessions
+zsh/.zcompdump*
 
 # Completions (opt-in)
 zsh/completions/_*
