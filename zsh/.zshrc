@@ -50,23 +50,17 @@ setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry
 setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
 setopt HIST_BEEP              # Beep when accessing nonexistent history.
 
-# Specify plugins
-plugins=(
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  zsh-completions
-)
-
 # Load plugins
 type "pyenv" > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 type "rbenv" > /dev/null && eval "$(rbenv init -)"
 type "zoxide" > /dev/null && eval "$(zoxide init zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
-for plugin ($plugins); do
-  fpath=( $ZDOTDIR/plugins/$plugin $fpath )
-  source $ZDOTDIR/plugins/$plugin/$plugin.plugin.zsh
-done
+source $ZDOTDIR/plugins/zsh-autoenv/autoenv.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
+fpath=( $ZDOTDIR/plugins/zsh-completions/src $fpath )
 
 # Load customizations
 source $ZDOTDIR/.p10k.zsh
