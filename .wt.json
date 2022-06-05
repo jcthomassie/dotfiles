@@ -1,18 +1,18 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command": null,
+            "command": "unbound",
             "keys": "ctrl+shift+up"
         },
         {
-            "command": null,
+            "command": "unbound",
             "keys": "ctrl+shift+down"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -28,7 +28,7 @@
             "keys": "ctrl+v"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -41,33 +41,33 @@
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "launchMode": "default",
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "colorScheme": "One Half Dark",
             "cursorHeight": 20,
             "cursorShape": "vintage",
-            "font":
+            "font": 
             {
                 "face": "CaskaydiaCove NF"
             }
         },
-        "list":
+        "list": 
         [
             {
                 "closeOnExit": "graceful",
                 "commandline": "ssh truenas",
                 "guid": "{adb9a342-c98b-40c1-85b8-0f9eaf58424a}",
-                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-                "name": "TrueNAS"
+                "icon": "ms-appx:///ProfileIcons/{b453ae62-4e3d-5e58-b989-0a998ec441b8}.png",
+                "name": "truenas"
             },
             {
                 "closeOnExit": "graceful",
                 "commandline": "ssh dev",
                 "guid": "{cf9b0b08-38f2-4749-b040-4672b696fefe}",
-                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
-                "name": "dev"
+                "icon": "ms-appx:///ProfileIcons/{b453ae62-4e3d-5e58-b989-0a998ec441b8}.png",
+                "name": "truenas-dev"
             },
             {
                 "commandline": "wsl.exe ~ -d Ubuntu",
@@ -93,7 +93,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
