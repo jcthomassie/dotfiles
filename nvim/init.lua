@@ -8,6 +8,7 @@ vim.opt.wrap = true
 vim.opt.backspace = "indent,eol,start"
 
 -- Style
+vim.opt.cursorline = true
 vim.opt.ruler = true
 vim.opt.number = true
 vim.api.nvim_command([[
