@@ -1,3 +1,5 @@
+vim.api.nvim_exec(
+[[
 " Line swapping functions
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
@@ -29,3 +31,5 @@ endfunction
 " Key mappings
 noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
+]],
+true)
