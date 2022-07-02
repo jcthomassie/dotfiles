@@ -7,13 +7,19 @@
 	path = ~/.gitconfig.user
 	path = ~/.gitconfig.os
 [alias]
+    d = "!git diff"
+    dt = "!git difftool"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	publish = "!git push -u origin $(git branch-name)"
 	sync = "!git pull --all --prune --rebase --autostash"
 [push]
 	default = simple
 [pull]
-	rebase = true
+    rebase = true
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
 [pager]
     diff = delta
     log = delta
