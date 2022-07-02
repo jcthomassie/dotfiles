@@ -33,3 +33,7 @@ noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
 ]],
 true)
+
+vim.api.nvim_set_keymap('v', '<TAB>', '>gv', {noremap = true})
+vim.api.nvim_set_keymap('v', '<S-TAB>', '<gv', {noremap = true})
+
