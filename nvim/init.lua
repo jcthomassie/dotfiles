@@ -8,15 +8,10 @@ vim.opt.wrap = true
 vim.opt.backspace = "indent,eol,start"
 
 -- Style
-vim.opt.title = true
-vim.opt.titleold = " "
 vim.opt.cursorline = true
 vim.opt.ruler = true
 vim.opt.number = true
-vim.api.nvim_command([[
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-]])
+vim.opt.relativenumber = true
 
 -- Misc
 vim.opt.smartcase = true
