@@ -42,3 +42,6 @@ vim.api.nvim_set_keymap('n', '<c-j>', ':wincmd j<CR>', {noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<c-h>', ':wincmd h<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<c-l>', ':wincmd l<CR>', {noremap = true, silent = true})
 
+vim.api.nvim_set_keymap('n', '<c-o>', ':Telescope find_files<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+

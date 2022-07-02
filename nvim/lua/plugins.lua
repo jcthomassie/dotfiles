@@ -1,11 +1,13 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/.plugins')
 
-Plug 'navarasu/onedark.nvim'
 Plug 'feline-nvim/feline.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 vim.call('plug#end')
