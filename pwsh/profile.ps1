@@ -8,6 +8,11 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+A -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+E -Function EndOfLine
 
+# Use exa
+Set-Alias -Name ls -Value exa.exe -Force -Option 'Constant','AllScope'
+function ll { exa.exe -l }
+function la { exa.exe -la }
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
