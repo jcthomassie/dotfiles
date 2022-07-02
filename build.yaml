@@ -60,9 +60,10 @@ build:
   - install:
     - name: git
     - name: bat
-    - name: vim
+    - name: nvim
     - name: gh
     - name: zoxide
+    - name: ripgrep
     - name: delta
       aliases: { brew: git-delta, cargo: git-delta }
 
@@ -70,15 +71,15 @@ build:
   - matrix:
       values:
         tail:
-          - .vimrc
           - git/.gitconfig
           - git/.gitignore_global
+          - nvim
           - python/.mypy.ini
           - python/.isort.cfg
         head:
-          - ~/.vimrc
           - ~/.gitconfig
           - ~/.gitignore_global
+          - ~/.config/nvim
           - ~/.mypy.ini
           - ~/.isort.cfg
       include:
