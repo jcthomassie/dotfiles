@@ -2,14 +2,16 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/.plugins')
 
 Plug 'navarasu/onedark.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 vim.call('plug#end')
 
-
 require('onedark').load()
+require("nvim-tree").setup()
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "bash", "python", "rust", "yaml", "json" },
+    ensure_installed = { "bash", "python", "rust", "yaml", "json", "lua" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
