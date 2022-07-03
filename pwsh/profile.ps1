@@ -2,6 +2,9 @@
 [Environment]::SetEnvironmentVariable("STARSHIP_CONFIG", "$HOME\dotfiles\pwsh\.starship.toml")
 [Environment]::SetEnvironmentVariable("RUST_LOG", "yurt")
 [Environment]::SetEnvironmentVariable("EDITOR", "code")
+[Environment]::SetEnvironmentVariable("PYENV",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[Environment]::SetEnvironmentVariable("PYENV_ROOT",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[Environment]::SetEnvironmentVariable("PYENV_HOME",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
