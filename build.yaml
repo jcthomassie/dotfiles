@@ -29,11 +29,13 @@ build:
             - tail: ${{ dotfiles.path }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
             - tail: ${{ dotfiles.path }}/nvim
-              head: ~/AppData/Local/nvim
+              head: ${{ env.LocalAppData }}/nvim
             - tail: ${{ dotfiles.path }}/.wt.json
               head: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
             - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.flake8
+            - tail: ${{ dotfiles.path }}/python/.mypy.ini
+              head: ~/.mypy.ini
             - tail: ${{ dotfiles.path }}/git/.gitconfig.os.win
               head: ~/.gitconfig.os
     # Posix only
@@ -51,6 +53,8 @@ build:
               head: ~/.config/nvim
             - tail: ${{ dotfiles.path }}/python/.flake8
               head: ~/.config/flake8
+            - tail: ${{ dotfiles.path }}/python/.mypy.ini
+              head: ~/.config/.mypy.ini
             - tail: ${{ dotfiles.path }}/git/.gitconfig.os.posix
               head: ~/.gitconfig.os
 
@@ -77,12 +81,10 @@ build:
         tail:
           - git/.gitconfig
           - git/.gitignore_global
-          - python/.mypy.ini
           - python/.isort.cfg
         head:
           - ~/.gitconfig
           - ~/.gitignore_global
-          - ~/.mypy.ini
           - ~/.isort.cfg
       include:
         - link:
