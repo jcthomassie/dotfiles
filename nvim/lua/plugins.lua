@@ -1,6 +1,7 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/.plugins')
 
+Plug 'akinsho/git-conflict.nvim'
 Plug 'feline-nvim/feline.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -15,7 +16,8 @@ vim.call('plug#end')
 require('onedark').load()
 require('feline').setup()
 require('gitsigns').setup()
-require("nvim-tree").setup()
+require('git-conflict').setup()
+require('nvim-tree').setup()
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "bash", "python", "rust", "yaml", "json", "lua" },
     sync_install = false,
