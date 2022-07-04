@@ -18,18 +18,6 @@
         {
             "command":
             {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command":
-            {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
