@@ -58,6 +58,9 @@ require('rust-tools').setup({
     },
 })
 
+-- Python LSP config
+require('lspconfig')['pyright'].setup({})
+
 -- Completions: https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require('cmp')
 cmp.setup({
