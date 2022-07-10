@@ -34,14 +34,17 @@ noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
 ]],
 true)
 
-vim.api.nvim_set_keymap('v', '<TAB>', '>gv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<S-TAB>', '<gv', {noremap = true, silent = true})
+local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<c-k>', ':wincmd k<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-j>', ':wincmd j<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-h>', ':wincmd h<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-l>', ':wincmd l<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<TAB>', '>gv', opts)
+vim.api.nvim_set_keymap('v', '<S-TAB>', '<gv', opts)
 
-vim.api.nvim_set_keymap('n', '<c-o>', ':Telescope find_files<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<c-k>', ':wincmd k<CR>', opts)
+vim.api.nvim_set_keymap('n', '<c-j>', ':wincmd j<CR>', opts)
+vim.api.nvim_set_keymap('n', '<c-h>', ':wincmd h<CR>', opts)
+vim.api.nvim_set_keymap('n', '<c-l>', ':wincmd l<CR>', opts)
+
+vim.api.nvim_set_keymap('n', '<c-o>', ':Telescope find_files<CR>', opts)
+vim.api.nvim_set_keymap('n', '<c-f>', ':Telescope live_grep<CR>', opts)
+
 

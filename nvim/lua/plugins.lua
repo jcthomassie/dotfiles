@@ -2,6 +2,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/.plugins')
 
 Plug 'akinsho/git-conflict.nvim'
+Plug 'akinsho/toggleterm.nvim'
 Plug 'feline-nvim/feline.nvim'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -33,6 +34,11 @@ require('nvim-treesitter.configs').setup {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
+}
+require('toggleterm').setup {
+    open_mapping = [[<A-t>]],
+    insert_mappings = true,
+    terminal_mappings = true,
 }
 
 -- Rust LSP extended config: https://github.com/simrat39/rust-tools.nvim#configuration
