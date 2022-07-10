@@ -15,6 +15,7 @@ vim.opt.relativenumber = true
 
 -- Misc
 vim.opt.smartcase = true
+vim.opt.mouse = "a"
 
 require('plugins')
 require('mappings')
