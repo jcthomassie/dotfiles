@@ -11,6 +11,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'lewis6991/impatient.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -22,6 +23,17 @@ Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 vim.call('plug#end')
 
+_G.__luacache_config = {
+  chunks = {
+    enable = true,
+    path = vim.fn.stdpath('cache')..'/luacache_chunks',
+  },
+  modpaths = {
+    enable = true,
+    path = vim.fn.stdpath('cache')..'/luacache_modpaths',
+  }
+}
+require('impatient').enable_profile()
 require('onedark').load()
 require('feline').setup()
 require('gitsigns').setup()
