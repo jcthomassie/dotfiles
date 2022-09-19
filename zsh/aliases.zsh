@@ -1,8 +1,6 @@
 #!/bin/zsh
-alias cls="clear"
-alias dots="code $DOTS_REPO_ROOT"
-alias zshrc="code -n -w $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
-alias zshrel="zsh_reload"
+alias reload="exec zsh -l"
+alias dots="$EDITOR $DOTS_REPO_ROOT && reload"
 
 # Git
 alias ga="git add"
@@ -37,8 +35,8 @@ fi
 if type "exa" > /dev/null; then
     alias ls="exa"
     alias la="exa -a"
-    alias ll="exa -la"
-    alias lt="exa -T --level 2"
+    alias ll="exa -l"
+    alias lt="exa -T --git-ignore --level 2"
 else
     if [[ $OSTYPE == darwin* ]]; then
         alias ls="ls -G"
