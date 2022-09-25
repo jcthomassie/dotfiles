@@ -40,7 +40,15 @@ require('gitsigns').setup()
 require('git-conflict').setup()
 require('nvim-tree').setup()
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "bash", "python", "rust", "yaml", "json", "lua" },
+    ensure_installed = { 
+        "bash",
+        "python",
+        "rust",
+        "lua",
+        "json",
+        "yaml",
+        "toml",
+    },
     sync_install = false,
     highlight = {
         enable = true,
@@ -57,7 +65,6 @@ require('toggleterm').setup {
 require('rust-tools').setup({
     tools = { -- rust-tools options
         autoSetHints = true,
-        hover_with_actions = true,
         inlay_hints = {
             show_parameter_hints = false,
             parameter_hints_prefix = "",
