@@ -1,6 +1,6 @@
 #!/bin/zsh
 alias reload="exec zsh -l"
-alias dots="$EDITOR $DOTS_REPO_ROOT && reload"
+alias dots="${EDITOR:-nvim} $DOTS_REPO_ROOT && reload"
 
 # Git
 alias ga="git add"
