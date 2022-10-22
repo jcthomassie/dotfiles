@@ -86,5 +86,6 @@ python_venv() {
     deactivate > /dev/null 2>&1
   fi
 }
+python_venv
 
 add-zsh-hook chpwd python_venv
