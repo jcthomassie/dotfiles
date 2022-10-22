@@ -14,6 +14,3 @@
 	path = zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 	shallow = true
-[submodule "zsh/plugins/zsh-autoenv"]
-	path = zsh/plugins/zsh-autoenv
-	url = https://github.com/Tarrasch/zsh-autoenv

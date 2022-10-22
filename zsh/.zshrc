@@ -22,7 +22,7 @@ if [ $USER = "thomajl" ]; then
   export AWS_DEFAULT_REGION="us-east-1"
 fi
 
-# Customize plugins
+# Customize coloring
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,bold
@@ -33,6 +33,7 @@ ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=yellow
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
+# Customize history
 HISTFILE="$ZSH_HISTORY"
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -56,7 +57,6 @@ type "rbenv" > /dev/null && eval "$(rbenv init -)"
 type "zoxide" > /dev/null && eval "$(zoxide init zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
-source $ZDOTDIR/plugins/zsh-autoenv/autoenv.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
@@ -73,3 +73,18 @@ fpath=( $COMPDIR $fpath )
 autoload -U $COMPDIR/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
+
+# Define hooks
+_VENV_ROOT=".venv"
+_VENV_PARENT=""
+python_venv() {
+  if [[ -d $_VENV_ROOT ]]; then
+    _VENV_PARENT=$PWD
+    source $_VENV_ROOT/bin/activate > /dev/null 2>&1
+  elif ! ([[ $PWD == $_VENV_PARENT* ]] && [[ -d $_VENV_PARENT ]]); then
+    _VENV_PARENT=""
+    deactivate > /dev/null 2>&1
+  fi
+}
+
+add-zsh-hook chpwd python_venv
