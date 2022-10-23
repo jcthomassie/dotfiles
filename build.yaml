@@ -17,6 +17,7 @@ build:
           - require: [ apt, apt-get ]
           - install:
             - name: build-essential
+            - name: libffi-dev
             - name: libssl-dev
             - name: pkg-config
   - case:
