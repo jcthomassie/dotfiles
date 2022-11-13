@@ -1,32 +1,32 @@
 ---
-version: 0.4.0
+version: 0.5.0
 build:
-  - repo:
+  - !repo
       path: ~/dotfiles
       url: https://github.com/jcthomassie/dotfiles.git
-  - repo:
+  - !repo
       path: ~/yurt
       url: https://github.com/jcthomassie/yurt.git
 
   # OS specifics
-  - case:
+  - !case
     # Ubuntu only
-    - positive:
+    - !positive
         condition: { distro: ubuntu }
         include:
-          - require: [ apt, apt-get ]
-          - install:
+          - !require [ apt, apt-get ]
+          - !install
             - name: build-essential
             - name: libffi-dev
             - name: libssl-dev
             - name: pkg-config
-  - case:
+  - !case
     # Windows only
-    - positive:
+    - !positive
         condition: { platform: windows }
         include:
-          - require: [ choco ]
-          - link:
+          - !require [ choco ]
+          - !link
             - tail: ${{ dotfiles.path }}/pwsh/profile.ps1
               head: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
             - tail: ${{ dotfiles.path }}/nvim
@@ -40,14 +40,14 @@ build:
             - tail: ${{ dotfiles.path }}/git/.gitconfig.os.win
               head: ~/.gitconfig.os
     # Posix only
-    - default:
+    - !default
         include:
-          - require: [ brew ]
-          - run: brew bundle --file ${{ dotfiles.path }}/.brewfile
-          - install:
+          - !require [ brew ]
+          - !run brew bundle --file ${{ dotfiles.path }}/.brewfile
+          - !install
             - name: zsh
             - name: exa
-          - link:
+          - !link
             - tail: ${{ dotfiles.path }}/zsh/.zshenv
               head: ~/.zshenv
             - tail: ${{ dotfiles.path }}/nvim
@@ -60,13 +60,13 @@ build:
               head: ~/.gitconfig.os
 
   # Install rust toolchain
-  - require: [ cargo ]
-  - install:
+  - !require [ cargo ]
+  - !install
     - name: cargo-edit
       managers: [ cargo ]
 
   # Install essential packages
-  - install:
+  - !install
     - name: git
     - name: bat
     - name: nvim
@@ -77,7 +77,7 @@ build:
       aliases: { brew: git-delta, cargo: git-delta }
 
   # Apply symlinks
-  - matrix:
+  - !matrix
       values:
         tail:
           - git/.gitconfig
@@ -88,21 +88,21 @@ build:
           - ~/.gitignore_global
           - ~/.isort.cfg
       include:
-        - link:
+        - !link
           - tail: ${{ dotfiles.path }}/${{ matrix.tail }}
             head: ${{ matrix.head }}
 
   # User specific configs
-  - case:
-    - positive:
+  - !case
+    - !positive
         condition: { user: thomajl }
         include:
-          - link:
+          - !link
             - tail: ${{ dotfiles.path }}/git/.gitconfig.user.amazon
               head: ~/.gitconfig.user
-    - default:
+    - !default
         include:
-          - link:
+          - !link
             - tail: ${{ dotfiles.path }}/git/.gitconfig.user.default
               head: ~/.gitconfig.user
             - tail: ${{ dotfiles.path }}/ssh/.ssh_config
