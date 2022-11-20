@@ -94,12 +94,6 @@ build:
 
   # User specific configs
   - !case
-    - !positive
-        condition: { user: thomajl }
-        include:
-          - !link
-            - tail: ${{ dotfiles.path }}/git/.gitconfig.user.amazon
-              head: ~/.gitconfig.user
     - !default
         include:
           - !link

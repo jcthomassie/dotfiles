@@ -47,25 +47,3 @@ else
     alias ld="ls -d -- */ .*/"
     alias ll="ls -lAFh"
 fi
-
-# Amazon specific config
-if [ $USER = "thomajl" ]; then
-    alias auth="(klist -s || kinit) && midway"
-    alias bb="brazil-build"
-    alias bba="brazil-build apollo-pkg"
-    alias bball="brc --allPackages"
-    alias bbb="brc --allPackages brazil-build"
-    alias bbr="brc brazil-build"
-    alias bbra="bbr apollo-pkg"
-    alias brc="brazil-recursive-cmd"
-    alias bre="brazil-runtime-exec"
-    alias bws="brazil ws"
-    alias bws-sync="bws sync --md"
-    alias bws-pull="bball git pull --rebase --autostash"
-    alias bws-update="bws-sync && bws-pull"
-    alias bws-rebuild="bball 'brazil-build clean && brazil-build release'"
-    alias cdsk="midway && ssh ${CLOUD_DESK_DNS}"
-    alias zeppelin="midway && ssh -ND 8157"
-    alias nds="ninja-dev-sync"
-    alias sam="brazil-build-tool-exec sam"
-fi

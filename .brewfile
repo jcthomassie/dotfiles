@@ -37,14 +37,4 @@ if OS.mac?
     cask "font-caskaydia-cove-nerd-font"
     cask "font-hack-nerd-font"
     cask "font-meslo-lg-nerd-font"
-
-    # Amazon ---------------------------------------------------------
-    tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
-
-    brew "ninja-dev-sync"
-    brew "scala" unless exists? "scala"
-    brew "scala@2.11"
-    cask "amazon-acronyms"
-    cask "intellij-idea" unless app_exists? "IntelliJ IDEA"
-    cask "postman" unless app_exists? "Postman"
 end

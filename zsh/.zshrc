@@ -13,14 +13,6 @@ export YURT_BUILD_FILE="$DOTS_REPO_ROOT/build.yaml"
 export CLICOLOR=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LS_COLORS="no=00:fi=00:di=01;36:ln=00;35:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;31"
-# Amazon specific variables
-if [ $USER = "thomajl" ]; then
-  export PATH="/usr/local/opt/curl/bin:$HOME/.toolbox/bin:/usr/local/bin/mwinit:$PATH"
-  export CLOUD_DESK_DNS="thomajl-clouddesk.aka.corp.amazon.com"
-  export LOCAL_WORKSPACE="/Users/thomajl/workplace"
-  export CLOUD_WORKSPACE="/home/thomajl/workplace"
-  export AWS_DEFAULT_REGION="us-east-1"
-fi
 
 # Customize coloring
 typeset -gA ZSH_HIGHLIGHT_STYLES
