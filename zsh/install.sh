@@ -2,7 +2,7 @@
 DOTS_REPO_ROOT="${DOTS_REPO_ROOT:-$HOME/dotfiles}"
 YURT_BUILD_FILE="${YURT_BUILD_FILE:-$DOTS_REPO_ROOT/build.yaml}"
 YURT_BUILD_URL="https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/build.yaml"
-YURT_RELEASE_URL="https://github.com/jcthomassie/yurt/releases/download/latest"
+YURT_RELEASE_URL="https://github.com/jcthomassie/yurt/releases/download/v0.5.0"
 YURT_REPO_URL="https://github.com/jcthomassie/yurt.git"
 
 download_release() {
@@ -23,10 +23,10 @@ download_release() {
 # Install yurt if needed
 if ! command -v yurt >/dev/null 2>&1; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        download_release "yurt-macos-amd64"
+        download_release "yurt-macos"
         xattr -d com.apple.quarantine $(which yurt)
     elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        download_release "yurt-linux-amd64"
+        download_release "yurt-linux"
     else
         # Install cargo if needed (via rustup)
         if ! command -v cargo >/dev/null 2>&1; then
