@@ -83,10 +83,12 @@ build:
           - git/.gitconfig
           - git/.gitignore_global
           - python/.isort.cfg
+          - ssh/.ssh_config
         head:
           - ~/.gitconfig
           - ~/.gitignore_global
           - ~/.isort.cfg
+          - ~/.ssh/config
       include:
         - !link
           - tail: ${{ dotfiles.path }}/${{ matrix.tail }}
@@ -94,10 +96,18 @@ build:
 
   # User specific configs
   - !case
+    - !positive
+        condition: { user: julianth }
+        include:
+          - !link
+            - tail: ${{ dotfiles.path }}/git/.gitconfig.user.julianth
+              head: ~/.gitconfig.user
+            - tail: ${{ dotfiles.path }}/ssh/.ssh_config.user.julianth
+              head: ~/.ssh/config.user
     - !default
         include:
           - !link
             - tail: ${{ dotfiles.path }}/git/.gitconfig.user.default
               head: ~/.gitconfig.user
-            - tail: ${{ dotfiles.path }}/ssh/.ssh_config
-              head: ~/.ssh/config
+            - tail: ${{ dotfiles.path }}/ssh/.ssh_config.user.default
+              head: ~/.ssh/config.user

@@ -1,0 +1,5 @@
+Host ctop
+    HostName julianth.c.googlers.com
+    User julianth
+    RemoteCommand zsh
+    RequestTTY yes

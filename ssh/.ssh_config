@@ -1,20 +1,5 @@
-Include ~/ssh/config.os
-
-Host ctop
-    HostName julianth.c.googlers.com
-    User julianth
-    RemoteCommand zsh
-    RequestTTY yes
+Include ~/.ssh/config.os
+Include ~/.ssh/config.user
 
 Host github.com
     User git
-
-Host truenas
-    HostName truenas
-    ForwardAgent yes
-    User julian
-
-Host dev
-    HostName 10.0.0.101
-    ForwardAgent yes
-    User julian
