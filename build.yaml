@@ -58,6 +58,8 @@ build:
               head: ~/.config/.mypy.ini
             - tail: ${{ dotfiles.path }}/git/.gitconfig.os.posix
               head: ~/.gitconfig.os
+            - tail: ${{ dotfiles.path }}/kitty
+              head: ~/.config/kitty
 
   # Install rust toolchain
   - !require [ cargo ]

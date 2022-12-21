@@ -47,3 +47,9 @@ else
     alias ld="ls -d -- */ .*/"
     alias ll="ls -lAFh"
 fi
+
+# Configure kitty ssh if needed
+if [[ "$TERM" = "xterm-kitty" ]]; then
+  alias ssh="kitty +kitten ssh"
+fi
+

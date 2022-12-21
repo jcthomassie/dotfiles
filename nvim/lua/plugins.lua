@@ -4,6 +4,7 @@ vim.call('plug#begin', '~/.config/nvim/.plugins')
 Plug 'akinsho/git-conflict.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'feline-nvim/feline.nvim'
+Plug 'fladson/vim-kitty'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
