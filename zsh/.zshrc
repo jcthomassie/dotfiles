@@ -66,6 +66,9 @@ autoload -U $COMPDIR/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
 
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
 # Define hooks
 _VENV_ROOT=".venv"
 _VENV_PARENT=""
