@@ -53,3 +53,8 @@ if [[ "$TERM" = "xterm-kitty" ]]; then
   alias ssh="kitty +kitten ssh"
 fi
 
+# Google specific aliases
+if [[ "$USER" = "julianth" ]]; then
+    alias auth="gcertstatus --check_remaining=1h --quiet || gcert"
+fi
+
