@@ -1,5 +1,5 @@
 ---
-version: 0.5.0
+version: ~0.5.0
 build:
   - !repo
       path: ~/dotfiles
@@ -43,10 +43,11 @@ build:
     - !default
         include:
           - !require [ brew ]
-          - !run brew bundle --file ${{ dotfiles.path }}/.brewfile
           - !install
             - name: zsh
             - name: exa
+            - name: grep
+            - name: curl
           - !link
             - tail: ${{ dotfiles.path }}/zsh/.zshenv
               head: ~/.zshenv
@@ -77,6 +78,7 @@ build:
     - name: ripgrep
     - name: delta
       aliases: { brew: git-delta, cargo: git-delta }
+    - name: pyenv
 
   # Apply symlinks
   - !matrix
