@@ -20,6 +20,11 @@ build:
             - name: libffi-dev
             - name: libssl-dev
             - name: pkg-config
+    # gLinux only
+    - !positive
+        condition: { distro: debian, user: julianth }
+        include:
+          - !require [ apt, apt-get ]
   - !case
     # Windows only
     - !positive
