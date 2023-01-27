@@ -2,7 +2,7 @@
 DOTS_REPO_ROOT="${DOTS_REPO_ROOT:-$HOME/dotfiles}"
 YURT_BUILD_FILE="${YURT_BUILD_FILE:-$DOTS_REPO_ROOT/build.yaml}"
 YURT_BUILD_URL="https://raw.githubusercontent.com/jcthomassie/dotfiles/HEAD/build.yaml"
-YURT_RELEASE_URL="https://github.com/jcthomassie/yurt/releases/download/v0.5.0"
+YURT_RELEASE_URL="https://github.com/jcthomassie/yurt/releases/download/v0.6.0"
 YURT_REPO_URL="https://github.com/jcthomassie/yurt.git"
 
 download_release() {
