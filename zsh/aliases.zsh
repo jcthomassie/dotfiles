@@ -53,10 +53,3 @@ if [[ "$TERM" = "xterm-kitty" ]]; then
   alias ssh="kitty +kitten ssh"
 fi
 
-# Google specific aliases
-if [[ "$USER" = "julianth" ]]; then
-    alias auth="gcertstatus --check_remaining=1h --quiet || gcert"
-    alias monitor-laptop="gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
-    alias monitor-desk="gsettings set org.gnome.desktop.interface text-scaling-factor 1.25"
-fi
-

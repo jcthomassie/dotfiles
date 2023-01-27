@@ -58,6 +58,9 @@ fpath=( $ZDOTDIR/plugins/zsh-completions/src $fpath )
 source $ZDOTDIR/.p10k.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/completion.zsh
+if [[ "$USER" = "julianth" ]]; then
+    source $ZDOTDIR/google.zsh
+fi
 
 # Load completions
 COMPDIR="$ZDOTDIR/completions"
