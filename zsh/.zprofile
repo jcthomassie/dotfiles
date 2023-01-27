@@ -15,3 +15,7 @@ if [ -d "$HOME/.local/share/coursier/bin" ]; then
     export PATH=$PATH:$HOME/.local/share/coursier/bin
 fi
 
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+    export RUST_LOG=yurt
+fi
