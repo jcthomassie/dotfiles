@@ -46,9 +46,11 @@ require('nvim-treesitter.configs').setup {
         "python",
         "rust",
         "lua",
+        "java",
         "json",
         "yaml",
         "toml",
+        "markdown",
     },
     sync_install = false,
     highlight = {
