@@ -1,3 +1,17 @@
 [user]
 	name = Julian Thomassie
 	email = julianth@google.com
+[repo]
+	superprojectChoiceExpire = 0
+	superprojectChoice = true
+[http]
+	cookiefile = /usr/local/google/home/julianth/.gitcookies
+[url "persistent-https://googleplex-android.git.corp.google.com"]
+	insteadof = https://googleplex-android.googlesource.com
+	insteadof = https://googleplex-android-review.googlesource.com
+[url "persistent-https://android.git.corp.google.com"]
+	insteadof = https://android.googlesource.com
+	insteadof = https://android-review.googlesource.com
+[url "persistent-https://partner-android.git.corp.google.com"]
+	insteadof = https://partner-android.googlesource.com
+	insteadof = https://partner-android-review.googlesource.com
