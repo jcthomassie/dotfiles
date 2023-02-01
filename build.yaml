@@ -90,6 +90,7 @@ build:
     - name: delta
       aliases: { brew: git-delta, cargo: git-delta }
     - name: pyenv
+      managers: [ brew ]
 
   # Apply symlinks
   - !matrix
