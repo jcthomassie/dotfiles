@@ -10,7 +10,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug('kyazdani42/nvim-tree.lua', { ['tag'] = 'nightly' })
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lewis6991/impatient.nvim'
 Plug 'lewis6991/gitsigns.nvim'
