@@ -9,6 +9,9 @@ function set-crd-res {
 }
 
 alias auth="gcertstatus --check_remaining=1h --quiet || gcert"
+alias adb-log="adb logcat -b all -v color"
+alias adb-skip-setup="adb root && adb shell am start -a com.android.setupwizard.FOUR_CORNER_EXIT"
+alias adb-set="adb shell setprop"
 alias b="blaze"
 alias bb="blaze build"
 alias bq="blaze query"
