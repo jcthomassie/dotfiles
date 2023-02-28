@@ -14,6 +14,7 @@ Plug('kyazdani42/nvim-tree.lua', { ['tag'] = 'nightly' })
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lewis6991/impatient.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'mtdl9/vim-log-highlighting'
 Plug 'navarasu/onedark.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -115,4 +116,32 @@ cmp.setup({
         { name = 'path' },
         { name = 'buffer' },
     },
+})
+
+-- Log syntax config
+local log_syntax = vim.api.nvim_create_augroup("log_syntax", { clear = true })
+vim.api.nvim_create_autocmd("Syntax", {
+    pattern = "log",
+    group = log_syntax,
+    command = "syn match logDate '^\\d\\{2}-\\d\\{2}'",
+})
+vim.api.nvim_create_autocmd("Syntax", {
+    pattern = "log",
+    group = log_syntax,
+    command = "syn keyword logLevelDebug D",
+})
+vim.api.nvim_create_autocmd("Syntax", {
+    pattern = "log",
+    group = log_syntax,
+    command = "syn keyword logLevelInfo I",
+})
+vim.api.nvim_create_autocmd("Syntax", {
+    pattern = "log",
+    group = log_syntax,
+    command = "syn keyword logLevelWarning W",
+})
+vim.api.nvim_create_autocmd("Syntax", {
+    pattern = "log",
+    group = log_syntax,
+    command = "syn keyword logLevelError E",
 })
