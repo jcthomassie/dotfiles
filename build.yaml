@@ -41,17 +41,17 @@ build:
     - condition: !locale { platform: windows }
       include:
         - !link
-          - target: ${{ dotfiles.path }}/pwsh/profile.ps1
+          - target: ${{ repo#dotfiles.path }}/pwsh/profile.ps1
             source: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-          - target: ${{ dotfiles.path }}/nvim
+          - target: ${{ repo#dotfiles.path }}/nvim
             source: ${{ env.LocalAppData }}/nvim
-          - target: ${{ dotfiles.path }}/.wt.json
+          - target: ${{ repo#dotfiles.path }}/.wt.json
             source: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-          - target: ${{ dotfiles.path }}/python/.flake8
+          - target: ${{ repo#dotfiles.path }}/python/.flake8
             source: ~/.flake8
-          - target: ${{ dotfiles.path }}/python/.mypy.ini
+          - target: ${{ repo#dotfiles.path }}/python/.mypy.ini
             source: ~/.mypy.ini
-          - target: ${{ dotfiles.path }}/git/.gitconfig.os.win
+          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.win
             source: ~/.gitconfig.os
     # Posix only
     - condition: !default
@@ -62,17 +62,17 @@ build:
           - name: grep
           - name: curl
         - !link
-          - target: ${{ dotfiles.path }}/zsh/.zshenv
+          - target: ${{ repo#dotfiles.path }}/zsh/.zshenv
             source: ~/.zshenv
-          - target: ${{ dotfiles.path }}/nvim
+          - target: ${{ repo#dotfiles.path }}/nvim
             source: ~/.config/nvim
-          - target: ${{ dotfiles.path }}/python/.flake8
+          - target: ${{ repo#dotfiles.path }}/python/.flake8
             source: ~/.config/flake8
-          - target: ${{ dotfiles.path }}/python/.mypy.ini
+          - target: ${{ repo#dotfiles.path }}/python/.mypy.ini
             source: ~/.config/.mypy.ini
-          - target: ${{ dotfiles.path }}/git/.gitconfig.os.posix
+          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
             source: ~/.gitconfig.os
-          - target: ${{ dotfiles.path }}/kitty
+          - target: ${{ repo#dotfiles.path }}/kitty
             source: ~/.config/kitty
 
   # Install rust toolchain
@@ -96,13 +96,13 @@ build:
 
   # Apply symlinks
   - !link
-    - target: ${{ dotfiles.path }}/git/.gitconfig
+    - target: ${{ repo#dotfiles.path }}/git/.gitconfig
       source: ~/.gitconfig
-    - target: ${{ dotfiles.path }}/git/.gitignore_global
+    - target: ${{ repo#dotfiles.path }}/git/.gitignore_global
       source: ~/.gitignore_global
-    - target: ${{ dotfiles.path }}/python/.isort.cfg
+    - target: ${{ repo#dotfiles.path }}/python/.isort.cfg
       source: ~/.isort.cfg
-    - target: ${{ dotfiles.path }}/ssh/.ssh_config
+    - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config
       source: ~/.ssh/config
 
   # User specific configs
@@ -110,14 +110,14 @@ build:
     - condition: !locale { user: julianth }
       include:
         - !link
-          - target: ${{ dotfiles.path }}/git/.gitconfig.user.julianth
+          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.julianth
             source: ~/.gitconfig.user
-          - target: ${{ dotfiles.path }}/ssh/.ssh_config.user.julianth
+          - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.julianth
             source: ~/.ssh/config.user
     - condition: !default
       include:
         - !link
-          - target: ${{ dotfiles.path }}/git/.gitconfig.user.default
+          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.default
             source: ~/.gitconfig.user
-          - target: ${{ dotfiles.path }}/ssh/.ssh_config.user.default
+          - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.default
             source: ~/.ssh/config.user
