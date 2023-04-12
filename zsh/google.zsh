@@ -24,6 +24,7 @@ function setup-android-branch {
 
 alias apk-meta="aapt dump badging"
 alias auth="gcertstatus --check_remaining=1h --quiet || gcert"
+alias adb-dump="adb shell dumpsys package"
 alias adb-log="adb logcat -b all -v color"
 alias adb-skip-setup="adb root && adb shell am start -a com.android.setupwizard.FOUR_CORNER_EXIT"
 alias adb-set="adb shell setprop"
