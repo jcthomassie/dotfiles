@@ -23,10 +23,7 @@ require("lazy").setup({
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-vsnip',
     'hrsh7th/nvim-cmp',
-    {
-        'kyazdani42/nvim-tree.lua', 
-        tag = 'nightly',
-    },
+    'kyazdani42/nvim-tree.lua', 
     'kyazdani42/nvim-web-devicons',
     'lewis6991/impatient.nvim',
     'lewis6991/gitsigns.nvim',
@@ -163,3 +160,16 @@ vim.api.nvim_create_autocmd("Syntax", {
     group = log_syntax,
     command = "syn keyword logLevelError E",
 })
+
+-- nvim-tree startup config
+local function open_nvim_tree(data)
+  local directory = vim.fn.isdirectory(data.file) == 1
+  if not directory then
+    return
+  end
+
+  vim.cmd.cd(data.file)
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
