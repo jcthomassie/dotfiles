@@ -1,29 +1,47 @@
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/.plugins')
+-- Lazy bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
-Plug 'akinsho/git-conflict.nvim'
-Plug 'akinsho/toggleterm.nvim'
-Plug 'feline-nvim/feline.nvim'
-Plug 'fladson/vim-kitty'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/nvim-cmp'
-Plug('kyazdani42/nvim-tree.lua', { ['tag'] = 'nightly' })
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'lewis6991/impatient.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'mtdl9/vim-log-highlighting'
-Plug 'navarasu/onedark.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'simrat39/rust-tools.nvim'
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-
-vim.call('plug#end')
+-- Lazy dependency spec
+require("lazy").setup({
+    'akinsho/git-conflict.nvim',
+    'akinsho/toggleterm.nvim',
+    'feline-nvim/feline.nvim',
+    'fladson/vim-kitty',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/nvim-cmp',
+    {
+        'kyazdani42/nvim-tree.lua', 
+        tag = 'nightly',
+    },
+    'kyazdani42/nvim-web-devicons',
+    'lewis6991/impatient.nvim',
+    'lewis6991/gitsigns.nvim',
+    'mtdl9/vim-log-highlighting',
+    'navarasu/onedark.nvim',
+    'neovim/nvim-lspconfig',
+    'nvim-lua/plenary.nvim',
+    'nvim-lua/popup.nvim',
+    'nvim-telescope/telescope.nvim',
+    'simrat39/rust-tools.nvim',
+    {
+        'nvim-treesitter/nvim-treesitter', 
+        build = ':TSUpdate',
+    },
+})
 
 _G.__luacache_config = {
   chunks = {
