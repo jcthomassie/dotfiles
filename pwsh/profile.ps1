@@ -5,6 +5,7 @@
 [Environment]::SetEnvironmentVariable("PYENV",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
 [Environment]::SetEnvironmentVariable("PYENV_ROOT",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
 [Environment]::SetEnvironmentVariable("PYENV_HOME",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[Environment]::SetEnvironmentVariable("PATH", $env:USERPROFILE + "\.pyenv\pyenv-win\bin;" + $env:USERPROFILE + "\.pyenv\pyenv-win\shims;" + [Environment]::GetEnvironmentVariable("PATH", "User"),"User")
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
