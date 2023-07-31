@@ -12,27 +12,20 @@ if ( -Not (Get-Command choco.exe -ErrorAction SilentlyContinue)) {
 }
 
 # Install packages
-choco install -y git
 choco install -y gh
+choco install -y git
 choco install -y vim
-choco install -y vscode
-choco install -y microsoft-windows-terminal
-choco install -y visualstudio2019buildtools
-choco install -y visualstudio2019-workload-vctools
-choco install -y wsl2
-choco install -y wsl-ubuntu-2004
-choco install -y bat
-choco install -y delta
-choco install -y miniconda3 --params="'/AddToPath:1'"
 choco install -y rustup.install
 choco install -y starship
 
 choco install -y 1password
 choco install -y googlechrome
 choco install -y google-drive-file-stream
+choco install -y microsoft-windows-terminal
 choco install -y reaper
 choco install -y spotify
 choco install -y steam
+choco install -y vscode
 
 # TODO: download pre-built release instead
 # Install yurt if needed
