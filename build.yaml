@@ -42,11 +42,11 @@ build:
       include:
         - !link
           - target: ${{ repo#dotfiles.path }}/pwsh/profile.ps1
-            source: ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+            source: ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
           - target: ${{ repo#dotfiles.path }}/nvim
-            source: ${{ env.LocalAppData }}/nvim
+            source: ${{ env:LocalAppData }}/nvim
           - target: ${{ repo#dotfiles.path }}/.wt.json
-            source: ${{ env.LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
+            source: ${{ env:LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
           - target: ${{ repo#dotfiles.path }}/python/.flake8
             source: ~/.flake8
           - target: ${{ repo#dotfiles.path }}/python/.mypy.ini
