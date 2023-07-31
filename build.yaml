@@ -92,7 +92,8 @@ build:
     - name: delta
       aliases: { brew: git-delta, cargo: git-delta }
     - name: pyenv
-      managers: [ brew ]
+      aliases: { choco: pyenv-win }
+      managers: [ brew, choco ]
 
   # Apply symlinks
   - !link
