@@ -22,6 +22,21 @@ function setup-android-branch {
     fi
 }
 
+function scp-scone-apk {
+    local workspace="${1:?Missing workspace name}"
+    local apk_name="${2:-scone.apk}"
+
+    local remote_host="julianth.c.googlers.com"
+    local remote_root="google/src/cloud/julianth/$workspace"
+    local remote_relpath="google3/blaze-bin/java/com/google/android/apps/scone/$apk_name"
+    local remote_path="/$remote_root/$remote_relpath"
+    local local_path="$HOME/Downloads/${workspace}_scone.apk"
+
+    echo "REMOTE: $remote_path"
+    echo "LOCAL:  $local_path"
+    scp "$remote_host:$remote_path" "$local_path"
+}
+
 alias apk-meta="aapt dump badging"
 alias auth="gcertstatus --check_remaining=1h --quiet || gcert"
 alias adb-dump="adb shell dumpsys package"
