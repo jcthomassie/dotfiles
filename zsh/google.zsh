@@ -3,6 +3,7 @@ export CHROME_REMOTE_DESKTOP_RES_DESK="3840x2160" # Lenovo Monitor
 export CHROME_REMOTE_DESKTOP_RES_HOME="2560x1440" # LG Monitor
 export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="$CHROME_REMOTE_DESKTOP_RES_LAPTOP,$CHROME_REMOTE_DESKTOP_RES_DESK,$CHROME_REMOTE_DESKTOP_RES_HOME"
 export ANDROID_ROOT_DIR="$HOME/android"
+export SCONE_APP_NAME="com.google.android.apps.scone"
 
 function set-crd-res {
     xrandr -s "${1:?Missing argument RESOLUTION}"
@@ -35,6 +36,14 @@ function scp-scone-apk {
     echo "REMOTE: $remote_path"
     echo "LOCAL:  $local_path"
     scp "$remote_host:$remote_path" "$local_path"
+}
+
+function phenodb() {
+    adb shell sqlite3 /data/data/com.google.android.gms/databases/phenotype.db "'$*'"
+}
+
+function phenodb-scone() {
+    phenodb "SELECT quote(user), name, printf(\"%s%s%s%s%s\", intVal,case boolVal when 0 then \"FALSE\" when 1 then \"TRUE\" else \"\" end,floatVal,stringVal,extensionVal) FROM Flags WHERE committed=0 AND packageName=\"$SCONE_APP_NAME\""
 }
 
 alias apk-meta="aapt dump badging"
