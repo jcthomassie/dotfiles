@@ -7,6 +7,7 @@ $git_branch\
 $git_status\
 [](fg:green) \
 $python\
+$rust\
 $line_break\
 $jobs\
 $status\
@@ -56,4 +57,3 @@ format = "[($all_status$ahead_behind)]($style)"
 
 [python]
 python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
-
