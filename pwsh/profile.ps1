@@ -2,9 +2,9 @@
 [Environment]::SetEnvironmentVariable("STARSHIP_CONFIG", "$HOME\dotfiles\pwsh\.starship.toml")
 [Environment]::SetEnvironmentVariable("RUST_LOG", "yurt")
 [Environment]::SetEnvironmentVariable("EDITOR", "code")
-[Environment]::SetEnvironmentVariable("PYENV",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
-[Environment]::SetEnvironmentVariable("PYENV_ROOT",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
-[Environment]::SetEnvironmentVariable("PYENV_HOME",$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[Environment]::SetEnvironmentVariable("PYENV", $env:USERPROFILE + "\.pyenv\pyenv-win\", "User")
+[Environment]::SetEnvironmentVariable("PYENV_ROOT", $env:USERPROFILE + "\.pyenv\pyenv-win\", "User")
+[Environment]::SetEnvironmentVariable("PYENV_HOME", $env:USERPROFILE + "\.pyenv\pyenv-win\", "User")
 [Environment]::SetEnvironmentVariable("PATH",
   $env:USERPROFILE + "\.pyenv\pyenv-win\bin;" +
   $env:USERPROFILE + "\.pyenv\pyenv-win\shims;" +
@@ -17,10 +17,12 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+A -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+E -Function EndOfLine
 
-# Use exa
-Set-Alias -Name ls -Value exa.exe -Force -Option 'Constant','AllScope'
-function ll { exa.exe -l }
-function la { exa.exe -la }
+# Use exa if available
+if (Get-Command exa.exe -errorAction SilentlyContinue) {
+  Set-Alias -Name ls -Value exa.exe -Force -Option 'Constant', 'AllScope'
+  function ll { exa.exe -l }
+  function la { exa.exe -la }
+}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
