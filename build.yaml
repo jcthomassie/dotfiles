@@ -14,26 +14,46 @@ build:
         - !locale { distro: ubuntu }
         - !locale { distro: debian }
       include:
-        - !require [ apt, apt-get ]
+        - !package_manager
+            name: apt
+            shell_has: dpkg -l ${{ package.alias }}
+            shell_install: apt install -y ${{ package.alias }}
+            shell_uninstall: apt remove -y ${{ package.alias }}
+        - !package_manager
+            name: apt-get
+            shell_has: dpkg -l ${{ package.alias }}
+            shell_install: apt-get install -y ${{ package.alias }}
+            shell_uninstall: apt-get remove -y ${{ package.alias }}
     - condition: !locale { platform: bsd }
       include:
-          - !require [ pkg ]
+        - !package_manager
+            name: pkg
+            shell_has: pkg info ${{ package.alias }}
+            shell_install: pkg install -y ${{ package.alias }}
+            shell_uninstall: pkg remove -y ${{ package.alias }}
     - condition: !locale { platform: windows }
       include:
-        - !require [ choco ]
+        - !package_manager
+            name: choco
+            shell_install: choco install -y ${{ package.alias }}
+            shell_uninstall: choco uninstall -y ${{ package.alias }}
     - condition: !default
       include:
-        - !require [ brew ]
+        - !package_manager
+            name: brew
+            shell_bootstrap: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+            shell_has: brew list ${{ package.alias }}
+            shell_install: brew install -y ${{ package.alias }}
+            shell_uninstall: brew uninstall -y ${{ package.alias }}
 
   - !case
     # Ubuntu only
     - condition: !locale { distro: ubuntu }
       include:
-        - !install
-          - name: build-essential
-          - name: libffi-dev
-          - name: libssl-dev
-          - name: pkg-config
+        - !package { name: build-essential }
+        - !package { name: libffi-dev }
+        - !package { name: libssl-dev }
+        - !package { name: pkg-config }
 
   # Platform specifics
   - !case
@@ -41,69 +61,87 @@ build:
     - condition: !locale { platform: windows }
       include:
         - !link
-          - target: ${{ repo#dotfiles.path }}/pwsh/profile.ps1
+            target: ${{ repo#dotfiles.path }}/pwsh/profile.ps1
             source: ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
-          - target: ${{ repo#dotfiles.path }}/nvim
+        - !link
+            target: ${{ repo#dotfiles.path }}/nvim
             source: ${{ env:LocalAppData }}/nvim
-          - target: ${{ repo#dotfiles.path }}/.wt.json
+        - !link
+            target: ${{ repo#dotfiles.path }}/.wt.json
             source: ${{ env:LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-          - target: ${{ repo#dotfiles.path }}/python/.flake8
+        - !link
+            target: ${{ repo#dotfiles.path }}/python/.flake8
             source: ~/.flake8
-          - target: ${{ repo#dotfiles.path }}/python/.mypy.ini
+        - !link
+            target: ${{ repo#dotfiles.path }}/python/.mypy.ini
             source: ~/.mypy.ini
-          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.win
+        - !link
+            target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.win
             source: ~/.gitconfig.os
     # Posix only
     - condition: !default
       include:
-        - !install
-          - name: zsh
-          - name: exa
-          - name: grep
-          - name: curl
+        - !package { name: zsh }
+        - !package { name: exa }
+        - !package { name: grep }
+        - !package { name: curl }
         - !link
-          - target: ${{ repo#dotfiles.path }}/zsh/.zshenv
+            target: ${{ repo#dotfiles.path }}/zsh/.zshenv
             source: ~/.zshenv
-          - target: ${{ repo#dotfiles.path }}/nvim
+        - !link
+            target: ${{ repo#dotfiles.path }}/nvim
             source: ~/.config/nvim
-          - target: ${{ repo#dotfiles.path }}/python/.flake8
+        - !link
+            target: ${{ repo#dotfiles.path }}/python/.flake8
             source: ~/.config/flake8
-          - target: ${{ repo#dotfiles.path }}/python/.mypy.ini
+        - !link
+            target: ${{ repo#dotfiles.path }}/python/.mypy.ini
             source: ~/.config/.mypy.ini
-          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
+        - !link
+            target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
             source: ~/.gitconfig.os
-          - target: ${{ repo#dotfiles.path }}/kitty
+        - !link
+            target: ${{ repo#dotfiles.path }}/kitty
             source: ~/.config/kitty
 
   # Install rust toolchain
-  - !require [ cargo ]
-  - !install
-    - name: cargo-edit
+  - !package_manager
+      name: cargo
+      shell_bootstrap: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+      shell_has: cargo install --list | grep '^${{ package.alias }} v'
+      shell_install: cargo install ${{ package.alias }}
+      shell_uninstall: cargo uninstall ${{ package.alias }}
+  - !package
+      name: cargo-edit
       managers: [ cargo ]
 
   # Install essential packages
-  - !install
-    - name: git
-    - name: bat
-    - name: nvim
-    - name: gh
-    - name: zoxide
-    - name: ripgrep
-    - name: delta
+  - !package { name: git }
+  - !package { name: bat }
+  - !package { name: nvim }
+  - !package { name: gh }
+  - !package { name: zoxide }
+  - !package { name: ripgrep }
+  - !package
+      name: delta
       aliases: { brew: git-delta, cargo: git-delta }
-    - name: pyenv
+  - !package
+      name: pyenv
       aliases: { choco: pyenv-win }
       managers: [ brew, choco ]
 
   # Apply symlinks
   - !link
-    - target: ${{ repo#dotfiles.path }}/git/.gitconfig
+      target: ${{ repo#dotfiles.path }}/git/.gitconfig
       source: ~/.gitconfig
-    - target: ${{ repo#dotfiles.path }}/git/.gitignore_global
+  - !link
+      target: ${{ repo#dotfiles.path }}/git/.gitignore_global
       source: ~/.gitignore_global
-    - target: ${{ repo#dotfiles.path }}/python/.isort.cfg
+  - !link
+      target: ${{ repo#dotfiles.path }}/python/.isort.cfg
       source: ~/.isort.cfg
-    - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config
+  - !link
+      target: ${{ repo#dotfiles.path }}/ssh/.ssh_config
       source: ~/.ssh/config
 
   # User specific configs
@@ -111,14 +149,16 @@ build:
     - condition: !locale { user: julianth }
       include:
         - !link
-          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.julianth
+            target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.julianth
             source: ~/.gitconfig.user
-          - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.julianth
+        - !link
+            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.julianth
             source: ~/.ssh/config.user
     - condition: !default
       include:
         - !link
-          - target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.default
+            target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.default
             source: ~/.gitconfig.user
-          - target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.default
+        - !link
+            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.default
             source: ~/.ssh/config.user
