@@ -35,6 +35,9 @@ build:
       include:
         - !package_manager
             name: choco
+            shell_has:
+              shell: pwsh -noprofile
+              command: if (!(choco list --exact ${{ package.alias }})) { Exit 1 }
             shell_install: choco install -y ${{ package.alias }}
             shell_uninstall: choco uninstall -y ${{ package.alias }}
     - condition: !default
