@@ -70,12 +70,6 @@ build:
             target: ${{ repo#dotfiles.path }}/.wt.json
             source: ${{ env:LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
         - !link
-            target: ${{ repo#dotfiles.path }}/python/.flake8
-            source: ~/.flake8
-        - !link
-            target: ${{ repo#dotfiles.path }}/python/.mypy.ini
-            source: ~/.mypy.ini
-        - !link
             target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.win
             source: ~/.gitconfig.os
     # Posix only
@@ -92,17 +86,8 @@ build:
             target: ${{ repo#dotfiles.path }}/nvim
             source: ~/.config/nvim
         - !link
-            target: ${{ repo#dotfiles.path }}/python/.flake8
-            source: ~/.config/flake8
-        - !link
-            target: ${{ repo#dotfiles.path }}/python/.mypy.ini
-            source: ~/.config/.mypy.ini
-        - !link
             target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
             source: ~/.gitconfig.os
-        - !link
-            target: ${{ repo#dotfiles.path }}/kitty
-            source: ~/.config/kitty
 
   # Install rust toolchain
   - !package_manager
@@ -137,9 +122,6 @@ build:
   - !link
       target: ${{ repo#dotfiles.path }}/git/.gitignore_global
       source: ~/.gitignore_global
-  - !link
-      target: ${{ repo#dotfiles.path }}/python/.isort.cfg
-      source: ~/.isort.cfg
   - !link
       target: ${{ repo#dotfiles.path }}/ssh/.ssh_config
       source: ~/.ssh/config
