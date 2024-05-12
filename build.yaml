@@ -89,6 +89,9 @@ build:
             target: ${{ repo#dotfiles.path }}/nvim
             source: ~/.config/nvim
         - !link
+            target: ${{ repo#dotfiles.path }}/yazi
+            source: ~/.config/yazi
+        - !link
             target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
             source: ~/.gitconfig.os
 
@@ -97,7 +100,7 @@ build:
       name: cargo
       shell_bootstrap: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
       shell_has: cargo install --list | grep '^${{ package.alias }} v'
-      shell_install: cargo install ${{ package.alias }}
+      shell_install: cargo install --locked ${{ package.alias }}
       shell_uninstall: cargo uninstall ${{ package.alias }}
   - !package
       name: cargo-edit
@@ -117,6 +120,12 @@ build:
       name: pyenv
       aliases: { choco: pyenv-win }
       managers: [ brew, choco ]
+  - !package
+      name: yazi-fm
+      managers: [ cargo ]
+  - !package
+      name: yazi-cli
+      managers: [ cargo ]
 
   # Apply symlinks
   - !link
