@@ -58,6 +58,14 @@ build:
         - !package { name: libssl-dev }
         - !package { name: pkg-config }
 
+  - !case
+    # MacOS only
+    - condition: !locale { distro: macos }
+      include:
+        - !link
+            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.os.macos
+            source: ~/.ssh/config.os
+
   # Platform specifics
   - !case
     # Windows only
