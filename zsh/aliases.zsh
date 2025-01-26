@@ -31,12 +31,12 @@ if type "batcat" > /dev/null; then
     alias bat="batcat"
 fi
 
-# Use exa if available
-if type "exa" > /dev/null; then
-    alias ls="exa"
-    alias la="exa -a"
-    alias ll="exa -l"
-    alias lt="exa -T --git-ignore --level 2"
+# Use eza if available
+if type "eza" > /dev/null; then
+    alias ls="eza"
+    alias la="eza -a"
+    alias ll="eza -l"
+    alias lt="eza -T --git-ignore --level 2"
 else
     if [[ $OSTYPE == darwin* ]]; then
         alias ls="ls -G"

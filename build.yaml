@@ -87,7 +87,7 @@ build:
     - condition: !default
       include:
         - !package { name: zsh }
-        - !package { name: exa }
+        - !package { name: eza }
         - !package { name: grep }
         - !package { name: curl }
         - !link
