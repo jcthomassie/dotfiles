@@ -7,6 +7,10 @@ if [ -d "/home/linuxbrew" ]; then
     export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}";
 fi
 
+if [ -d "/opt/homebrew" ]; then 
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 if [ -d "/usr/local/go/bin" ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
