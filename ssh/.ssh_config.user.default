@@ -1,9 +1,5 @@
 Host truenas
-    HostName truenas
+    HostName truenas.local
     ForwardAgent yes
     User julian
 
-Host dev
-    HostName 10.0.0.101
-    ForwardAgent yes
-    User julian
