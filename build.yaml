@@ -129,6 +129,9 @@ build:
       aliases: { choco: pyenv-win }
       managers: [ brew, choco ]
   - !package
+      name: pyenv-virtualenv
+      managers: [ brew ]
+  - !package
       name: yazi-fm
       managers: [ cargo ]
   - !package
