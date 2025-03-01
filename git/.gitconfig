@@ -1,23 +1,41 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
-[color]
-	ui = auto
 [include]
 	path = ~/.gitconfig.user
 	path = ~/.gitconfig.os
+[init]
+    defaultBranch = main
 [alias]
+    a = "!git add ."
     d = "!git diff"
     dt = "!git difftool"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
-	publish = "!git push -u origin $(git branch-name)"
-	sync = "!git pull --all --prune --rebase --autostash"
+
 [push]
 	default = simple
+    autoSetupRemote = true
+    followTags = true
 [pull]
     rebase = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[rebase]
+    autoStash = true
+    updateRefs = true
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[color]
+	ui = auto
 [diff]
+    algorithm = histogram
     tool = vimdiff
+    mnemonicPrefix = true
+    renames = true
 [difftool]
     prompt = false
 [pager]
@@ -31,5 +49,3 @@
     navigate = true
 [interactive]
     diffFilter = delta --color-only
-[init]
-    defaultBranch = main
