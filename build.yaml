@@ -125,13 +125,6 @@ build:
       name: delta
       aliases: { brew: git-delta, cargo: git-delta }
   - !package
-      name: pyenv
-      aliases: { choco: pyenv-win }
-      managers: [ brew, choco ]
-  - !package
-      name: pyenv-virtualenv
-      managers: [ brew ]
-  - !package
       name: yazi-fm
       managers: [ cargo ]
   - !package

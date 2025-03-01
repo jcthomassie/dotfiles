@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.cargo/bin:$HOME/.poetry/bin:$HOME/.pyenv/bin:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
@@ -44,7 +44,6 @@ setopt HIST_VERIFY            # Don't execute immediately upon history expansion
 setopt HIST_BEEP              # Beep when accessing nonexistent history.
 
 # Load plugins
-type "pyenv" > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 type "rbenv" > /dev/null && eval "$(rbenv init -)"
 type "zoxide" > /dev/null && eval "$(zoxide init zsh --hook prompt)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
