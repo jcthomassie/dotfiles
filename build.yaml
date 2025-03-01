@@ -131,6 +131,11 @@ build:
       name: yazi-cli
       managers: [ cargo ]
 
+  # Install python toolchain
+  - !package_manager
+      name: uv
+      shell_bootstrap: curl -LsSf https://astral.sh/uv/install.sh | sh
+
   # Apply symlinks
   - !link
       target: ${{ repo#dotfiles.path }}/git/.gitconfig
