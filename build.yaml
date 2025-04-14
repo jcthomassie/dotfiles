@@ -145,20 +145,9 @@ build:
       source: ~/.ssh/config
 
   # User specific configs
-  - !case
-    - condition: !locale { user: julianth }
-      include:
-        - !link
-            target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.julianth
-            source: ~/.gitconfig.user
-        - !link
-            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.julianth
-            source: ~/.ssh/config.user
-    - condition: !default
-      include:
-        - !link
-            target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.default
-            source: ~/.gitconfig.user
-        - !link
-            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.default
-            source: ~/.ssh/config.user
+  - !link
+      target: ${{ repo#dotfiles.path }}/git/.gitconfig.user.default
+      source: ~/.gitconfig.user
+  - !link
+      target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.user.default
+      source: ~/.ssh/config.user
