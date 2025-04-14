@@ -4,9 +4,6 @@ build:
   - !repo
       path: ~/dotfiles
       url: https://github.com/jcthomassie/dotfiles.git
-  - !repo
-      path: ~/yurt
-      url: https://github.com/jcthomassie/yurt.git
 
   # OS specifics:
   - !case
