@@ -3,3 +3,6 @@ Include ~/.ssh/config.user
 
 Host github.com
     User git
+
+Host ssh.runpod.io
+    User jthomassie@relace.ai
