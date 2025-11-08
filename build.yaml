@@ -63,6 +63,17 @@ build:
             target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.os.macos
             source: ~/.ssh/config.os
 
+  # Install rust toolchain
+  - !package_manager
+      name: cargo
+      shell_bootstrap: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+      shell_has: cargo install --list | grep '^${{ package.alias }} v'
+      shell_install: cargo install --locked ${{ package.alias }}
+      shell_uninstall: cargo uninstall ${{ package.alias }}
+  - !package
+      name: cargo-edit
+      managers: [ cargo ]
+
   # Platform specifics
   - !case
     # Windows only
@@ -84,7 +95,7 @@ build:
     - condition: !default
       include:
         - !package { name: zsh }
-        - !package { name: eza }
+        - !package { name: eza, managers: [ cargo, brew ] }
         - !package { name: grep }
         - !package { name: curl }
         - !link
@@ -99,17 +110,6 @@ build:
         - !link
             target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
             source: ~/.gitconfig.os
-
-  # Install rust toolchain
-  - !package_manager
-      name: cargo
-      shell_bootstrap: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-      shell_has: cargo install --list | grep '^${{ package.alias }} v'
-      shell_install: cargo install --locked ${{ package.alias }}
-      shell_uninstall: cargo uninstall ${{ package.alias }}
-  - !package
-      name: cargo-edit
-      managers: [ cargo ]
 
   # Install essential packages
   - !package { name: git }
