@@ -4,10 +4,19 @@
       "Bash(uv run pytest:*)",
       "Bash(uv run mypy:*)",
       "Bash(uv run ruff:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Grep",
       "Read(~/dotfiles/**)"
     ],
     "deny": [
+      "Bash(rm:*)",
       "Bash(curl:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)"
