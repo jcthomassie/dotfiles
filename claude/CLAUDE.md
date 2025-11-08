@@ -17,8 +17,14 @@ NEVER PERFORM THESE ACTIONS WITHOUT MY EXPLICIT REQUEST OR APPROVAL
 * Adding tests or documentation
 * Destructive or risky operations (e.g. deleting files outside of source control, directly editing production data)
 * Introducing correctness issues
+* Hard-coding secrets in code files
 
-# Language-specific
+# Languages
+
+Frequently used:
+* Python
+* TypeScript
+* Rust
 
 ## Python
 
@@ -31,3 +37,15 @@ I prefer the following toolchain:
 - `pytest` for tests
 
 You should generally not run `python` or `python3` directly - use `uv run` instead. When an `.env` file is present, use `uv run --env-file .env`.
+
+# Cloud
+
+I prefer to use Modal and AWS for infra. We also use CloudFlare for DNS and a CloudFlare Workers API gateway.
+
+Prefer to use IaC (infrastructure-as-code). Avoid destructive actions over CLI.
+
+Common tools:
+- `aws` cli
+- `kubectl` for EKS clusters
+- `terraform` (and sometimes AWS CDK)
+- `modal` cli (usually should run via `uv run`)
