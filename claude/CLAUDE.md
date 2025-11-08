@@ -38,6 +38,8 @@ I prefer the following toolchain:
 
 You should generally not run `python` or `python3` directly - use `uv run` instead. When an `.env` file is present, use `uv run --env-file .env`.
 
+Avoid using `import` in functions - do it in the import block at the top of the file.
+
 # Cloud
 
 I prefer to use Modal and AWS for infra. We also use CloudFlare for DNS and a CloudFlare Workers API gateway.
