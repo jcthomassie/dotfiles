@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv run pytest:*)",
+      "Bash(uv run mypy:*)",
+      "Bash(uv run ruff:*)",
+      "Read(~/dotfiles/**)"
+    ],
+    "deny": [
+      "Bash(curl:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "env": {
+    "AWS_PROFILE": "relace-admin"
+  },
+  "awsAuthRefresh": "aws sso login --profile relace-admin",
+  "includeCoAuthoredBy": false
+}

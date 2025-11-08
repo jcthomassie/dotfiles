@@ -146,6 +146,9 @@ build:
   - !link
       target: ${{ repo#dotfiles.path }}/claude/CLAUDE.md
       source: ~/.claude/CLAUDE.md
+  - !link
+      target: ${{ repo#dotfiles.path }}/claude/settings.json
+      source: ~/.claude/settings.json
 
   # User specific configs
   - !link
