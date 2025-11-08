@@ -143,6 +143,9 @@ build:
   - !link
       target: ${{ repo#dotfiles.path }}/ssh/.ssh_config
       source: ~/.ssh/config
+  - !link
+      target: ${{ repo#dotfiles.path }}/claude/CLAUDE.md
+      source: ~/.claude/CLAUDE.md
 
   # User specific configs
   - !link
