@@ -10,6 +10,10 @@
 * Avoid using emojis
 * Avoid docstrings in cases where the function semantics are obvious from the name and parameter names/types
 
+# Tools
+
+Always use `relace_search` for codebase exploration. Do not call it in parallel with other tools.
+
 # Forbidden actions!!
 
 NEVER PERFORM THESE ACTIONS WITHOUT MY EXPLICIT REQUEST OR APPROVAL
