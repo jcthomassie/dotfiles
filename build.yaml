@@ -21,6 +21,13 @@ build:
             shell_has: dpkg -l ${{ package.alias }}
             shell_install: apt-get install -y ${{ package.alias }}
             shell_uninstall: apt-get remove -y ${{ package.alias }}
+    - condition: !locale { distro: fedora }
+      include:
+        - !package_manager
+            name: dnf
+            shell_has: dnf list -y installed ${{ package.alias }}
+            shell_install: dnf install -y ${{ package.alias }}
+            shell_uninstall: dnf remove -y ${{ package.alias }}
     - condition: !locale { platform: bsd }
       include:
         - !package_manager
@@ -28,15 +35,6 @@ build:
             shell_has: pkg info ${{ package.alias }}
             shell_install: pkg install -y ${{ package.alias }}
             shell_uninstall: pkg remove -y ${{ package.alias }}
-    - condition: !locale { platform: windows }
-      include:
-        - !package_manager
-            name: choco
-            shell_has:
-              shell: pwsh -noprofile
-              command: if (!(choco list --exact ${{ package.alias }})) { Exit 1 }
-            shell_install: choco install -y ${{ package.alias }}
-            shell_uninstall: choco uninstall -y ${{ package.alias }}
     - condition: !default
       include:
         - !package_manager
@@ -74,44 +72,11 @@ build:
       name: cargo-edit
       managers: [ cargo ]
 
-  # Platform specifics
-  - !case
-    # Windows only
-    - condition: !locale { platform: windows }
-      include:
-        - !link
-            target: ${{ repo#dotfiles.path }}/pwsh/profile.ps1
-            source: ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
-        - !link
-            target: ${{ repo#dotfiles.path }}/nvim
-            source: ${{ env:LocalAppData }}/nvim
-        - !link
-            target: ${{ repo#dotfiles.path }}/.wt.json
-            source: ${{ env:LocalAppData }}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
-        - !link
-            target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.win
-            source: ~/.gitconfig.os
-    # Posix only
-    - condition: !default
-      include:
-        - !package { name: zsh }
-        - !package { name: eza, managers: [ cargo, brew ] }
-        - !package { name: grep }
-        - !package { name: curl }
-        - !link
-            target: ${{ repo#dotfiles.path }}/zsh/.zshenv
-            source: ~/.zshenv
-        - !link
-            target: ${{ repo#dotfiles.path }}/nvim
-            source: ~/.config/nvim
-        - !link
-            target: ${{ repo#dotfiles.path }}/yazi
-            source: ~/.config/yazi
-        - !link
-            target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
-            source: ~/.gitconfig.os
-
   # Install essential packages
+  - !package { name: zsh }
+  - !package { name: eza, managers: [ cargo, brew ] }
+  - !package { name: grep }
+  - !package { name: curl }
   - !package { name: git }
   - !package { name: bat }
   - !package { name: nvim }
@@ -134,6 +99,18 @@ build:
       shell_bootstrap: curl -LsSf https://astral.sh/uv/install.sh | sh
 
   # Apply symlinks
+  - !link
+      target: ${{ repo#dotfiles.path }}/zsh/.zshenv
+      source: ~/.zshenv
+  - !link
+      target: ${{ repo#dotfiles.path }}/nvim
+      source: ~/.config/nvim
+  - !link
+      target: ${{ repo#dotfiles.path }}/yazi
+      source: ~/.config/yazi
+  - !link
+      target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
+      source: ~/.gitconfig.os
   - !link
       target: ${{ repo#dotfiles.path }}/git/.gitconfig
       source: ~/.gitconfig
