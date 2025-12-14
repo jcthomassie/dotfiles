@@ -1,5 +1,4 @@
 Host truenas
-    HostName truenas.local
+    HostName truenas.julianthomassie.com
     ForwardAgent yes
     User julian
-
