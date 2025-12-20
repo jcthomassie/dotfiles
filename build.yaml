@@ -109,9 +109,6 @@ build:
       target: ${{ repo#dotfiles.path }}/yazi
       source: ~/.config/yazi
   - !link
-      target: ${{ repo#dotfiles.path }}/alacritty
-      source: ~/.config/alacritty
-  - !link
       target: ${{ repo#dotfiles.path }}/git/.gitconfig.os.posix
       source: ~/.gitconfig.os
   - !link
