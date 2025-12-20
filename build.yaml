@@ -60,6 +60,12 @@ build:
         - !link
             target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.os.macos
             source: ~/.ssh/config.os
+    # Linux only
+    - condition: !locale { platform: linux }
+      include:
+        - !link
+            target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.os.linux
+            source: ~/.ssh/config.os
 
   # Install rust toolchain
   - !package_manager
