@@ -53,3 +53,5 @@ if [[ "$TERM" = "xterm-kitty" ]]; then
   alias ssh="kitty +kitten ssh"
 fi
 
+alias wezterm='flatpak run org.wezfurlong.wezterm'
+
