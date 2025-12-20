@@ -48,10 +48,9 @@ else
     alias ll="ls -lAFh"
 fi
 
-# Configure kitty ssh if needed
-if [[ "$TERM" = "xterm-kitty" ]]; then
-  alias ssh="kitty +kitten ssh"
-fi
-
 alias wezterm='flatpak run org.wezfurlong.wezterm'
+
+if [[ "$TERM" == "wezterm" ]]; then
+  alias ssh="TERM=xterm-256color ssh"
+fi
 
