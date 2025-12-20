@@ -129,6 +129,9 @@ build:
   - !link
       target: ${{ repo#dotfiles.path }}/claude/settings.json
       source: ~/.claude/settings.json
+  - !link
+      target: ${{ repo#dotfiles.path }}/wezterm/.wezterm.lua
+      source: ~/.wezterm.lua
 
   # User specific configs
   - !link
