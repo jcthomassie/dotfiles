@@ -48,7 +48,9 @@ else
     alias ll="ls -lAFh"
 fi
 
-alias wezterm='flatpak run org.wezfurlong.wezterm'
+if ! type "wezterm" > /dev/null && type "flatpak" > /dev/null; then
+    alias wezterm='flatpak run org.wezfurlong.wezterm'
+fi
 
 if [[ "$TERM" == "wezterm" ]]; then
   alias ssh="TERM=xterm-256color ssh"

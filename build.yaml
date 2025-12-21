@@ -60,6 +60,10 @@ build:
         - !link
             target: ${{ repo#dotfiles.path }}/ssh/.ssh_config.os.macos
             source: ~/.ssh/config.os
+        - !package { name: hammerspoon, managers: [ brew ] }
+        - !link
+            target: ${{ repo#dotfiles.path }}/hammerspoon
+            source: ~/.hammerspoon
     # Linux only
     - condition: !locale { platform: linux }
       include:
@@ -79,6 +83,7 @@ build:
       managers: [ cargo ]
 
   # Install essential packages
+  - !package { name: wezterm }
   - !package { name: zsh }
   - !package { name: eza, managers: [ cargo, brew ] }
   - !package { name: grep }

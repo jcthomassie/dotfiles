@@ -83,3 +83,7 @@ python_venv() {
 python_venv
 
 add-zsh-hook chpwd python_venv
+
+TRAPWINCH() {
+  zle && zle reset-prompt
+}
