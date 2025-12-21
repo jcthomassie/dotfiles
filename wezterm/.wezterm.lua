@@ -6,13 +6,26 @@ config.font = wezterm.font_with_fallback { 'FiraCode Nerd Font', 'FiraCode', 'Ca
 config.font_size = 12
 config.color_scheme = 'OneHalfDark'
 
-config.front_end = 'WebGpu'
-config.webgpu_power_preference = 'HighPerformance'
+local is_linux = wezterm.target_triple:find('linux') ~= nil
+local is_macos = wezterm.target_triple:find('apple%-darwin') ~= nil
+
+if is_macos then
+  config.front_end = 'WebGpu'
+  config.webgpu_power_preference = 'HighPerformance'
+else
+  config.front_end = 'OpenGL'
+  config.enable_wayland = false  -- Force XWayland for proper window decorations
+end
 config.scrollback_lines = 10000
+
+-- Workaround for Flatpak close confirmation bug
+wezterm.on('mux-is-process-stateful', function(proc)
+  return false
+end)
 
 config.initial_cols = 120
 config.initial_rows = 28
-config.window_decorations = 'RESIZE'
+config.window_decorations = 'NONE'
 config.window_padding = {
   left = 2,
   right = 2,
@@ -26,9 +39,8 @@ config.window_close_confirmation = 'NeverPrompt'
 -- Source: https://gist.github.com/xieve/fc67361a2a0cb8fc23ab8369a8fc1170
 local wuake = (function()
   local module = {}
-  local data_dir = (os.getenv('XDG_DATA_HOME') or wezterm.home_dir .. '/.local/share') .. '/wezterm/'
-  local pidfile_path = data_dir .. 'wuake_pid'
-  local last_exit_path = data_dir .. 'wuake_last_exit'
+  local pidfile_path = wezterm.home_dir .. '/.wezterm-wuake.pid'
+  local last_exit_path = wezterm.home_dir .. '/.wezterm-wuake-exit'
   local pid = wezterm.procinfo.pid()
 
   local function read_file(file_path)
@@ -83,7 +95,8 @@ local wuake = (function()
       if wezterm.GLOBAL.wuake_setup_done then return end
 
       local this_proc_info = wezterm.procinfo.get_info_for_pid(pid)
-      if this_proc_info.argv[2] ~= 'connect' or this_proc_info.argv[3] ~= params.domain then
+      local argv_str = table.concat(this_proc_info.argv or {}, ' ')
+      if not argv_str:find('connect') or not argv_str:find(params.domain) then
         -- not a wuake window
       else
         local now = tonumber(wezterm.time.now():format('%s%.f'))
@@ -101,6 +114,9 @@ local wuake = (function()
             screens.active.height * params.height_factor - params.margin_bottom - params.margin_top
           )
           window:set_config_overrides(params.config_overrides)
+          if is_macos then
+            window:perform_action(wezterm.action.SetWindowLevel 'AlwaysOnTop', window:active_pane())
+          end
         else
           os.remove(pidfile_path)
           close_dropdown()
@@ -125,9 +141,8 @@ wuake.setup {
   config = config,
   height_factor = 0.4,
   config_overrides = {
-    window_decorations = 'RESIZE',  -- resize handles only, no title bar to drag
+    window_decorations = 'NONE',
     window_padding = { left = 4, right = 4, top = 4, bottom = 4 },
-    window_level = 'AlwaysOnTop',
   },
 }
 
