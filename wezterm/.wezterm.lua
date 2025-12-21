@@ -125,11 +125,32 @@ wuake.setup {
   config = config,
   height_factor = 0.4,
   config_overrides = {
-    window_decorations = 'NONE',
+    window_decorations = 'RESIZE',  -- resize handles only, no title bar to drag
     window_padding = { left = 4, right = 4, top = 4, bottom = 4 },
     window_level = 'AlwaysOnTop',
   },
 }
+
+-- Window positioning helpers for wuake
+local function snap_window(window, position)
+  local screens = wezterm.gui.screens()
+  local screen = screens.active
+  local height = screen.height * 0.4
+
+  if position == 'full' then
+    window:set_position(screen.x, screen.y)
+    window:set_inner_size(screen.width, screen.height)
+  elseif position == 'left' then
+    window:set_position(screen.x, screen.y)
+    window:set_inner_size(screen.width / 2, height)
+  elseif position == 'right' then
+    window:set_position(screen.x + screen.width / 2, screen.y)
+    window:set_inner_size(screen.width / 2, height)
+  elseif position == 'top' then
+    window:set_position(screen.x, screen.y)
+    window:set_inner_size(screen.width, height)
+  end
+end
 
 config.keys = {
   {
@@ -201,6 +222,27 @@ config.keys = {
     key = 'Space',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.QuickSelect,
+  },
+  -- Window snapping for wuake
+  {
+    key = 'LeftArrow',
+    mods = 'CTRL|SUPER',
+    action = wezterm.action_callback(function(window) snap_window(window, 'left') end),
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CTRL|SUPER',
+    action = wezterm.action_callback(function(window) snap_window(window, 'right') end),
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CTRL|SUPER',
+    action = wezterm.action_callback(function(window) snap_window(window, 'full') end),
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CTRL|SUPER',
+    action = wezterm.action_callback(function(window) snap_window(window, 'top') end),
   },
 }
 
