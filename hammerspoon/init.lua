@@ -1,6 +1,6 @@
 require('hs.ipc')
 
-hs.hotkey.bind({ 'ctrl' }, '`', function()
+hs.hotkey.bind({ 'ctrl', 'shift' }, '`', function()
   local app = hs.application.get('com.github.wez.wezterm')
 
   if app then
