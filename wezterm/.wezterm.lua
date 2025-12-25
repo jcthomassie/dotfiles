@@ -25,7 +25,7 @@ end)
 
 config.initial_cols = 120
 config.initial_rows = 28
-config.window_decorations = 'NONE'
+config.window_decorations = 'RESIZE'
 config.window_padding = {
   left = 2,
   right = 2,
