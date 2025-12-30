@@ -33,7 +33,11 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'nvim-lua/popup.nvim',
     'nvim-telescope/telescope.nvim',
-    'simrat39/rust-tools.nvim',
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^5',
+        lazy = false,
+    },
     {
         'nvim-treesitter/nvim-treesitter', 
         build = ':TSUpdate',
@@ -80,19 +84,10 @@ require('toggleterm').setup {
     terminal_mappings = true,
 }
 
--- Rust LSP extended config: https://github.com/simrat39/rust-tools.nvim#configuration
-require('rust-tools').setup({
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
+-- Rust LSP config: https://github.com/mrcjkb/rustaceanvim
+vim.g.rustaceanvim = {
     server = {
-        settings = {
+        default_settings = {
             ["rust-analyzer"] = {
                 checkOnSave = {
                     command = "clippy"
@@ -100,10 +95,11 @@ require('rust-tools').setup({
             }
         }
     },
-})
+}
 
--- Python LSP config
-require('lspconfig')['pyright'].setup({})
+-- Python LSP config (Neovim 0.11+ native API)
+vim.lsp.config('pyright', {})
+vim.lsp.enable('pyright')
 
 -- Completions: https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require('cmp')
