@@ -12,9 +12,9 @@ local is_macos = wezterm.target_triple:find('apple%-darwin') ~= nil
 if is_macos then
   config.front_end = 'WebGpu'
   config.webgpu_power_preference = 'HighPerformance'
+  config.window_decorations = 'RESIZE'
 else
-  config.front_end = 'OpenGL'
-  config.enable_wayland = false  -- Force XWayland for proper window decorations
+  config.window_decorations = 'NONE'
 end
 config.scrollback_lines = 10000
 
@@ -25,7 +25,6 @@ end)
 
 config.initial_cols = 120
 config.initial_rows = 28
-config.window_decorations = 'RESIZE'
 config.window_padding = {
   left = 2,
   right = 2,
