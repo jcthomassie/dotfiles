@@ -17,7 +17,6 @@ require("lazy").setup({
     'akinsho/git-conflict.nvim',
     'akinsho/toggleterm.nvim',
     'feline-nvim/feline.nvim',
-    'fladson/vim-kitty',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
