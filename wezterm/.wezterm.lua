@@ -15,6 +15,16 @@ if is_macos then
   config.window_decorations = 'RESIZE'
 else
   config.window_decorations = 'NONE'
+  config.window_frame = {
+    border_left_width = '0.1cell',
+    border_right_width = '0.1cell',
+    border_bottom_height = '0.05cell',
+    border_top_height = '0.05cell',
+    border_left_color = '#212121',
+    border_right_color = '#212121',
+    border_bottom_color = '#212121',
+    border_top_color = '#212121',
+  }
 end
 config.scrollback_lines = 10000
 

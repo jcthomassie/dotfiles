@@ -16,6 +16,8 @@ vim.opt.relativenumber = true
 -- Misc
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
+vim.opt.wildmenu = true
+vim.opt.wildmode = "list:longest,full"
 
 require('plugins')
 require('mappings')
