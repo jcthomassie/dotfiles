@@ -176,6 +176,29 @@ local function snap_window(window, position)
   end
 end
 
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'NONE',
+    action = wezterm.action.ScrollByLine(-1),
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'NONE',
+    action = wezterm.action.ScrollByLine(1),
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'SHIFT',
+    action = wezterm.action.ScrollByLine(-5),
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'SHIFT',
+    action = wezterm.action.ScrollByLine(5),
+  },
+}
+
 config.keys = {
   {
     key = 'Enter',
