@@ -12,19 +12,16 @@
       "Grep",
       "Read(~/dotfiles/**)"
     ],
-    "deny": [
+    "ask": [
       "Bash(rm:*)",
-      "Bash(curl:*)",
       "Bash(git push:*)",
-      "Bash(git reset:*)",
+      "Bash(git reset:*)"
+    ],
+    "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)"
     ]
   },
-  "env": {
-    "AWS_PROFILE": "relace-admin"
-  },
-  "awsAuthRefresh": "aws sso login --profile relace-admin",
   "includeCoAuthoredBy": false
 }
