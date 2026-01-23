@@ -94,6 +94,7 @@ build:
   - !package { name: gh }
   - !package { name: zoxide }
   - !package { name: ripgrep }
+  - !package { name: fzf }
   - !package
       name: delta
       aliases: { brew: git-delta, cargo: git-delta }

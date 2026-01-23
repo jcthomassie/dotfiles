@@ -68,6 +68,23 @@ autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
+# fzf keybindings (Ctrl+R for history, Ctrl+T for files)
+[[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
+export FZF_DEFAULT_OPTS="
+  --height=15
+  --layout=reverse
+  --border=rounded
+  --margin=0,1
+  --prompt='  '
+  --pointer='▶'
+  --marker='✓'
+  --info=inline-right
+"
+export FZF_CTRL_R_OPTS="
+  --scheme=history
+  --bind=ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort
+"
+
 # Define hooks
 _VENV_ROOT=".venv"
 _VENV_PARENT=""
