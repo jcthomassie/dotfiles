@@ -25,6 +25,7 @@ alias gr="git rebase"
 alias gri="git rebase -i"
 alias gs="git status"
 alias gt="git tag"
+alias lg="gitui"
 
 # Handle Ubuntu batcat -> bat
 if type "batcat" > /dev/null; then
