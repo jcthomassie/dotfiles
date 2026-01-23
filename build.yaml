@@ -95,6 +95,8 @@ build:
   - !package { name: zoxide }
   - !package { name: ripgrep }
   - !package { name: fzf }
+  - !package { name: gitui, managers: [ cargo ] }
+  - !package { name: direnv }
   - !package
       name: delta
       aliases: { brew: git-delta, cargo: git-delta }
