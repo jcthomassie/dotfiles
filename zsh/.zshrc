@@ -115,3 +115,9 @@ TRAPWINCH() {
 # fzf keybindings (must be at end to avoid being overridden)
 [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
 source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh
+
+# Google Cloud SDK (gcloud)
+if [[ -d "$HOME/.local/share/google-cloud-sdk" ]]; then
+  source "$HOME/.local/share/google-cloud-sdk/path.zsh.inc"
+  source "$HOME/.local/share/google-cloud-sdk/completion.zsh.inc"
+fi
