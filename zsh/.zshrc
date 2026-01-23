@@ -65,11 +65,15 @@ autoload -U $COMPDIR/*(.:t)
 autoload -U colors && colors
 autoload -U compinit && compinit -i -d "${ZSH_COMPDUMP}"
 
+# fzf-tab (must load after compinit)
+source $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':fzf-tab:complete:*' fzf-preview 'bat --color=always --style=numbers --line-range=:100 $realpath 2>/dev/null || eza --color=always --icons $realpath 2>/dev/null || echo $realpath'
+zstyle ':fzf-tab:*' fzf-flags --height=15
+
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
-# fzf keybindings (Ctrl+R for history, Ctrl+T for files)
-[[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
+# fzf configuration
 export FZF_DEFAULT_OPTS="
   --height=15
   --layout=reverse
@@ -80,9 +84,11 @@ export FZF_DEFAULT_OPTS="
   --marker='✓'
   --info=inline-right
 "
-export FZF_CTRL_R_OPTS="
-  --scheme=history
-  --bind=ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort
+export FZF_CTRL_R_OPTS="--scheme=history --bind='ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort'"
+export FZF_CTRL_T_OPTS="
+  --preview 'bat --color=always --style=numbers --line-range=:200 {} 2>/dev/null || eza --color=always --icons -la {} 2>/dev/null'
+  --preview-window=right:50%:wrap
+  --bind='ctrl-/:toggle-preview'
 "
 
 # Define hooks
@@ -104,3 +110,7 @@ add-zsh-hook chpwd python_venv
 TRAPWINCH() {
   zle && zle reset-prompt
 }
+
+# fzf keybindings (must be at end to avoid being overridden)
+[[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
+source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh
