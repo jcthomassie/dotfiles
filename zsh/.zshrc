@@ -46,6 +46,7 @@ setopt HIST_BEEP              # Beep when accessing nonexistent history.
 # Load plugins
 type "rbenv" > /dev/null && eval "$(rbenv init -)"
 type "zoxide" > /dev/null && eval "$(zoxide init zsh --hook prompt)"
+type "direnv" > /dev/null && eval "$(direnv hook zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
