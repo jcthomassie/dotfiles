@@ -15,7 +15,6 @@ Personal dotfiles managed with [yurt](https://github.com/jcthomassie/yurt), a de
 - `git/` - Git config and global gitignore
 - `ssh/` - SSH config with platform/user-specific includes
 - `wezterm/` - WezTerm terminal config
-- `hammerspoon/` - macOS automation (Hammerspoon)
 - `yazi/` - Yazi file manager config
 - `claude/` - Claude Code settings
 
