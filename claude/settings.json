@@ -45,7 +45,9 @@
       "Bash(aws eks list-:*)",
       "Bash(aws eks describe-:*)",
       "Grep",
-      "Read(~/dotfiles/**)"
+      "Read(~/dotfiles/**)",
+      "WebSearch",
+      "WebFetch"
     ],
     "ask": [
       "Bash(rm:*)",
