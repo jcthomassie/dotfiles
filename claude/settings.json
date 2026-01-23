@@ -2,6 +2,11 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
+      "Bash(cargo check:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)",
       "Bash(uv run pytest:*)",
       "Bash(uv run mypy:*)",
       "Bash(uv run ruff:*)",
