@@ -7,4 +7,6 @@ zsh/.zcompdump*
 # Completions (opt-in)
 zsh/completions/_*
 
-.claude
+# Local settings (not shared)
+*.local.json
+
