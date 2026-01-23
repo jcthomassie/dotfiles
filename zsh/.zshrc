@@ -114,6 +114,7 @@ TRAPWINCH() {
 
 # fzf keybindings (must be at end to avoid being overridden)
 [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
+[[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh
 
 # Google Cloud SDK (gcloud)
