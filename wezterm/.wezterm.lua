@@ -5,6 +5,18 @@ local config = wezterm.config_builder()
 config.font = wezterm.font_with_fallback { 'FiraCode Nerd Font', 'FiraCode', 'CaskaydiaCove Nerd Font Mono' }
 config.font_size = 12
 config.color_scheme = 'OneHalfDark'
+config.colors = {
+  brights = {
+    '#848b98',  -- bright black (fixed: was #282c34, same as background)
+    '#e06c75',  -- bright red
+    '#98c379',  -- bright green
+    '#e5c07b',  -- bright yellow
+    '#61afef',  -- bright blue
+    '#c678dd',  -- bright magenta
+    '#56b6c2',  -- bright cyan
+    '#dcdfe4',  -- bright white
+  },
+}
 
 local is_macos = wezterm.target_triple:find('apple%-darwin') ~= nil
 
