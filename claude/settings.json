@@ -44,27 +44,48 @@
       "Bash(aws iam get-:*)",
       "Bash(aws eks list-:*)",
       "Bash(aws eks describe-:*)",
+      "Bash(terraform plan:*)",
+      "Bash(terraform fmt:*)",
+      "Bash(terraform validate:*)",
+      "Bash(terraform show:*)",
+      "Bash(terraform output:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker images:*)",
+      "Bash(docker inspect:*)",
+      "Bash(docker compose ps:*)",
+      "Bash(docker compose logs:*)",
       "Grep",
       "Read(~/dotfiles/**)",
       "WebSearch",
       "WebFetch"
     ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)"
+    ],
     "ask": [
       "Bash(rm:*)",
       "Bash(git push:*)",
       "Bash(git reset:*)"
-    ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)"
     ]
-  },
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true
   },
   "statusLine": {
     "type": "command",
-    "command": "/bin/bash /Users/julian/.claude/statusline-command.sh"
+    "command": "/bin/bash $HOME/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   }
 }

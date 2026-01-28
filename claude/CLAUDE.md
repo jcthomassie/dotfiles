@@ -50,14 +50,29 @@ Avoid using `import` in functions - do it in the import block at the top of the 
 
 Avoid directly editing `Cargo.toml` - use `cargo` commands instead (e.g. `cargo add` to add a dependency).
 
+## Shell
+
+- Shell: `zsh`
+- Terminal: WezTerm
+
 ## Cloud
 
 I prefer to use Modal and AWS for infra. We also use CloudFlare for DNS and a CloudFlare Workers API gateway.
 
 Prefer to use IaC (infrastructure-as-code). Avoid destructive actions over CLI.
 
+Always be mindful of the current kube context (`kubectx`) and SSO/auth profile (e.g. `AWS_PROFILE`) when running infrastructure CLI commands to avoid operating on the wrong cluster or account.
+
 Common tools:
 - `aws` cli
-- `kubectl` for EKS clusters
+- `gcloud` cli
+- `kubectl` and `kubectx` for Kubernetes
 - `terraform` (and sometimes AWS CDK)
 - `modal` cli (usually should run via `uv run`)
+
+### Kubernetes
+
+- **Production**: AWS EKS
+- **ML training**: GCP GKE (also use GCS for storage)
+- Use `kubectx` for context switching between clusters
+- Use `kubectl` for cluster operations
