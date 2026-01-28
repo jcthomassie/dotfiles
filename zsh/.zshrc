@@ -120,7 +120,9 @@ fzf-history-widget() {
   fc -W
   local hfile="$HISTFILE"
   local reverse_cmd=$( (( $+commands[tac] )) && echo "tac" || echo "tail -r" )
-  local hist_cmd="sed -n 's/^: [0-9]*:[0-9]*;//p' \"$hfile\" | $reverse_cmd"
+  local clip_cmd=$( [[ "$OSTYPE" == darwin* ]] && echo "pbcopy" || echo "xclip -selection clipboard" )
+  # LC_ALL=C ensures sed treats input as raw bytes (fixes BSD sed "illegal byte sequence" on macOS)
+  local hist_cmd="LC_ALL=C sed -n 's/^: [0-9]*:[0-9]*;//p' \"$hfile\" | $reverse_cmd"
   local selected
   local bold=$'\x1b[1m' dim=$'\x1b[2m' reset=$'\x1b[0m'
   selected=$(eval "$hist_cmd" | fzf \
@@ -134,9 +136,9 @@ fzf-history-widget() {
     --bind="ctrl-d:execute-silent(
       hf=\"$hfile\"
       cmd={}
-      grep -vF \";\$cmd\" \"\$hf\" > \"\$hf.tmp\" && mv \"\$hf.tmp\" \"\$hf\"
+      LC_ALL=C grep -vF \";\$cmd\" \"\$hf\" > \"\$hf.tmp\" && mv \"\$hf.tmp\" \"\$hf\"
     )+reload($hist_cmd)" \
-    --bind='ctrl-y:execute-silent(echo -n {} | xclip -selection clipboard)+abort')
+    --bind="ctrl-y:execute-silent(echo -n {} | $clip_cmd)+abort")
   fc -R
   if [[ -n "$selected" ]]; then
     BUFFER="$selected"
