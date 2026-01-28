@@ -82,7 +82,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/bin/bash $HOME/.claude/statusline-command.sh"
+    "command": "/bin/zsh $HOME/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,

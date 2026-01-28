@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # Claude Code statusline - mirrors p10k rainbow style
 
 input=$(cat)
@@ -9,7 +9,7 @@ current_dir=$(echo "$input" | jq -r '.workspace.current_dir // ""')
 context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
 # Shorten directory with tilde for home
-short_dir="${current_dir/#$HOME/\~}"
+short_dir="${current_dir/#$HOME/~}"
 
 # Git branch (if in repo)
 git_branch=""
