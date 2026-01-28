@@ -119,7 +119,8 @@ source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh
 fzf-history-widget() {
   fc -W
   local hfile="$HISTFILE"
-  local hist_cmd="sed -n 's/^: [0-9]*:[0-9]*;//p' \"$hfile\" | tac"
+  local reverse_cmd=$( (( $+commands[tac] )) && echo "tac" || echo "tail -r" )
+  local hist_cmd="sed -n 's/^: [0-9]*:[0-9]*;//p' \"$hfile\" | $reverse_cmd"
   local selected
   local bold=$'\x1b[1m' dim=$'\x1b[2m' reset=$'\x1b[0m'
   selected=$(eval "$hist_cmd" | fzf \
