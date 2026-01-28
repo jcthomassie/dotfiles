@@ -84,7 +84,6 @@ export FZF_DEFAULT_OPTS="
   --marker='✓'
   --info=inline-right
 "
-export FZF_CTRL_R_OPTS="--scheme=history --bind='ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort'"
 export FZF_CTRL_T_OPTS="
   --preview 'bat --color=always --style=numbers --line-range=:200 {} 2>/dev/null || eza --color=always --icons -la {} 2>/dev/null'
   --preview-window=right:50%:wrap
@@ -111,10 +110,41 @@ TRAPWINCH() {
   zle && zle reset-prompt
 }
 
-# fzf keybindings (must be at end to avoid being overridden)
+# fzf keybindings
 [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
 [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh
+
+# Custom fzf history widget with delete support (overrides default Ctrl+R)
+fzf-history-widget() {
+  fc -W
+  local hfile="$HISTFILE"
+  local hist_cmd="sed -n 's/^: [0-9]*:[0-9]*;//p' \"$hfile\" | tac"
+  local selected
+  local bold=$'\x1b[1m' dim=$'\x1b[2m' reset=$'\x1b[0m'
+  selected=$(eval "$hist_cmd" | fzf \
+    --scheme=history \
+    --border-label=' HISTORY ' \
+    --border-label-pos=3 \
+    --footer="${bold}Enter${reset}${dim}: select${reset}  ${bold}^D${reset}${dim}: delete${reset}  ${bold}^Y${reset}${dim}: copy${reset}  ${bold}^/${reset}${dim}: preview${reset}" \
+    --preview='echo {}' \
+    --preview-window='down,3,wrap,hidden' \
+    --bind='ctrl-/:toggle-preview' \
+    --bind="ctrl-d:execute-silent(
+      hf=\"$hfile\"
+      cmd={}
+      grep -vF \";\$cmd\" \"\$hf\" > \"\$hf.tmp\" && mv \"\$hf.tmp\" \"\$hf\"
+    )+reload($hist_cmd)" \
+    --bind='ctrl-y:execute-silent(echo -n {} | xclip -selection clipboard)+abort')
+  fc -R
+  if [[ -n "$selected" ]]; then
+    BUFFER="$selected"
+    CURSOR=$#BUFFER
+  fi
+  zle reset-prompt
+}
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
 
 # Google Cloud SDK (gcloud)
 if [[ -d "$HOME/.local/share/google-cloud-sdk" ]]; then
