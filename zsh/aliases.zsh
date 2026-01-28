@@ -2,31 +2,6 @@
 alias reload="exec zsh -l"
 alias dots="${EDITOR:-nvim} $DOTS_REPO_ROOT && reload"
 
-# Git
-alias ga="git add"
-alias gb="git branch"
-alias gba="git branch --all"
-alias gc="git commit -m"
-alias gca="git commit --amend"
-alias gcan="git commit --amend --no-edit"
-alias gd="git diff"
-alias gdp="git diff HEAD^"
-alias gf="git fetch"
-alias gfa="git fetch --all"
-alias gfp="git fetch --prune"
-alias gl="git log"
-alias glog="git log --oneline --decorate --graph"
-alias gm="git merge"
-alias gp="git pull"
-alias gpa="git pull --autostash"
-alias gpr="git pull --rebase"
-alias gpra="git pull --rebase --autostash"
-alias gr="git rebase"
-alias gri="git rebase -i"
-alias gs="git status"
-alias gt="git tag"
-alias lg="gitui"
-
 # Handle Ubuntu batcat -> bat
 if type "batcat" > /dev/null; then
     alias bat="batcat"
