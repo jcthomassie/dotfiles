@@ -5,7 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts/bin:$PATH"
 export ZSH_CACHE_DIR="$HOME/.cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 export ZSH_HISTORY="$HOME/.zsh_history"
