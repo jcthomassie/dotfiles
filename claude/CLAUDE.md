@@ -59,7 +59,7 @@ Avoid directly editing `Cargo.toml` - use `cargo` commands instead (e.g. `cargo 
 
 I prefer to use Modal and AWS for infra. We also use CloudFlare for DNS and a CloudFlare Workers API gateway.
 
-Prefer to use IaC (infrastructure-as-code). Avoid destructive actions over CLI.
+Prefer to use IaC (infrastructure-as-code). Avoid destructive actions over CLI. Do not knowingly introduce drift from IaC-managed resources (e.g. Terraform).
 
 Always be mindful of the current kube context (`kubectx`) and SSO/auth profile (e.g. `AWS_PROFILE`) when running infrastructure CLI commands to avoid operating on the wrong cluster or account.
 
