@@ -84,7 +84,8 @@
       "mcp__linear-server__list_projects",
       "mcp__linear-server__list_teams",
       "mcp__linear-server__list_users",
-      "mcp__linear-server__search_documentation"
+      "mcp__linear-server__search_documentation",
+      "mcp__relace__relace_search"
     ],
     "deny": [
       "Read(**/.env)",
