@@ -70,6 +70,13 @@ Common tools:
 - `terraform` (and sometimes AWS CDK)
 - `modal` cli (usually should run via `uv run`)
 
+### Modal
+
+Prefer the module syntax for Modal CLI commands:
+- `modal run -m package.module::function`
+- `modal serve -m package.module::function`
+- `modal deploy -m package.module::function`
+
 ### Kubernetes
 
 - **Production**: AWS EKS
