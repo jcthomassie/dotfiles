@@ -57,7 +57,12 @@ Avoid directly editing `Cargo.toml` - use `cargo` commands instead (e.g. `cargo 
 
 ## Cloud
 
-I prefer to use Modal and AWS for infra. We also use CloudFlare for DNS and a CloudFlare Workers API gateway.
+Platforms:
+- AWS: Preferred for production infrastructure
+- GCP: Preferred for ML training and storage
+- CloudFlare: DNS for relace.ai, relace.run; reverse proxy for our model APIs
+- Modal: Preferred for production inference workloads, quick prototyping. Also contains some production relace-agent APIs
+- Grafana Cloud: Monitoring, logging, alerting
 
 Prefer to use IaC (infrastructure-as-code). Avoid destructive actions over CLI. Do not knowingly introduce drift from IaC-managed resources (e.g. Terraform).
 
