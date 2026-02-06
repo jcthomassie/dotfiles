@@ -16,6 +16,8 @@
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git show:*)",
       "Bash(kubectl get:*)",
       "Bash(kubectl describe:*)",
       "Bash(kubectl logs:*)",
@@ -85,18 +87,10 @@
       "mcp__linear-server__list_teams",
       "mcp__linear-server__list_users",
       "mcp__linear-server__search_documentation",
-      "mcp__relace__relace_search"
+      "mcp__Relace__relace_search"
     ],
-    "deny": [
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/secrets/**)"
-    ],
-    "ask": [
-      "Bash(rm:*)",
-      "Bash(git push:*)",
-      "Bash(git reset:*)"
-    ]
+    "deny": ["Read(**/.env)", "Read(**/.env.*)", "Read(**/secrets/**)"],
+    "ask": ["Bash(rm:*)", "Bash(git push:*)", "Bash(git reset:*)"]
   },
   "statusLine": {
     "type": "command",
@@ -105,5 +99,6 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
-  }
+  },
+  "effortLevel": "medium"
 }
