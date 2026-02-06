@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git submodule:*)",
-      "Bash(yurt:*)"
+      "Bash(yurt show:*)",
+      "Bash(yurt help:*)"
     ]
   }
 }

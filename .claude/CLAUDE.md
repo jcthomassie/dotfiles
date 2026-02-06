@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles managed with [yurt](https://github.com/jcthomassie/yurt), a declarative dotfiles manager.
+Personal dotfiles managed with [yurt](https://github.com/jcthomassie/yurt), a declarative dotfiles manager. Try `yurt help` or `yurt show` for more information.
 
 ## Machines
 
