@@ -7,16 +7,25 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "use_system_window_tabs": true,
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+  },
+  "title_bar": {
+    "show_user_picture": false,
+    "show_user_menu": true,
+  },
   "colorize_brackets": true,
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
   },
   "vim": {
     "use_smartcase_find": false,
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "drag_and_drop_selection": {
-    "delay": 200
+    "delay": 200,
   },
   "hover_popover_delay": 200,
   "fast_scroll_sensitivity": 5.0,
@@ -50,4 +59,19 @@
       "language_servers": ["ty", "ruff"],
     },
   },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+  ],
 }
