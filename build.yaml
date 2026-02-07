@@ -140,6 +140,9 @@ build:
       target: ${{ repo#dotfiles.path }}/claude/statusline-command.sh
       source: ~/.claude/statusline-command.sh
   - !link
+      target: ${{ repo#dotfiles.path }}/zed/settings.json
+      source: ~/.config/zed/settings.json
+  - !link
       target: ${{ repo#dotfiles.path }}/wezterm/.wezterm.lua
       source: ~/.wezterm.lua
 
