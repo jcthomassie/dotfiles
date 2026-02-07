@@ -89,8 +89,16 @@
       "mcp__linear-server__search_documentation",
       "mcp__Relace__relace_search"
     ],
-    "deny": ["Read(**/.env)", "Read(**/.env.*)", "Read(**/secrets/**)"],
-    "ask": ["Bash(rm:*)", "Bash(git push:*)", "Bash(git reset:*)"]
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)"
+    ]
   },
   "statusLine": {
     "type": "command",

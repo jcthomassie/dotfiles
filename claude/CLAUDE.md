@@ -88,3 +88,12 @@ Prefer the module syntax for Modal CLI commands:
 - **ML training**: GCP GKE (also use GCS for storage)
 - Use `kubectx` for context switching between clusters
 - Use `kubectl` for cluster operations
+
+## Development Workflow
+
+* Prefer working on a feature branch with stacked diffs approach in git. Always keep a clean, linear git log.
+* Do not include details on intermediate state (i.e. edits that were reverted) in PR or commit messages
+* Do not go way overboard on detail for commit messages and PRs. Keep comments focused and practical.
+* Use `gh` to create and manage PRs
+* Use Linear MCP to read and update issues. Always reference a Linear issue (e.g. `Part of REL-123`) in PR messages when relevent.
+
