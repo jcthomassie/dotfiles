@@ -23,6 +23,7 @@
       "Bash(kubectl logs:*)",
       "Bash(kubectl top:*)",
       "Bash(kubectl explain:*)",
+      "Bash(kubectl rollout status:*)",
       "Bash(sky status:*)",
       "Bash(sky queue:*)",
       "Bash(sky logs:*)",
