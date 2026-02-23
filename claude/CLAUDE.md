@@ -54,6 +54,7 @@ Avoid directly editing `Cargo.toml` - use `cargo` commands instead (e.g. `cargo 
 
 - Shell: `zsh`
 - Terminal: WezTerm
+- Set `GIT_EDITOR=true` on git commands that may open an editor (e.g. `git rebase --continue`, `git commit` without `-m`) to prevent blocking on interactive input
 
 ## Cloud
 
@@ -95,5 +96,15 @@ Prefer the module syntax for Modal CLI commands:
 * Do not include details on intermediate state (i.e. edits that were reverted) in PR or commit messages
 * Do not go way overboard on detail for commit messages and PRs. Keep comments focused and practical.
 * Use `gh` to create and manage PRs
-* Use Linear MCP to read and update issues. Always reference a Linear issue (e.g. `Part of REL-123`) in PR messages when relevent.
+* Use Linear MCP to read and update issues. Always reference a Linear issue (e.g. `Part of REL-123`) in PR messages when relevant.
+
+### Git rebasing
+
+* For interactive rebase, use a three-step workflow:
+  1. `todo=$(mktemp) && GIT_SEQUENCE_EDITOR="cp \$1 $todo && cat $todo && false" git rebase -i <base>` — saves the todo to a tempfile, prints it, and aborts.
+  2. Use the Edit tool to modify `$todo` (change pick to edit/fixup/drop, reorder lines, etc).
+  3. `GIT_SEQUENCE_EDITOR="cp $todo" git rebase -i <base>` — replays with the edited todo.
+* To amend a non-HEAD commit: use `edit` in the todo, make changes, `git commit --amend --no-edit`, `git rebase --continue`.
+* Never chain rebase commands in a single Bash call — run each step separately to inspect intermediate state.
+* After every rebase, verify with both `git log --oneline` and `git diff <base>..HEAD --stat`.
 
