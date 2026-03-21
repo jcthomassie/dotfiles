@@ -28,6 +28,10 @@ if [ -d "$HOME/.nebius/bin" ]; then
     export PATH=$PATH:$HOME/.nebius/bin
 fi
 
+if [ -d "$HOME/.fly/bin" ]; then
+    export PATH=$PATH:$HOME/.fly/bin
+fi
+
 if [ -d "$HOME/.local/share/google-cloud-sdk/bin" ]; then
     export PATH=$PATH:$HOME/.local/share/google-cloud-sdk/bin
 fi
