@@ -91,9 +91,7 @@
       "mcp__Relace__relace_search"
     ],
     "deny": [
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/secrets/**)"
+      "Read(**/.env)"
     ],
     "ask": [
       "Bash(rm:*)",
