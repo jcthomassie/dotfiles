@@ -17,6 +17,8 @@
 [submodule "zsh/plugins/fzf-tab"]
 	path = zsh/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+	shallow = true
 [submodule "zsh/plugins/fzf-git.sh"]
 	path = zsh/plugins/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh
+	shallow = true

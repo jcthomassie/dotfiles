@@ -5,47 +5,47 @@
 	path = ~/.gitconfig.user
 	path = ~/.gitconfig.os
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [alias]
-    a = "!git add ."
-    d = "!git diff"
-    dt = "!git difftool"
+	a = add .
+	d = diff
+	dt = difftool
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 
 [push]
 	default = simple
-    autoSetupRemote = true
-    followTags = true
+	autoSetupRemote = true
+	followTags = true
 [pull]
-    rebase = true
+	rebase = true
 [fetch]
-    prune = true
-    pruneTags = true
-    all = true
+	prune = true
+	pruneTags = true
+	all = true
 [rebase]
-    autoStash = true
-    updateRefs = true
+	autoStash = true
+	updateRefs = true
 [rerere]
-    enabled = true
-    autoupdate = true
+	enabled = true
+	autoupdate = true
 
 [color]
 	ui = auto
 [diff]
-    algorithm = histogram
-    tool = vimdiff
-    mnemonicPrefix = true
-    renames = true
+	algorithm = histogram
+	tool = vimdiff
+	mnemonicPrefix = true
+	renames = true
 [difftool]
-    prompt = false
+	prompt = false
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 [delta]
 	features = line-numbers
-    syntax-theme = OneHalfDark
-    navigate = true
+	syntax-theme = OneHalfDark
+	navigate = true
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
