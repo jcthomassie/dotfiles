@@ -44,3 +44,16 @@ if [ -d "$HOME/scripts/bin" ]; then
     export PATH=$HOME/scripts/bin:$PATH
 fi
 
+if [ -d "$HOME/.local/share/pnpm" ]; then
+    export PNPM_HOME=$HOME/.local/share/pnpm
+    export PATH=$PNPM_HOME/bin:$PATH
+fi
+
+if [ -d "$HOME/Android/Sdk" ]; then
+    export ANDROID_HOME=$HOME/Android/Sdk
+    export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$ANDROID_HOME/cmdline-tools/latest/bin
+fi
+
+if [ -d "$HOME/.jdks/jdk-21.0.12+8" ]; then
+    export JAVA_HOME=$HOME/.jdks/jdk-21.0.12+8
+fi
